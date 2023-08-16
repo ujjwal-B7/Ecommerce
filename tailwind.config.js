@@ -1,8 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export const content = [
-  "./pages/**/*.{html,js}",
-  "./components/**/*.{html,js}",
-];
+export const content = ["./src/**/*.{js,jsx,ts,tsx}"];
 export const presets = [];
 export const darkMode = "media";
 export const theme = {
