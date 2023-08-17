@@ -24,34 +24,33 @@ const Navbar = () => {
         <div data-aos="fade-right">
           <h1 className="text-2xl font-bold">SLASH</h1>
         </div>
-        <ul className="lg:flex hidden text-sm gap-x-10 ">
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
-          <li>
-            <Link to="/service">SERVICE</Link>
-          </li>
-          <li>
-            <Link to="/contact">CONTACT</Link>
-          </li>
-          <li>
-            <Link to="/cart">
-              <span className="pr-1">
-                <ion-icon name="cart"></ion-icon>
-              </span>
-              CART
-            </Link>
-          </li>
+        <div className="flex items-center">
+          <ul className="lg:flex hidden text-sm gap-x-10">
+            <li>
+              <Link to="/">HOME</Link>
+            </li>
+            <li>
+              <Link to="/service">SERVICE</Link>
+            </li>
+            <li>
+              <Link to="/contact">CONTACT</Link>
+            </li>
+            <li>
+              <Link to="/cart">
+                <span className="pr-1">
+                  <ion-icon name="cart"></ion-icon>
+                </span>
+                CART
+              </Link>
+            </li>
+          </ul>
           {!isAuthenticated ? (
-            <>
-              <button
-                onClick={() => loginWithRedirect()}
-                className="bg-white rounded-md px-2 text-gray-900"
-              >
-                <ion-icon name="person"></ion-icon>
-                LOG IN
-              </button>
-            </>
+            <button
+              onClick={() => loginWithRedirect()}
+              className="bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
+            >
+              <ion-icon name="person"></ion-icon>
+            </button>
           ) : (
             <button
               className="bg-white rounded-md px-2 text-gray-900"
@@ -62,7 +61,7 @@ const Navbar = () => {
               LOG OUT
             </button>
           )}
-        </ul>
+        </div>
         <ul
           ref={menuRef}
           className={`lg:hidden absolute text-gray-900  bg-white bg-opacity-30 backdrop-blur shadow-black shadow-2xl
