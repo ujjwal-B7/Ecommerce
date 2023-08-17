@@ -21,51 +21,62 @@ const Navbar = () => {
   return (
     <nav className="fixed h-20 w-full text-white z-50">
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
-        <div data-aos="fade-right">
-          <h1 className="text-2xl font-bold">SLASH</h1>
-        </div>
+        <h1 className="text-2xl font-bold" data-aos="fade-right">
+          SLASH
+        </h1>
         <div className="flex items-center">
-          <ul className="lg:flex hidden text-sm gap-x-10">
+          <ul
+            className="lg:flex items-center hidden text-sm gap-x-10"
+            data-aos="fade-left"
+          >
             <li>
               <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="/service">SERVICE</Link>
+              <Link to="/store">STORE</Link>
             </li>
             <li>
-              <Link to="/contact">CONTACT</Link>
+              <Link to="/contact">ABOUT US</Link>
             </li>
             <li>
               <Link to="/cart">
-                <span className="pr-1">
-                  <ion-icon name="cart"></ion-icon>
-                </span>
-                CART
+                <ion-icon name="cart" size="large"></ion-icon>
               </Link>
             </li>
           </ul>
-          {!isAuthenticated ? (
-            <button
-              onClick={() => loginWithRedirect()}
-              className="bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
-            >
-              <ion-icon name="person"></ion-icon>
-            </button>
-          ) : (
-            <button
-              className="bg-white rounded-md px-2 text-gray-900"
-              onClick={() =>
-                logout({ logoutParams: { returnTo: window.location.origin } })
-              }
-            >
-              LOG OUT
-            </button>
-          )}
+          <div className="lg:static absolute right-20 top-6">
+            {!isAuthenticated ? (
+              <button
+                onClick={() => loginWithRedirect()}
+                className="bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
+                data-aos="fade-left"
+              >
+                <ion-icon name="person"></ion-icon>
+              </button>
+            ) : (
+              <>
+                <div className="w-[5.5rem] lg:ml-10  overflow-clip">
+                  <button
+                    className="bg-white rounded-md px-2  text-gray-900"
+                    onClick={() =>
+                      logout({
+                        logoutParams: { returnTo: window.location.origin },
+                      })
+                    }
+                    data-aos="fade-left"
+                  >
+                    LOG OUT
+                  </button>
+                  <p className="text-[12px] text ">{user.name}</p>
+                </div>
+              </>
+            )}
+          </div>
         </div>
         <ul
           ref={menuRef}
-          className={`lg:hidden absolute text-gray-900  bg-white bg-opacity-30 backdrop-blur shadow-black shadow-2xl
-          rounded-bl-full w-2/4 h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-500
+          className={`lg:hidden absolute text-gray-900  bg-white/95  shadow-black shadow-2xl
+          rounded-bl-full w-1/3  h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-500
           ${open ? "right-0" : "right-[-32rem]"}
           `}
         >
@@ -90,7 +101,7 @@ const Navbar = () => {
           className="lg:hidden text-3xl text-white"
           onClick={() => setOpen(!open)}
         >
-          <ion-icon name={open ? "close" : "menu"}></ion-icon>
+          <ion-icon name={open ? "none" : "menu"}></ion-icon>
         </div>
       </section>
     </nav>
