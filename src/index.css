@@ -6,3 +6,12 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
+::-webkit-scrollbar{
+    display: none;
+}
+.log-btn:hover .log{
+    display: block;
+}
+.logout-btn:hover .logout{
+    display: block;
+}

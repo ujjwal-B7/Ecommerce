@@ -48,27 +48,35 @@ const Navbar = () => {
             {!isAuthenticated ? (
               <button
                 onClick={() => loginWithRedirect()}
-                className="bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
+                className="log-btn bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
                 data-aos="fade-left"
               >
                 <ion-icon name="person"></ion-icon>
+                <p className="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute right-32 text-center">
+                  Login
+                </p>
               </button>
             ) : (
               <>
-                <div className="w-[5.5rem] lg:ml-10  overflow-clip">
-                  <button
-                    className="bg-white rounded-md px-2  text-gray-900"
-                    onClick={() =>
-                      logout({
-                        logoutParams: { returnTo: window.location.origin },
-                      })
-                    }
-                    data-aos="fade-left"
-                  >
-                    LOG OUT
-                  </button>
-                  <p className="text-[12px] text ">{user.name}</p>
-                </div>
+                <button
+                  className="logout-btn h-10 w-10 rounded-full bg-white  ml-5 text-gray-900"
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }
+                >
+                  {user?.picture && (
+                    <img
+                      src={user.picture}
+                      alt={user?.name}
+                      className="h-10 w-10 object-cover rounded-full"
+                    />
+                  )}
+                  <p className="logout hidden  bg-white text-gray-900 w-14 rounded mt-1 absolute right-[9%]   text-center">
+                    Logout
+                  </p>
+                </button>
               </>
             )}
           </div>
@@ -76,7 +84,7 @@ const Navbar = () => {
         <ul
           ref={menuRef}
           className={`lg:hidden absolute text-gray-900  bg-white/95  shadow-black shadow-2xl
-          rounded-bl-full w-1/3  h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-500
+          rounded-bl-full w-[45%] h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-300 
           ${open ? "right-0" : "right-[-32rem]"}
           `}
         >
