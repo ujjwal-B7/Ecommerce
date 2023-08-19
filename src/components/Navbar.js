@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState();
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
   const menuRef = useRef();
@@ -35,7 +36,17 @@ const Navbar = () => {
         <h1 className="text-2xl font-bold" data-aos="fade-right">
           SLASH
         </h1>
+
         <div className="flex items-center">
+          <input
+            type="text"
+            placeholder="Search items"
+            className="rounded-lg h-8 sm:w-80 w-32 mr-10 pl-2
+          focus:outline-none focus:ring focus:ring-blue-200
+          "
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <ul
             className="lg:flex items-center hidden text-sm gap-x-10"
             data-aos="fade-left"
@@ -55,7 +66,7 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <div className="lg:static absolute right-20 top-6">
+          <div className="lg:static absolute right-16 top-5">
             {!isAuthenticated ? (
               <button
                 onClick={() => loginWithRedirect()}
