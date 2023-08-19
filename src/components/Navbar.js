@@ -4,9 +4,10 @@ import { useRef, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [open, setOpen] = useState(false);
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
-  const [open, setOpen] = useState(false);
   const menuRef = useRef();
   const hamRef = useRef();
   useEffect(() => {
@@ -18,8 +19,18 @@ const Navbar = () => {
     document.addEventListener("mousedown", handle);
     return () => document.removeEventListener("mousedown", handle);
   });
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+  window.addEventListener("scroll", handleScroll);
+
   return (
-    <nav className="fixed h-20 w-full text-white z-50">
+    <nav
+      className={`fixed h-20 w-full text-white z-50 ${
+        scrollPosition >= 600 ? "bg-[#333333]" : "bg-transparent"
+      }`}
+    >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
         <h1 className="text-2xl font-bold" data-aos="fade-right">
           SLASH
