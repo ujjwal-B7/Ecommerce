@@ -15,3 +15,7 @@
 .logout-btn:hover .logout{
     display: block;
 }
+.scale:hover img{
+    scale: 1.2;
+    transition-duration: 500ms; 
+    }
