@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed h-20 w-full text-white z-50 ${
+      className={`fixed sm:h-20 h-28 w-full text-white z-50 ${
         scrollPosition >= 600 ? "bg-[#333333]" : "bg-transparent"
       }`}
     >
@@ -38,15 +38,23 @@ const Navbar = () => {
         </h1>
 
         <div className="flex items-center">
-          <input
-            type="text"
-            placeholder="Search items"
-            className="rounded-lg h-8 sm:w-80 w-32 mr-10 pl-2
-          focus:outline-none focus:ring focus:ring-blue-200
-          "
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <div
+            className=" md:mr-10 sm:relative absolute sm:top-0 top-[4.5rem] right-3"
+            data-aos="fade-left"
+          >
+            <input
+              type="text"
+              placeholder="Search items"
+              className="rounded-lg  h-8 sm:w-80 w-[23rem] pl-2
+            focus:outline-none focus:ring focus:ring-blue-200
+            "
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className="absolute right-4  top-2 text-gray-900">
+              <ion-icon name="search-outline"></ion-icon>
+            </div>
+          </div>
           <ul
             className="lg:flex items-center hidden text-sm gap-x-10"
             data-aos="fade-left"
@@ -134,6 +142,20 @@ const Navbar = () => {
           <ion-icon name={open ? "none" : "menu"}></ion-icon>
         </div>
       </section>
+      {/* <div className="mx-2 relative sm:hidden">
+        <input
+          type="text"
+          placeholder="Search items"
+          className="rounded-lg  h-8 w-full  pl-2
+            focus:outline-none focus:ring focus:ring-blue-200
+            "
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="absolute right-4  top-2 text-gray-900">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+      </div> */}
     </nav>
   );
 };
