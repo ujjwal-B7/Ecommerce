@@ -142,20 +142,6 @@ const Navbar = () => {
           <ion-icon name={open ? "none" : "menu"}></ion-icon>
         </div>
       </section>
-      {/* <div className="mx-2 relative sm:hidden">
-        <input
-          type="text"
-          placeholder="Search items"
-          className="rounded-lg  h-8 w-full  pl-2
-            focus:outline-none focus:ring focus:ring-blue-200
-            "
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="absolute right-4  top-2 text-gray-900">
-          <ion-icon name="search-outline"></ion-icon>
-        </div>
-      </div> */}
     </nav>
   );
 };
