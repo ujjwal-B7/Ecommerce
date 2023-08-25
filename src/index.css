@@ -22,4 +22,8 @@
 
     .products:hover .hover{
         display: block;
-    }
+    } 
+       .hover-content1:hover .text1,
+       .hover-content2:hover .text2 {
+        display: block;
+      }
