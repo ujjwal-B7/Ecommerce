@@ -2,42 +2,49 @@
     "products":[
         {
             "id":1,
+            "imageURL":"../image/img1.svg",
             "name":"Table",
             "desc":"This is a table ",
             "price":1000
         },
         {
             "id":2,
+            "imageURL":"../image/img2.svg",
             "name":"Chair",
             "desc":"This is a chair",
             "price":1000
         },
         {
             "id":3,
+            "imageURL":"../image/img3.svg",
             "name":"EcoAir plant on brass",
             "desc":"This is a plant.",
             "price":1000
         },
         {
             "id":4,
+            "imageURL":"../image/img4.svg",
             "name":"HyperFresh plant on wooden vase",
             "desc":"This is a ",
             "price":1000
         },
         {
             "id":5,
+            "imageURL":"../image/img5.svg",
             "name":"Armchair black in wood",
             "desc":"This is a armchair",
             "price":1000
         },
         {
             "id":6,
+            "imageURL":"../image/img7.svg",
             "name":"Lamps",
             "desc":"This is a lamp",
             "price":1000
         },
         {
             "id":7,
+            "imageURL":"../image/img8.svg",
             "name":"Curved walnut monitor stand",
             "desc":"This is a stand",
             "price":1000

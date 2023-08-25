@@ -39,13 +39,13 @@ const Navbar = () => {
 
         <div className="flex items-center">
           <div
-            className=" md:mr-10 sm:relative absolute sm:top-0 top-[4.5rem] right-3"
+            className=" md:mr-5 sm:relative absolute sm:top-0 top-[4.5rem] right-7"
             data-aos="fade-left"
           >
             <input
               type="text"
               placeholder="Search items"
-              className="rounded-lg  h-8 sm:w-80 w-[23rem] pl-2
+              className="rounded-lg h-8  sm:w-96 w-[20rem] pl-2
             focus:outline-none focus:ring focus:ring-blue-200
             "
               value={search}

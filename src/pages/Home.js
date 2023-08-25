@@ -1,5 +1,5 @@
 import React from "react";
-
+import ProductsList from "../components/ProductsList";
 const Home = () => {
   return (
     <>
@@ -51,7 +51,9 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <div className=" h-40 "></div>
+      <div className=" h-40 w-full">
+        <ProductsList />
+      </div>
     </>
   );
 };
