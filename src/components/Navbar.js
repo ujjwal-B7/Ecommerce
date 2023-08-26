@@ -35,19 +35,18 @@ const Navbar = () => {
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
-        <h1 className="text-2xl font-bold" data-aos="fade-right">
+        <h1 className="text-3xl font-bold" data-aos="fade-right">
           SLASH
         </h1>
-
         <div className="flex items-center">
           <div
-            className=" md:mr-5 sm:relative absolute sm:top-0 top-[4.5rem] right-7"
+            className=" md:mr-5 sm:relative absolute sm:top-0 top-[4.5rem] right-9"
             data-aos="fade-left"
           >
             <input
               type="text"
               placeholder="Search items"
-              className="rounded-lg h-8  sm:w-96 w-[20rem] pl-2
+              className="rounded-md h-8  sm:w-96 w-[20rem] pl-2
             focus:outline-none focus:ring focus:ring-blue-200
             "
               value={search}

@@ -54,10 +54,10 @@ const Home = () => {
       <div className="w-full">
         <ProductsList />
       </div>
-      <hr className=" border-gray-500 mx-auto w-[90%]" />
+      <hr className=" border-gray-500 mx-auto w-[80%]" />
       <div
-        className=" bg-[#f8f8f8] mb-10 min-h-[6rem]  w-[90%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "
-        data-aos="slide-up"
+        className=" bg-[#f8f8f8] mb-10 min-h-[6rem] w-[80%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "
+        data-aos="zoom-out"
       >
         <div className="flex py-9">
           <ion-icon name="car"></ion-icon>
@@ -97,7 +97,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="lg:h-[35rem] w-full bg-[url('./images/bg.jpg')] bg-cover text-white flex flex-col justify-center items-center gap-10 py-10">
+      <div className="min-h-[35rem] w-full bg-[url('./images/bg.jpg')] bg-cover text-white flex flex-col justify-center items-center gap-10 py-10">
         <p className="text-2xl" data-aos="slide-up" data-aos-duration="300">
           Custom Setup
         </p>
