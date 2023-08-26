@@ -12,7 +12,7 @@ const Home = () => {
             <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
               Stay productive and get more work done!
             </p>
-            <button className="h-10 w-32 bg-black rounded-md">Shop More</button>
+            <button className="h-12 w-52 bg-black rounded-md">Shop More</button>
           </div>
         </div>
       </div>
@@ -51,8 +51,69 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <div className=" h-40 w-full">
+      <div className="w-full">
         <ProductsList />
+      </div>
+      <hr className=" border-gray-500 mx-auto w-[90%]" />
+      <div
+        className=" bg-[#f8f8f8] mb-10 min-h-[6rem]  w-[90%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "
+        data-aos="slide-up"
+      >
+        <div className="flex py-9">
+          <ion-icon name="car"></ion-icon>
+          <p className="font-semibold pl-2">
+            Free Shipping
+            <span className="block text-sm font-normal text-gray-500">
+              Lorem ipsum dolor sit amet
+            </span>
+          </p>
+        </div>
+        <div className="flex py-9">
+          <ion-icon name="time-outline"></ion-icon>
+          <p className="font-semibold pl-2">
+            Support 24/7
+            <span className="block text-sm font-normal text-gray-500">
+              Lorem ipsum dolor sit amet
+            </span>
+          </p>
+        </div>
+        <div className="flex py-9">
+          <ion-icon name="wallet-outline"></ion-icon>
+          <p className="font-semibold pl-2">
+            Money return
+            <span className="block text-sm font-normal text-gray-500">
+              Lorem ipsum dolor sit amet
+            </span>
+          </p>
+        </div>
+        <div className="flex py-9">
+          <ion-icon name="gift-outline"></ion-icon>
+          <p className="font-semibold pl-2">
+            Member Discount
+            <span className="block text-sm font-normal text-gray-500">
+              Lorem ipsum dolor sit amet
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div className="lg:h-[35rem] w-full bg-[url('./images/bg.jpg')] bg-cover text-white flex flex-col justify-center items-center gap-10 py-10">
+        <p className="text-2xl" data-aos="slide-up" data-aos-duration="300">
+          Custom Setup
+        </p>
+        <p
+          className="lg:text-7xl md:text-5xl text-4xl w-[50%] font-semibold text-center"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          Let’s build your dream working space
+        </p>
+        <button
+          className="h-12 w-52 bg-black rounded-md hover:opacity-90"
+          data-aos="slide-up"
+        >
+          Shop Now
+        </button>
       </div>
     </>
   );

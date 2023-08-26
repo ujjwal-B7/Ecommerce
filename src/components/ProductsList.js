@@ -38,7 +38,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
@@ -76,7 +76,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
@@ -114,7 +114,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
@@ -152,7 +152,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
@@ -190,7 +190,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
@@ -228,7 +228,7 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900">
+            <p className="font-semibold text-gray-900 pt-4">
               Simple Black in wooden chair
               <span className="block text-gray-600">69$</span>
               <span className="font-medium text-gray-600">
