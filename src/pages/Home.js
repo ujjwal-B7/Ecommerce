@@ -1,5 +1,6 @@
 import React from "react";
 import ProductsList from "../components/ProductsList";
+import FeaturedList from "../components/FeaturedList";
 const Home = () => {
   return (
     <>
@@ -12,7 +13,10 @@ const Home = () => {
             <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
               Stay productive and get more work done!
             </p>
-            <button className="h-12 w-52 bg-black rounded-md">Shop More</button>
+            <button className="h-12 w-52 border-white border text-white rounded-md">
+              Shop More
+            </button>
+            {/* <button className="h-12 w-52 bg-black rounded-md">Shop More</button> */}
           </div>
         </div>
       </div>
@@ -96,7 +100,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-
+      <FeaturedList />
       <div className="min-h-[35rem] w-full bg-[url('./images/bg.jpg')] bg-cover text-white flex flex-col justify-center items-center gap-10 py-10">
         <p className="text-2xl" data-aos="slide-up" data-aos-duration="300">
           Custom Setup

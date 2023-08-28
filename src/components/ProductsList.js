@@ -9,8 +9,12 @@ const ProductsList = () => {
         data-aos="slide-up"
         data-aos-duration="300"
       >
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+        <div
+          className=" products h-80 lg:w-96 w-80 relative "
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur6.jpg"
               className="h-80 w-96 object-cover"
@@ -38,17 +42,21 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+        <div
+          className=" h-80 lg:w-96 w-80 relative"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur5.jpg"
               className="h-80 w-96 object-cover"
@@ -76,17 +84,21 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+        <div
+          className=" h-80 lg:w-96 w-80 relative"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur3.jpg"
               className="h-80 w-96 object-cover"
@@ -114,17 +126,22 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+
+        <div
+          className=" h-80 lg:w-96 w-80 relative"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur4.jpg"
               className="h-80 w-96 object-cover"
@@ -152,17 +169,21 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+        <div
+          className=" h-80 lg:w-96 w-80 relative"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur2.jpg"
               className="h-80 w-96 object-cover"
@@ -190,17 +211,21 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
-        <div className="" data-aos="slide-up" data-aos-duration="300">
-          <div className="products h-80 lg:w-96 w-80 relative">
+        <div
+          className=" h-80 lg:w-96 w-80 relative"
+          data-aos="slide-up"
+          data-aos-duration="300"
+        >
+          <div className="products overflow-hidden">
             <img
               src="./images/fur1.jpg"
               className="h-80 w-96 object-cover"
@@ -228,14 +253,14 @@ const ProductsList = () => {
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
               />
             </div>
-            <p className="font-semibold text-gray-900 pt-4">
-              Simple Black in wooden chair
-              <span className="block text-gray-600">69$</span>
-              <span className="font-medium text-gray-600">
-                This is a comfortable chair made of up wood ..
-              </span>
-            </p>
           </div>
+          <p className="font-semibold text-gray-900 pt-4">
+            Simple Black in wooden chair
+            <span className="block text-gray-600">69$</span>
+            <span className="font-medium text-gray-600">
+              This is a comfortable chair made of up wood ..
+            </span>
+          </p>
         </div>
       </div>
     </section>
