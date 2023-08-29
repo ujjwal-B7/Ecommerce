@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Cart from "../userComponent/Cart";
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(false);
   const [search, setSearch] = useState();
+  const location = useLocation();
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
   const menuRef = useRef();
@@ -39,7 +40,7 @@ const Navbar = () => {
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
         <h1 className="text-3xl font-bold" data-aos="fade-right">
-          SLASH
+          <Link to="/">SLASH</Link>
         </h1>
         <div className="flex items-center">
           <div
@@ -63,16 +64,16 @@ const Navbar = () => {
             className="lg:flex items-center hidden text-sm gap-x-10"
             data-aos="fade-left"
           >
-            <li>
+            <li className={location.pathname === "/" ? "active" : ""}>
               <Link to="/">HOME</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/store" ? "active" : ""}>
               <Link to="/store">STORE</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/about" ? "active" : ""}>
               <Link to="/about">ABOUT US</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/contact" ? "active" : ""}>
               <Link to="/contact">CONTACT US</Link>
             </li>
             <li>

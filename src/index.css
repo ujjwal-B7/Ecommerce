@@ -48,4 +48,9 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
-    
+
+.active{
+border-bottom: 3px solid white;
+border-radius: 4px;
+}
+   
