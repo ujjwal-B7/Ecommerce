@@ -5,10 +5,10 @@ const Footer = () => {
     <footer>
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-          <h1 className="text-3xl font-semibold" data-aos="slide-up">
+          <h1 className="text-3xl font-semibold" data-aos="slide-down">
             SLASH
           </h1>
-          <div data-aos="slide-up">
+          <div data-aos="slide-down">
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Company
             </h2>
@@ -35,7 +35,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div data-aos="slide-up">
+          <div data-aos="slide-down">
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Help center
             </h2>
@@ -62,7 +62,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div data-aos="slide-up">
+          <div data-aos="slide-down">
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
               Legal
             </h2>

@@ -16,7 +16,7 @@ const ProductsList = () => {
         >
           <div className="products overflow-hidden">
             <img
-              src="./images/fur6.jpg"
+              src="./images/converse.jpg"
               className="h-80 w-96 object-cover"
               alt=""
             />
@@ -58,7 +58,7 @@ const ProductsList = () => {
         >
           <div className="products overflow-hidden">
             <img
-              src="./images/fur5.jpg"
+              src="./images/jaamaa.jpg"
               className="h-80 w-96 object-cover"
               alt=""
             />
@@ -100,7 +100,7 @@ const ProductsList = () => {
         >
           <div className="products overflow-hidden">
             <img
-              src="./images/fur3.jpg"
+              src="./images/bagss.jpg"
               className="h-80 w-96 object-cover"
               alt=""
             />

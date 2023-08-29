@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 *{
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
     box-sizing: border-box;
 }
 ::-webkit-scrollbar{
     display: none;
 }
+.shop:hover {
+    scale: 1.2;
+    transition-duration: 500ms;
+        
+    }
+
 .log-btn:hover .log{
     display: block;
 }

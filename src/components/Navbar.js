@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import Cart from "../userComponent/Cart";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
+  const [cart, setCart] = useState(false);
   const [search, setSearch] = useState();
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
@@ -15,6 +17,7 @@ const Navbar = () => {
     let handle = (e) => {
       if (!menuRef.current.contains(e.target)) {
         setOpen(false);
+        setCart(false);
       }
     };
     document.addEventListener("mousedown", handle);
@@ -70,9 +73,9 @@ const Navbar = () => {
               <Link to="/contact">ABOUT US</Link>
             </li>
             <li>
-              <Link to="/cart">
+              <button onClick={() => setCart(!cart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
-              </Link>
+              </button>
             </li>
           </ul>
           <div className="lg:static absolute right-16 top-5">
@@ -134,6 +137,15 @@ const Navbar = () => {
           <li className="py-5 lg:py-0">
             <Link to="/contact">CONTACT</Link>
           </li>
+        </ul>
+        <ul
+          ref={menuRef}
+          className={`absolute text-gray-900  bg-white shadow-2xl
+          w-[30%] h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
+          ${cart ? "right-0" : "right-[-45rem]"}
+          `}
+        >
+          <Cart />
         </ul>
         <div
           ref={hamRef}
