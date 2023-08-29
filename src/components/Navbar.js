@@ -70,7 +70,10 @@ const Navbar = () => {
               <Link to="/store">STORE</Link>
             </li>
             <li>
-              <Link to="/contact">ABOUT US</Link>
+              <Link to="/about">ABOUT US</Link>
+            </li>
+            <li>
+              <Link to="/contact">CONTACT US</Link>
             </li>
             <li>
               <button onClick={() => setCart(!cart)}>
