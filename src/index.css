@@ -53,4 +53,13 @@
 border-bottom: 3px solid white;
 border-radius: 4px;
 }
+
+.hov:hover {
+    border-bottom: 3px solid white;
+border-radius: 4px;
+}
+nav li:hover{
+    border-bottom: 3px solid white;
+    border-radius: 4px;
+}
    

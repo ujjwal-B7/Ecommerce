@@ -4,10 +4,15 @@ import FeaturedList from "../components/FeaturedList";
 const Home = () => {
   return (
     <>
-      <div className="lg:h-screen h-[60vh] w-full bg-[url('./images/bag.jpg')] bg-cover">
+      <div className="lg:h-screen h-[60vh] w-full">
+        <img
+          src="./images/bag.jpg"
+          className=" lg:h-screen h-[60vh] w-full object-cover"
+          alt=""
+        />
         {/* <div className="lg:h-screen h-[60vh] w-full bg-black bg-opacity-40"> */}
         <div
-          className="text-white max-w-7xl mx-auto  px-4 sm:pt-80 pt-[50%]"
+          className=" text-white absolute lg:left-36 lg:top-80 top-60 left-10"
           data-aos="slide-up"
         >
           <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
@@ -16,10 +21,8 @@ const Home = () => {
           <button className="shop h-12 w-52 border-white border text-white rounded-md">
             Shop More
           </button>
-          {/* <button className="h-12 w-52 bg-black rounded-md">Shop More</button> */}
         </div>
       </div>
-      {/* </div> */}
       <div className="max-w-7xl mx-auto min-h-[13rem] text-gray-900 text-sm font-semibold grid grid-cols-2 lg:grid-cols-8 gap-10 place-items-center py-10 ">
         <div className="scale" data-aos="slide-up" data-aos-duration="300">
           <img src="./images/img1.svg" alt="" className="h-12 " />
