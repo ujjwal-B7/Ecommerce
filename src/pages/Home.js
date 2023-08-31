@@ -1,7 +1,10 @@
 import React from "react";
 import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
+import { useAuth0 } from "@auth0/auth0-react";
 const Home = () => {
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
+    useAuth0();
   return (
     <>
       <div className="lg:h-screen h-[60vh] w-full">
@@ -11,6 +14,7 @@ const Home = () => {
           alt=""
         />
         {/* <div className="lg:h-screen h-[60vh] w-full bg-black bg-opacity-40"> */}
+        {!error && isLoading && <span class="loader"></span>}
         <div
           className=" text-white absolute lg:left-36 lg:top-80 top-60 left-10"
           data-aos="slide-up"

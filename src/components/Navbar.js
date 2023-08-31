@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Cart from "../userComponent/Cart";
+import Login from "../auth/Login";
+import LogOut from "../auth/LogOut";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -10,7 +12,7 @@ const Navbar = () => {
   const [cart, setCart] = useState(false);
   const [search, setSearch] = useState();
   const location = useLocation();
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
   const menuRef = useRef();
   const hamRef = useRef();
@@ -35,7 +37,7 @@ const Navbar = () => {
       className={`fixed sm:h-20 h-28 w-full text-white z-50 md:${
         scrollPosition >= 600 ? "bg-[#333333]" : "bg-transparent"
       }
-      ${scrollPosition >= 400 ? "bg-[#333333]" : "bg-transparent"}
+      ${scrollPosition >= 200 ? "bg-[#333333]" : "bg-transparent"}
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
@@ -83,40 +85,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="lg:static absolute right-16 top-5">
-            {!isAuthenticated ? (
-              <button
-                onClick={() => loginWithRedirect()}
-                className="log-btn bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
-                data-aos="fade-left"
-              >
-                <ion-icon name="person"></ion-icon>
-                <p className="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute right-32 text-center">
-                  Login
-                </p>
-              </button>
-            ) : (
-              <>
-                <button
-                  className="logout-btn h-10 w-10 rounded-full bg-white  ml-5 text-gray-900"
-                  onClick={() =>
-                    logout({
-                      logoutParams: { returnTo: window.location.origin },
-                    })
-                  }
-                >
-                  {user?.picture && (
-                    <img
-                      src={user.picture}
-                      alt={user?.name}
-                      className="h-10 w-10 object-cover rounded-full"
-                    />
-                  )}
-                  <p className="logout hidden  bg-white text-gray-900 w-14 rounded mt-1 absolute right-[9%]   text-center">
-                    Logout
-                  </p>
-                </button>
-              </>
-            )}
+            {!isAuthenticated ? <Login /> : <LogOut />}
           </div>
         </div>
         <ul

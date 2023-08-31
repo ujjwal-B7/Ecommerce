@@ -11,7 +11,7 @@ const Cart = () => {
   return (
     <section className="text-gray-900 cart">
       <p className="text-3xl font-semibold pb-5 text-center">Cart</p>
-      <div className="bg-[#f8f8f8] w-96 h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-[#f8f8f8] w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           //   onClick={toggleDeleteVisibility}
@@ -38,7 +38,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#f8f8f8] w-96 h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
+      <div className="bg-[#f8f8f8] w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -64,7 +64,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#f8f8f8] w-96 h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-[#f8f8f8] w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -90,7 +90,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#f8f8f8] w-96 h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-[#f8f8f8] w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
