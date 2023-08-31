@@ -2,6 +2,7 @@ import React from "react";
 import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
 import { useAuth0 } from "@auth0/auth0-react";
+import QuicView from "../components/QuicView";
 const Home = () => {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
@@ -62,12 +63,10 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <div className="w-full">
-        <ProductsList />
-      </div>
+      <ProductsList />
       <hr className=" border-gray-500 mx-auto w-[80%]" />
       <div
-        className=" bg-[#f8f8f8] mb-10 min-h-[6rem] w-[80%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "
+        className=" bg-text mb-10 min-h-[6rem] w-[80%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "
         data-aos="zoom-out"
       >
         <div className="flex py-9">

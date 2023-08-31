@@ -1,11 +1,14 @@
 import React from "react";
+import QuicView from "./QuicView";
+import { useState } from "react";
 
 const ProductsList = () => {
+  const [click, setClick] = useState(true);
   return (
-    <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10">
+    <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
       <div
-        className="container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 md:gap-y-40 gap-32"
+        className="relative container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 md:gap-y-40 gap-32"
         data-aos="slide-up"
         data-aos-duration="300"
       >
@@ -40,6 +43,7 @@ const ProductsList = () => {
                 src="./images/eye.svg"
                 alt=""
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
+                onClick={() => setClick(!click)}
               />
             </div>
           </div>
@@ -261,6 +265,9 @@ const ProductsList = () => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+        </div>
+        <div className={` ${click ? "hidden" : "block"} `}>
+          <QuicView click={click} setClick={setClick} />
         </div>
       </div>
     </section>

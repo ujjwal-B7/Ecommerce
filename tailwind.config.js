@@ -160,6 +160,7 @@ export const theme = {
     fuchsia: colors.fuchsia,
     pink: colors.pink,
     rose: colors.rose,
+    text: "#f8f8f8",
   }),
   columns: {
     auto: "auto",
