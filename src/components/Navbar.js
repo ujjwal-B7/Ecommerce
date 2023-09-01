@@ -116,11 +116,11 @@ const Navbar = () => {
         <ul
           ref={menuRef}
           className={`absolute text-gray-900  bg-white shadow-2xl
-          lg:w-[30%] w-[55%] h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
+          lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
           ${cart ? "right-0" : "right-[-45rem]"}
           `}
         >
-          <Cart />
+          <Cart cart={cart} setCart={setCart} />
         </ul>
         <div
           ref={hamRef}

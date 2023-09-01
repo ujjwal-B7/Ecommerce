@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import DeleteConfirm from "../components/DeleteConfirm";
-const Cart = () => {
+const Cart = ({ cart, setCart }) => {
   const [isDeleteVisible, setIsDeleteVisible] = useState(false);
   const [click, setClick] = useState(true);
   const toggleDeleteVisibility = () => {
@@ -9,9 +9,15 @@ const Cart = () => {
   };
 
   return (
-    <section className="text-gray-900 cart">
+    <section className="text-gray-900 cart relative z-50">
       <p className="text-3xl font-semibold pb-5 text-center">Cart</p>
-      <div className="bg-text w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div
+        className="absolute top-0 right-4  text-center text-3xl"
+        onClick={() => setCart(!cart)}
+      >
+        <ion-icon name="close"></ion-icon>
+      </div>
+      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           //   onClick={toggleDeleteVisibility}
@@ -38,7 +44,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-text w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
+      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -64,7 +70,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-text w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -90,7 +96,7 @@ const Cart = () => {
           </button>
         </div>
       </div>
-      <div className="bg-text w-[27rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
