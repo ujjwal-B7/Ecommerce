@@ -8,7 +8,7 @@ const ProductsList = () => {
     <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
       <div
-        className="relative container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 md:gap-y-40 gap-32"
+        className="container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 md:gap-y-40 gap-32"
         data-aos="slide-up"
         data-aos-duration="300"
       >

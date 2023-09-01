@@ -6,7 +6,7 @@ const QuicView = ({ click, setClick }) => {
       className={`absolute shadow-lg top-10 rounded-lg bg-text w-[70%] h-[30rem] flex 
     ${click ? "hidden" : "block"}
     `}
-      data-aos="zoom-in"
+      // data-aos="slide-up"
     >
       <img src="./images/converse.jpg" className="p-[2px]  h-[30rem]" alt="" />
       <section className="p-4 relative">
