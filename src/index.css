@@ -66,11 +66,11 @@ nav li:hover{
 .loader {
   z-index: 1000;
   position: fixed;
-  top: 30%;
-  right: 40%;
+  top: 40%;
+  right: 45%;
   transform: translate(-50%,-50%);
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: inline-block;
   border-top: 4px solid black;
@@ -82,8 +82,8 @@ nav li:hover{
   content: '';  
   box-sizing: border-box;
   position: fixed;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border-left: 4px solid gray;
   border-bottom: 4px solid transparent;

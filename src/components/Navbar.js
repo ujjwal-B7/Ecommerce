@@ -84,8 +84,13 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
-          <div className="lg:static absolute right-16 top-5">
+          <div className="lg:static absolute right-16 top-6">
             {!isAuthenticated ? <Login /> : <LogOut />}
+          </div>
+          <div className="lg:static absolute right-32 top-5">
+            <button className="lg:hidden " onClick={() => setCart(!cart)}>
+              <ion-icon name="cart" size="large"></ion-icon>
+            </button>
           </div>
         </div>
         <ul
@@ -99,22 +104,19 @@ const Navbar = () => {
             <Link to="/">HOME</Link>
           </li>
           <li className="py-5 lg:py-0">
-            <Link to="/service">SERVICE</Link>
-          </li>
-          <li className="py-5 lg:py-0 ">
-            <span>
-              <ion-icon name="cart"></ion-icon>
-            </span>
-            <Link to="/home">CART</Link>
+            <Link to="/store">STORE</Link>
           </li>
           <li className="py-5 lg:py-0">
-            <Link to="/contact">CONTACT</Link>
+            <Link to="/about">ABOUT US</Link>
+          </li>
+          <li className="py-5 lg:py-0">
+            <Link to="/contact">CONTACT US</Link>
           </li>
         </ul>
         <ul
           ref={menuRef}
           className={`absolute text-gray-900  bg-white shadow-2xl
-          w-[30%] h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
+          lg:w-[30%] w-[55%] h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
           ${cart ? "right-0" : "right-[-45rem]"}
           `}
         >
