@@ -46,13 +46,13 @@ const Navbar = () => {
         </h1>
         <div className="flex items-center">
           <div
-            className=" md:mr-5 sm:relative absolute sm:top-0 top-[4.5rem] right-9"
+            className="md:mr-5 sm:relative fixed sm:top-0 top-[4.5rem] right-10"
             data-aos="fade-left"
           >
             <input
               type="text"
               placeholder="Search items"
-              className="rounded-md h-8  sm:w-96 w-[20rem] pl-2
+              className=" rounded-md h-8  sm:w-96 w-80 pl-2
             focus:outline-none focus:ring focus:ring-blue-200
             "
               value={search}
@@ -84,7 +84,7 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
-          <div className="lg:static absolute right-16 top-6">
+          <div className="lg:static absolute right-16 top-5">
             {!isAuthenticated ? <Login /> : <LogOut />}
           </div>
           <div className="lg:static absolute right-32 top-5">
@@ -115,7 +115,7 @@ const Navbar = () => {
         </ul>
         <ul
           ref={menuRef}
-          className={`absolute text-gray-900  bg-white shadow-2xl
+          className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
           lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
           ${cart ? "right-0" : "right-[-45rem]"}
           `}

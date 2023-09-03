@@ -23,14 +23,14 @@ const DeleteConfirm = ({
       <ion-icon name="alert-circle-outline" size="large"></ion-icon>
       <p className="mb-5 text-lg">Remove item from cart?</p>
       <button
-        className="bg-text h-10 w-24 rounded-md mx-2"
+        className="bg-text h-10 w-24 rounded-md mx-2 hover:shadow-md"
         // onClick={toggleDeleteVisibility}
         onClick={() => setClick(!click)}
       >
         Cancel
       </button>
       <button
-        className="bg-red-500 h-10 w-24 rounded-md mx-2 text-white"
+        className="bg-[#D11A2A] h-10 w-24 rounded-md mx-2 text-white hover:shadow-md"
         onClick={handleDelete}
       >
         Delete

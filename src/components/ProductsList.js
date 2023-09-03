@@ -13,7 +13,7 @@ const ProductsList = () => {
         data-aos-duration="300"
       >
         <div
-          className=" products h-80 lg:w-96 w-80 relative "
+          className="h-80 lg:w-96 w-80 relative "
           data-aos="slide-up"
           data-aos-duration="300"
         >

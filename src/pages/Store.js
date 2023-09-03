@@ -1,29 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import Loader from "../components/Loader";
 import QuicView from "../components/QuicView";
 const Store = () => {
   const [click, setClick] = useState(true);
   return (
     <>
+      <Loader />
       <div
         className="w-full lg:h-[50vh] h-[40vh] bg-[url('./images/store.jpg')] bg-cover mb-10"
         data-aos="zoom-in"
       >
-        {/* <img
-          src="./images/store.jpg"
-          className=" w-full h-[50vh] object-cover"
-          alt=""
-          data-aos="zoom-in"
-        /> */}
         <div className="w-full lg:h-[50vh] h-[40vh] bg-black opacity-40">
           <p className="text-white text-5xl font-semibold text-center pt-32">
             SHOP
-            <p className=" text-sm mx-auto w-96">
+            <span className="block text-sm mx-auto w-96">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
               ab amet. Similique sed dolor
-            </p>
+            </span>
           </p>
-          ;
         </div>
       </div>
       <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">

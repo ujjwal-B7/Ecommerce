@@ -3,12 +3,12 @@ import React from "react";
 const QuicView = ({ click, setClick }) => {
   return (
     <div
-      className={`absolute shadow-lg top-10 rounded-lg bg-text w-[70%] h-[30rem] flex 
-    ${click ? "hidden" : "block"}
-    `}
+      className={`absolute  shadow-lg top-10 rounded-lg bg-text max-w-[70%]  h-[54%] flex  
+      ${click ? "hidden" : "block"}
+      `}
       // data-aos="slide-up"
     >
-      <img src="./images/converse.jpg" className="p-[2px]  h-[30rem]" alt="" />
+      <img src="./images/converse.jpg" className="p-[2px]" alt="" />
       <section className="p-4 relative">
         <div
           className="absolute right-4 bg-gray-900 text-text rounded-full text-center w-5 h-5 hover:opacity-90"

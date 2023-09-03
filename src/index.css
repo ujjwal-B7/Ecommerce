@@ -27,6 +27,9 @@
     scale: 1.2;
     transition-duration: 500ms; 
     }
+    .products{
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
 .products:hover img{
     scale: 1.2;
     transition-duration: 500ms; 
@@ -73,7 +76,7 @@ nav li:hover{
   height: 150px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 4px solid black;
+  border-top: 4px solid white;
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -97,4 +100,19 @@ nav li:hover{
     transform: rotate(360deg);
   }
 } 
+
+@media (max-width: 767px) {
+    .lg:flex {
+      display: grid;
+      grid-template-columns: 1fr; 
+      gap: 10px; 
+    }
+  }
+ 
+  
+  
+  
+  
+  
+  
    

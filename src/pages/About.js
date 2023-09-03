@@ -1,8 +1,9 @@
 import React from "react";
-
+import Loader from "../components/Loader";
 const About = () => {
   return (
     <>
+      <Loader  />
       <div className="w-full lg:h-[60vh] md:h-[50vh] h-[34vh]">
         <img
           src="./images/about1.jpg"
