@@ -16,7 +16,7 @@ const DeleteConfirm = ({
 
   return (
     <div
-      className={`del absolute w-96 h-44  bg-white shadow-lg text-center text-sm rounded-md pt-5
+      className={`del absolute w-96 h-44  bg-white shadow-lg text-center text-sm rounded-md pt-5 
     ${click ? "hidden" : "block"}
     `}
     >

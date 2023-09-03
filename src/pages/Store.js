@@ -11,7 +11,7 @@ const Store = () => {
         className="w-full lg:h-[50vh] h-[40vh] bg-[url('./images/store.jpg')] bg-cover mb-10"
         data-aos="zoom-in"
       >
-        <div className="w-full lg:h-[50vh] h-[40vh] bg-black opacity-40">
+        <div className="w-full lg:h-[50vh] h-[40vh] bg-black bg-opacity-40">
           <p className="text-white text-5xl font-semibold text-center pt-32">
             SHOP
             <span className="block text-sm mx-auto w-96">

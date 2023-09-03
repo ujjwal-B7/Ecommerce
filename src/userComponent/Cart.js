@@ -122,11 +122,9 @@ const Cart = ({ cart, setCart }) => {
           </button>
         </div>
       </div>
-
       <button className="bg-gray-900 text-white md:w-[27rem] w-[23rem] text-lg h-10 mx-4 hover:opacity-90 rounded-md sticky bottom-1">
         Confirm Order
       </button>
-
       <div className={` ${click ? "hidden" : "block"} `}>
         <DeleteConfirm click={click} setClick={setClick} />
       </div>
