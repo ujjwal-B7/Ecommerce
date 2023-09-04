@@ -4,11 +4,16 @@ import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
 import { useAuth0 } from "@auth0/auth0-react";
 import QuicView from "../components/QuicView";
+import { useState } from "react";
 const Home = () => {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
+  const [click, setClick] = useState(true);
   return (
     <>
+      <div className={` ${click ? "hidden" : "block"} `}>
+        <QuicView click={click} setClick={setClick} />
+      </div>
       <div className="lg:h-screen h-[60vh] w-full">
         <img
           src="./images/bag.jpg"
@@ -64,7 +69,7 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <ProductsList />
+      <ProductsList click={click} setClick={setClick} />
       <hr className=" border-gray-500 mx-auto w-[80%]" />
       <div
         className=" bg-text mb-10 min-h-[6rem] w-[80%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "

@@ -4,14 +4,15 @@ import Loader from "../components/Loader";
 import QuicView from "../components/QuicView";
 const Store = () => {
   const [click, setClick] = useState(true);
+  const [search, setSearch] = useState();
   return (
     <>
       <Loader />
       <div
-        className="w-full lg:h-[50vh] h-[40vh] bg-[url('./images/store.jpg')] bg-cover mb-10"
+        className="w-full lg:h-[50vh] h-[40vh] bg-[url('./images/store.jpg')] bg-cover mb-4"
         data-aos="zoom-in"
       >
-        <div className="w-full lg:h-[50vh] h-[40vh] bg-black bg-opacity-40">
+        <div className="w-full lg:h-[50vh] h-[40vh] bg-black bg-opacity-40 pt-20">
           <p className="text-white text-5xl font-semibold text-center pt-32">
             SHOP
             <span className="block text-sm mx-auto w-96">
@@ -19,9 +20,27 @@ const Store = () => {
               ab amet. Similique sed dolor
             </span>
           </p>
+          v>
         </div>
       </div>
       <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
+        <div
+          className="w-[70%] mx-auto sticky top-[5.1rem] z-40"
+          data-aos="zoom-in"
+        >
+          <input
+            type="text"
+            placeholder="Search items"
+            className="border-blue-200 border-[3px] bg-text rounded-md h-14 w-full pl-2
+            focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-1
+            "
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="absolute right-4  top-4 text-gray-900">
+            <ion-icon name="search-outline"></ion-icon>
+          </div>
+        </div>
         <p className="md:pl-2 pl-10 text-5xl font-semibold  py-10">SHOP</p>
         <div
           className="container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 md:gap-y-40 gap-32"

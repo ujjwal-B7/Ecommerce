@@ -2,8 +2,8 @@ import React from "react";
 import QuicView from "./QuicView";
 import { useState } from "react";
 
-const ProductsList = () => {
-  const [click, setClick] = useState(true);
+const ProductsList = ({ click, setClick }) => {
+  // const [click, setClick] = useState(true);
   return (
     <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
@@ -13,7 +13,7 @@ const ProductsList = () => {
         data-aos-duration="300"
       >
         <div
-          className="h-80 lg:w-96 w-80 relative "
+          className="h-80 lg:w-96 w-80"
           data-aos="slide-up"
           data-aos-duration="300"
         >
@@ -266,9 +266,9 @@ const ProductsList = () => {
             </span>
           </p>
         </div>
-        <div className={` ${click ? "hidden" : "block"} `}>
+        {/* <div className={` ${click ? "hidden" : "block"} `}>
           <QuicView click={click} setClick={setClick} />
-        </div>
+        </div> */}
       </div>
     </section>
   );

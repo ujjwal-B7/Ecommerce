@@ -45,7 +45,7 @@ const Navbar = () => {
           <Link to="/">SLASH</Link>
         </h1>
         <div className="flex items-center">
-          <div
+          {/* <div
             className="md:mr-5 sm:relative fixed sm:top-0 top-[4.5rem] right-10"
             data-aos="fade-left"
           >
@@ -61,7 +61,7 @@ const Navbar = () => {
             <div className="absolute right-4  top-2 text-gray-900">
               <ion-icon name="search-outline"></ion-icon>
             </div>
-          </div>
+          </div> */}
           <ul
             className="lg:flex items-center hidden text-sm gap-x-10"
             data-aos="fade-left"

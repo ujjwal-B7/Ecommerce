@@ -161,6 +161,7 @@ export const theme = {
     pink: colors.pink,
     rose: colors.rose,
     text: "#f8f8f8",
+    back: "#333333",
   }),
   columns: {
     auto: "auto",
