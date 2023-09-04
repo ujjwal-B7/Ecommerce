@@ -9,10 +9,23 @@ const Home = () => {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
   const [click, setClick] = useState(true);
+  const openQuickView = () => {
+    document.body.style.overflow = "hidden";
+  };
+  const closeQuickView = () => {
+    document.body.style.overflow = "auto";
+  };
   return (
     <>
-      <div className={` ${click ? "hidden" : "block"} `}>
-        <QuicView click={click} setClick={setClick} />
+      <div
+        className={` ${click ? "hidden" : "block"} 
+      `}
+      >
+        <QuicView
+          click={click}
+          setClick={setClick}
+          closeQuickView={closeQuickView}
+        />
       </div>
       <div className="lg:h-screen h-[60vh] w-full">
         <img
@@ -69,7 +82,11 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <ProductsList click={click} setClick={setClick} />
+      <ProductsList
+        click={click}
+        setClick={setClick}
+        openQuickView={openQuickView}
+      />
       <hr className=" border-gray-500 mx-auto w-[80%]" />
       <div
         className=" bg-text mb-10 min-h-[6rem] w-[80%] mx-auto offers grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center text-gray-900 "

@@ -20,7 +20,6 @@ const Store = () => {
               ab amet. Similique sed dolor
             </span>
           </p>
-          v>
         </div>
       </div>
       <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">

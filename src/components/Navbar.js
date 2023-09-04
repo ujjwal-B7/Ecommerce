@@ -35,9 +35,9 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed sm:h-20 h-28 w-full text-white z-50 md:${
-        scrollPosition >= 600 ? "bg-[#333333]" : "bg-transparent"
+        scrollPosition >= 600 ? "bg-gray-900" : "bg-transparent"
       }
-      ${scrollPosition >= 200 ? "bg-[#333333]" : "bg-transparent"}
+      ${scrollPosition >= 200 ? "bg-gray-900" : "bg-transparent"}
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">

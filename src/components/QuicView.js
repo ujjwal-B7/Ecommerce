@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "./Loader";
 
-const QuicView = ({ click, setClick }) => {
+const QuicView = ({ click, setClick, closeQuickView }) => {
   return (
     <>
       <div className="fixed w-full h-screen bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -15,7 +15,10 @@ const QuicView = ({ click, setClick }) => {
           <section className="p-4 relative">
             <div
               className="absolute right-4 bg-gray-900 text-text rounded-full text-center w-5 h-5 hover:opacity-90"
-              onClick={() => setClick(!click)}
+              onClick={() => {
+                setClick(!click);
+                closeQuickView();
+              }}
             >
               <ion-icon name="close-outline"></ion-icon>
             </div>

@@ -2,8 +2,9 @@ import React from "react";
 import QuicView from "./QuicView";
 import { useState } from "react";
 
-const ProductsList = ({ click, setClick }) => {
+const ProductsList = ({ click, setClick, openQuickView }) => {
   // const [click, setClick] = useState(true);
+
   return (
     <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
@@ -43,7 +44,10 @@ const ProductsList = ({ click, setClick }) => {
                 src="./images/eye.svg"
                 alt=""
                 className="hover hidden rounded-full absolute h-6 p-1 shadow-lg w-6 bg-white top-14 right-5"
-                onClick={() => setClick(!click)}
+                onClick={() => {
+                  setClick(!click);
+                  openQuickView();
+                }}
               />
             </div>
           </div>
