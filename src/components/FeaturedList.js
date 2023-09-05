@@ -2,18 +2,18 @@ import React from "react";
 
 const FeaturedList = () => {
   return (
-    <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10">
+    <section className="max-w-7xl mx-auto pb-20 text-gray-600 lg:px-0 md:px-10">
       <p className="text-center font-semibold pt-10 pb-5 text-4xl">
         Featured Products
       </p>
       ;
       <div
-        className="container grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center lg:gap-32 gap-y-20"
+        className="container grid lg:grid-cols-4 grid-cols-2 place-items-center lg:gap-32 sm:gap-y-20 gap-y-10  mx-auto"
         data-aos="slide-up"
         data-aos-duration="300"
       >
         <div
-          className="lg:w-80 w-60 relative "
+          className="lg:w-80 sm:w-60 w-40 relative px-5"
           data-aos="slide-up"
           data-aos-duration="300"
         >
@@ -24,7 +24,7 @@ const FeaturedList = () => {
           />
         </div>
         <div
-          className="lg:w-80 w-60 relative "
+          className="lg:w-80 sm:w-60 w-40 relative px-5"
           data-aos="slide-up"
           data-aos-duration="300"
         >
@@ -35,7 +35,7 @@ const FeaturedList = () => {
           />
         </div>
         <div
-          className="lg:w-80 w-60 relative "
+          className="lg:w-80 sm:w-60 w-40 relative px-5"
           data-aos="slide-up"
           data-aos-duration="300"
         >
@@ -46,7 +46,7 @@ const FeaturedList = () => {
           />
         </div>
         <div
-          className="lg:w-80 w-60 relative "
+          className="lg:w-80 sm:w-60 w-40 relative px-5"
           data-aos="slide-up"
           data-aos-duration="300"
         >

@@ -55,17 +55,31 @@
 
 .active{
 border-bottom: 3px solid white;
-border-radius: 4px;
+border-radius: 2px;
+}
+nav li::after{
+  content: '';
+  width: 0%;
+  height:2px;
+  background: white;
+  display: block;
+  margin: auto;
+border-radius: 2px;
+  transition: 0.4s;
+}
+nav li:hover::after{
+  width: 100%;
 }
 
 .hov:hover {
     border-bottom: 3px solid white;
 border-radius: 4px;
 }
-nav li:hover{
+/* nav li:hover{
     border-bottom: 3px solid white;
-    border-radius: 4px;
-}
+    /* border-radius: 4px; */
+/* } */
+
 /* .loader {
   z-index: 1000;
   position: fixed;
@@ -178,7 +192,7 @@ nav li:hover{
     }
   }
 
- 
+  
   
   
   

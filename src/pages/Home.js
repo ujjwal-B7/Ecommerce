@@ -27,58 +27,66 @@ const Home = () => {
           closeQuickView={closeQuickView}
         />
       </div>
-      <div className="lg:h-screen h-[60vh] w-full">
+      <div className="lg:h-screen sm:h-[65vh] h-[60vh] w-full">
         <img
           src="./images/bag.jpg"
-          className=" lg:h-screen h-[60vh] w-full object-cover"
+          className=" lg:h-screen sm:h-[65vh] h-[60vh] w-full object-cover"
           alt=""
         />
         {/* <div className="lg:h-screen h-[60vh] w-full bg-black bg-opacity-40"> */}
         <Loader />
         <div
-          className=" text-white absolute lg:left-36 lg:top-80 top-60 left-10"
+          className=" text-white absolute lg:left-36 sm:top-80 top-40 sm:left-10 left-8"
           data-aos="slide-up"
         >
           <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
             Stay productive and get more work done!
           </p>
-          <button className="shop h-12 w-52 border-white border text-white rounded-md">
+          <button className="shop sm:h-12 h-8 w-52 border-white border text-white rounded-md">
             Shop More
           </button>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto min-h-[13rem] text-gray-900 text-sm font-semibold grid grid-cols-2 lg:grid-cols-8 gap-10 place-items-center py-10 ">
+      <div className="max-w-7xl mx-auto min-h-[13rem] text-gray-900 text-sm font-semibold grid grid-cols-3 lg:grid-cols-8 sm:gap-10 gap-x-3 gap-y-8  place-items-center py-10">
         <div className="scale" data-aos="slide-up" data-aos-duration="300">
-          <img src="./images/img1.svg" alt="" className="h-12 " />
+          <img src="./images/img1.svg" alt="" className="sm:h-12 h-8" />
           <p>Tables</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="400">
-          <img src="./images/img2.svg" alt="" className="h-12" />
+          <img src="./images/img2.svg" alt="" className="sm:h-12 h-8" />
           <p>Chairs</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="600">
-          <img src="./images/img3.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img3.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Laptop stands</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="800">
-          <img src="./images/img4.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img4.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Monitor stands</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="1000">
-          <img src="./images/img5.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img5.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Cabinets</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="1200">
-          <img src="./images/img6.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img6.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Mouse pads</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="1400">
-          <img src="./images/img7.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img7.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Study lamps</p>
         </div>
         <div className="scale" data-aos="slide-up" data-aos-duration="1600">
-          <img src="./images/img8.svg" alt="" className="h-12 mx-auto" />
+          <img src="./images/img8.svg" alt="" className="sm:h-12 h-8 mx-auto" />
           <p>Desk plants</p>
+        </div>
+        <div
+          className="scale lg:hidden"
+          data-aos="slide-up"
+          data-aos-duration="1600"
+        >
+          <img src="./images/img4.svg" alt="" className="sm:h-12 h-8 mx-auto" />
+          <p>Desktops</p>
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
@@ -142,7 +150,7 @@ const Home = () => {
           Let’s build your dream working space
         </p>
         <button
-          className="hover:border hover:border-white hover:bg-transparent h-12 w-52 bg-black rounded-md"
+          className="hover:border hover:border-white hover:bg-transparent sm:h-12 h-8 w-52 bg-black rounded-md"
           data-aos="slide-up"
         >
           Shop Now
