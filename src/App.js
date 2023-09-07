@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 
 import { Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 function App() {
   return (
     <div className="App">

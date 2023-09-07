@@ -1,5 +1,4 @@
 import React from "react";
-import Loader from "./Loader";
 
 const QuicView = ({ click, setClick, closeQuickView }) => {
   return (

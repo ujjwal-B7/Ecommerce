@@ -2,12 +2,9 @@ import React from "react";
 import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
-import { useAuth0 } from "@auth0/auth0-react";
 import QuicView from "../components/QuicView";
 import { useState } from "react";
 const Home = () => {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
-    useAuth0();
   const [click, setClick] = useState(true);
   const openQuickView = () => {
     document.body.style.overflow = "hidden";

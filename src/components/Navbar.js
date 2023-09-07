@@ -5,12 +5,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Cart from "../userComponent/Cart";
 import Login from "../auth/Login";
 import LogOut from "../auth/LogOut";
+import MessageBox from "./MessageBox";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(false);
   const [search, setSearch] = useState();
+  const [showLoggedInMessage, setShowLoggedInMessage] = useState(false);
+  const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false);
   const location = useLocation();
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
@@ -32,6 +35,20 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", handleScroll);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      setShowLoggedInMessage(true);
+      setTimeout(() => setShowLoggedInMessage(false), 2000);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setShowLoggedOutMessage(true);
+      setTimeout(() => setShowLoggedOutMessage(false), 2000);
+    }
+  }, [isAuthenticated]);
+
   return (
     <nav
       className={`fixed sm:h-20 h-28 w-full text-white z-50 md:${
@@ -41,6 +58,13 @@ const Navbar = () => {
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
+        {showLoggedInMessage && (
+          <MessageBox message="Logged in successfully!" />
+        )}
+
+        {showLoggedOutMessage && (
+          <MessageBox message="Logged out successfully!" />
+        )}
         <h1 className="text-3xl font-bold" data-aos="fade-right">
           <Link to="/">SLASH</Link>
         </h1>
@@ -116,7 +140,7 @@ const Navbar = () => {
         <ul
           ref={menuRef}
           className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
-          lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl pt-5 transition-all ease-in duration-300 
+          lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl transition-all ease-in duration-300 
           ${cart ? "right-0" : "right-[-45rem]"}
           `}
         >

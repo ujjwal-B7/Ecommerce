@@ -51,11 +51,16 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.alert{
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 
 
-.active{
+.active:after{
 border-bottom: 3px solid white;
-border-radius: 2px;
+width: 100%;
 }
 nav li::after{
   content: '';
@@ -64,8 +69,8 @@ nav li::after{
   background: white;
   display: block;
   margin: auto;
-border-radius: 2px;
-  transition: 0.4s;
+  border-radius: 2px;
+  transition: 0.5s;
 }
 nav li:hover::after{
   width: 100%;

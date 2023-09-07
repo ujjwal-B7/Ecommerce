@@ -1,6 +1,4 @@
 import React from "react";
-import QuicView from "./QuicView";
-import { useState } from "react";
 
 const ProductsList = ({ click, setClick, openQuickView }) => {
   // const [click, setClick] = useState(true);

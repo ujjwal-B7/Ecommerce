@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import Loader from "../components/Loader";
-import QuicView from "../components/QuicView";
 const Store = () => {
   const [click, setClick] = useState(true);
   const [search, setSearch] = useState();
@@ -9,7 +8,7 @@ const Store = () => {
     <>
       <Loader />
       <div
-        className="w-full lg:h-[40vh] h-[30vh] bg-[url('./images/store.jpg')] bg-cover mb-4"
+        className="w-full lg:h-[40vh] h-[30vh] bg-[url('./images/store.jpg')] bg-cover mb-2"
         data-aos="zoom-in"
       >
         <div className="w-full lg:h-[40vh] h-[30vh] bg-black bg-opacity-40 pt-20">
@@ -29,7 +28,7 @@ const Store = () => {
           <input
             type="text"
             placeholder="Search items"
-            className="border-blue-200 border-[3px] bg-text rounded-md h-14 w-full pl-2
+            className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2
             focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-1
             "
             value={search}
