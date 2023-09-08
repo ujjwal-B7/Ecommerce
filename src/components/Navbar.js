@@ -51,7 +51,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed sm:h-20 h-28 w-full text-white z-50 md:${
+      className={`fixed h-20 w-full text-white z-50 md:${
         scrollPosition >= 600 ? "bg-gray-900" : "bg-transparent"
       }
       ${scrollPosition >= 200 ? "bg-gray-900" : "bg-transparent"}
@@ -61,7 +61,6 @@ const Navbar = () => {
         {showLoggedInMessage && (
           <MessageBox message="Logged in successfully!" />
         )}
-
         {showLoggedOutMessage && (
           <MessageBox message="Logged out successfully!" />
         )}
@@ -108,7 +107,7 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
-          <div className="lg:static absolute right-16 top-5">
+          <div className="lg:static absolute right-5 top-3">
             {!isAuthenticated ? <Login /> : <LogOut />}
           </div>
           <div className="lg:static absolute right-32 top-5">
@@ -148,7 +147,7 @@ const Navbar = () => {
         </ul>
         <div
           ref={hamRef}
-          className="lg:hidden text-3xl text-white"
+          className="lg:hidden text-3xl text-white lg:p-0 pr-12"
           onClick={() => setOpen(!open)}
         >
           <ion-icon name={open ? "none" : "menu"}></ion-icon>

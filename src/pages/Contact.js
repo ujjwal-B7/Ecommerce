@@ -1,25 +1,93 @@
 import React from "react";
 import Loader from "../components/Loader";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import GoogleMapReact from "google-maps-react";
 const Contact = () => {
   return (
     <>
       <Loader />
       <div
-        className="w-full lg:h-[50vh] h-[40vh] bg-[url('./images/contact.jpg')] bg-cover mb-10"
+        className="w-full lg:h-[40vh] h-[30vh] bg-[url('./images/contact.jpg')] bg-cover mb-10"
         data-aos="zoom-in"
       >
-        <div className="w-full lg:h-[50vh] h-[40vh] bg-black bg-opacity-30">
+        <div className="w-full lg:h-[40vh] h-[30vh] bg-black/40">
           <p className="text-white text-5xl font-semibold text-center pt-32">
             Contact Us
             <span className="block text-sm mx-auto w-96">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
-              ab amet. Similique sed dolor
             </span>
           </p>
         </div>
+      </div>
+      <div
+        className="max-w-7xl mx-auto grid sm:grid-cols-2 grid-cols-1 place-items-center  gap-16 items-start     
+      "
+      >
+        <p className="w-[70%] whitespace-normal" data-aos="fade-right">
+          <p className="font-semibold pb-2">Customer Support</p>
+          Toll Free No: 1660-01-5-8888 (Toll Free)
+          <br />
+          Viber : khalti.com/viber <br />
+          Whatsapp : 9801165561 <br />
+          Email: support@khalti.com Phone: 01-5970017 <br />
+          (For general queries and assistance)
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-left">
+          <p className="font-semibold pb-2">Khalti Pasal/Agent Inquiry</p>
+          Email: pasal@khalti.com <br />
+          Contact Number: 01-5970017 <br />
+          Viber: 8080808080 <br />
+          (To become a Khalti Pasal and sell Khalti services)
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-right">
+          <p className="font-semibold pb-2">
+            Flight Ticketing Query and Support
+          </p>
+          Contact Number: 9801856364 ( 7 Am to 8 PM ) <br />
+          Email: traveldesk@khalti.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-left">
+          <p className="font-semibold pb-2">Event Ticket Partnership Queries</p>
+          Email: marketing@khalti.com <br />
+          Contact Number: 9801888108 <br />
+          (To partner for an event or sell tickets online from Khalti's
+          platform)
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-right">
+          <p className="font-semibold pb-2">Bank Partnership</p>
+          Contact Number: 9801165586 <br />
+          Email: bfi@khalti.com <br />
+          (To partner with Khalti for fund transfer option)
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-left">
+          <p className="font-semibold pb-2">Khalti Payment Gateway Inquiry</p>
+          Contact Number: 9801856394 or 9801301162 <br />
+          Email: merchant@khalti.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-right">
+          <p className="font-semibold pb-2">Khalti Bazaar Business Inquiry</p>
+          Contact Number: 9801856369 <br />
+          Email: bazaar@khalti.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-left">
+          <p className="font-semibold pb-2">
+            Khalti Education/School Business Inquiry
+          </p>
+          Contact Number: 9801856422 or 9801856475 <br />
+          Email: education@khalti.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="fade-right">
+          <p className="font-semibold pb-2">Merchant Support Inquiry</p>
+          Contact Number: 9801165565 9801856451 <br />
+          Email: merchantcare@khalti.com <br />
+          (To integrate Khalti to your business and other online platforms)
+        </p>
       </div>
     </>
   );
 };
 
-export default Contact;
+// export default Contact;
+export default GoogleApiWrapper({
+  apiKey: "",
+})(Contact);
