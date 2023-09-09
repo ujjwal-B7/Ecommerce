@@ -7,7 +7,7 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
     <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
       <div
-        className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 md:gap-y-40 gap-y-20 mx-auto"
+        className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-40 sm:gap-x-10 gap-y-20 mx-auto"
         data-aos="slide-up"
         data-aos-duration="300"
       >

@@ -24,16 +24,16 @@ const Home = () => {
           closeQuickView={closeQuickView}
         />
       </div>
-      <div className="lg:h-screen sm:h-[65vh] h-[60vh] w-full">
+      <div className="lg:h-screen sm:h-[67vh] h-[60vh] w-full relative">
         <img
           src="./images/bag.jpg"
-          className=" lg:h-screen sm:h-[65vh] h-[60vh] w-full object-cover"
+          className=" lg:h-screen sm:h-[67vh] h-[60vh] w-full object-cover "
           alt=""
         />
         {/* <div className="lg:h-screen h-[60vh] w-full bg-black bg-opacity-40"> */}
         <Loader />
         <div
-          className=" text-white absolute lg:left-36 sm:top-80 top-40 sm:left-10 left-8"
+          className=" text-white absolute  top-[40%] left-[9%]"
           data-aos="slide-up"
         >
           <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">

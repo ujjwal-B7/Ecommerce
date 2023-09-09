@@ -7,7 +7,7 @@ const Loader = () => {
     <section>
       {!error && isLoading && (
         <p className="fixed w-full h-screen bg-black top-0 z-50 opacity-50">
-          <span className="loader"></span>
+          <span className="loader top-[40%] sm:right-[40%] right-[20%]"></span>
         </p>
       )}
     </section>

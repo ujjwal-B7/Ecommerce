@@ -122,8 +122,6 @@ border-radius: 4px;
 
 .loader {
     position: fixed;
-  top: 40%;
-  right: 40%;
   transform: translate(-50%,-50%);
     transform: rotateZ(45deg);
     perspective: 1000px;

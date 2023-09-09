@@ -12,7 +12,7 @@ const Cart = ({ cart, setCart }) => {
     <section className="text-gray-900 cart relative z-50">
       <p className="text-3xl font-semibold py-5 text-center">Cart</p>
       <div
-        className="absolute lg:hidden top-0 right-4  text-center text-3xl"
+        className="absolute lg:hidden top-5 right-4  text-center text-3xl"
         onClick={() => setCart(!cart)}
       >
         <ion-icon name="close"></ion-icon>
