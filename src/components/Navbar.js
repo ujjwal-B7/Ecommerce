@@ -20,16 +20,28 @@ const Navbar = () => {
     useAuth0();
   const menuRef = useRef();
   const hamRef = useRef();
+  
+  // useEffect(() => {
+  //   let handle = (e) => {
+  //     if (!menuRef.current.contains(e.target)) {
+  //       setOpen(false);
+  //       setCart(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handle);
+  //   return () => document.removeEventListener("mousedown", handle);
+  // });
+
   useEffect(() => {
     let handle = (e) => {
-      if (!menuRef.current.contains(e.target)) {
+      if (menuRef && menuRef.current && !menuRef.current.contains(e.target)) {
         setOpen(false);
         setCart(false);
       }
     };
     document.addEventListener("mousedown", handle);
     return () => document.removeEventListener("mousedown", handle);
-  });
+  }, [menuRef]);
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
