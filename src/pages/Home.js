@@ -30,18 +30,19 @@ const Home = () => {
           className=" lg:h-screen sm:h-[67vh] h-[60vh] w-full object-cover "
           alt=""
         />
-        {/* <div className="lg:h-screen h-[60vh] w-full bg-black bg-opacity-40"> */}
-        <Loader />
-        <div
-          className=" text-white absolute  top-[40%] left-[9%]"
-          data-aos="slide-up"
-        >
-          <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
-            Stay productive and get more work done!
-          </p>
-          <button className="shop sm:h-12 h-8 w-52 border-white border text-white rounded-md">
-            Shop More
-          </button>
+        <div className="lg:h-screen sm:h-[67vh] h-[60vh] w-full bg-black bg-opacity-30 text-white absolute  top-0 right-0">
+          <Loader />
+          <div
+            className=" text-white absolute  top-[40%] left-[9%]"
+            data-aos="slide-up"
+          >
+            <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
+              Stay productive and get more work done!
+            </p>
+            <button className="shop sm:h-12 h-8 w-52 border-white border text-white rounded-md">
+              Shop More
+            </button>
+          </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto min-h-[13rem] text-gray-900 text-sm font-semibold grid grid-cols-3 lg:grid-cols-8 sm:gap-10 gap-x-3 gap-y-8  place-items-center py-10">

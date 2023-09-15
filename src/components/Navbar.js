@@ -8,6 +8,7 @@ import LogOut from "../auth/LogOut";
 import MessageBox from "./MessageBox";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(false);
@@ -48,6 +49,10 @@ const Navbar = () => {
       setTimeout(() => setShowLoggedOutMessage(false), 2000);
     }
   }, [isAuthenticated]);
+
+  // for component handling
+  if (pathname === "/admin") return null;
+  if (pathname === "/admin/adminNav") return null;
 
   return (
     <nav
@@ -107,10 +112,10 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
-          <div className="lg:static absolute right-5 top-3">
+          <div className="lg:static absolute right-5">
             {!isAuthenticated ? <Login /> : <LogOut />}
           </div>
-          <div className="lg:static absolute right-32 top-5">
+          <div className="lg:static absolute right-32">
             <button className="lg:hidden " onClick={() => setCart(!cart)}>
               <ion-icon name="cart" size="large"></ion-icon>
             </button>

@@ -10,7 +10,7 @@ const Login = () => {
       data-aos="fade-left"
     >
       <ion-icon name="person"></ion-icon>
-      <p className="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute right-32 text-center">
+      <p className="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute right-32 text-center top-3">
         Login
       </p>
     </button>

@@ -48,12 +48,7 @@
             "name":"Curved walnut monitor stand",
             "desc":"This is a stand",
             "price":1000
-        },
-        {
-            "id":8,
-            "name":"Cabinets",
-            "desc":"This is a cabinet",
-            "price":1000
         }
+       
     ]
 }

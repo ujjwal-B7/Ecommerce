@@ -1,6 +1,10 @@
 import React from "react";
-
+import { useLocation } from "react-router-dom";
 const Footer = () => {
+  const { pathname } = useLocation();
+  if (pathname === "/admin/adminNav") return null;
+  if (pathname === "/admin") return null;
+
   return (
     <footer>
       <div className="mx-auto w-full max-w-7xl ">
