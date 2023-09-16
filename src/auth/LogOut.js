@@ -19,7 +19,7 @@ const Login = () => {
           className="h-10 w-10 object-cover rounded-full"
         />
       )}
-      <p className="logout hidden  bg-white text-gray-900 w-14 rounded mt-1 absolute right-[9%]   text-center">
+      <p className="logout  hidden bg-white text-gray-900 w-14 rounded mt-1 absolute right-[8.6%] top-[3.2rem] text-center">
         Logout
       </p>
     </button>

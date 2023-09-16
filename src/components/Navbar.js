@@ -20,7 +20,7 @@ const Navbar = () => {
     useAuth0();
   const menuRef = useRef();
   const hamRef = useRef();
-  
+
   // useEffect(() => {
   //   let handle = (e) => {
   //     if (!menuRef.current.contains(e.target)) {
@@ -65,7 +65,10 @@ const Navbar = () => {
   // for component handling
   if (pathname === "/admin") return null;
   if (pathname === "/admin/adminNav") return null;
-
+  if (pathname === "/admin/notification") return null;
+  if (pathname === "/admin/user") return null;
+  if (pathname === "/admin/product") return null;
+  if (pathname === "/admin/inbox") return null;
   return (
     <nav
       className={`fixed h-20 w-full text-white z-50 md:${

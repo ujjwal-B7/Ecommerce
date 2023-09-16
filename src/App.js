@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import AdminNav from "./adminComponent/AdminNav";
 import AdminLayout from "./layout/AdminLayout";
 import SideBar from "./adminComponent/SideBar";
+import Dashboard from "./pagesAdmin/Dashboard";
 
 import { Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -19,18 +20,9 @@ function App() {
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route
-          exact
-          path="/admin"
-          element={
-            <AdminLayout>
-              <Route exact path="/adminNav" element={<AdminNav />} />
-              <Route exact path="/sidebar" element={<SideBar />} />
-            </AdminLayout>
-          }
-        />
       </Routes>
       <Footer />
+      <AdminLayout />
     </div>
   );
 }
