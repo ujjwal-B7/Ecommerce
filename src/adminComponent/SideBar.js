@@ -11,7 +11,6 @@ const SideBar = () => {
         type="button"
         class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-white rounded-lg lg:hidden absolute top-3"
       >
-        <span class="sr-only">Open sidebar</span>
         <svg
           class="w-6 h-6"
           aria-hidden="true"
@@ -28,10 +27,10 @@ const SideBar = () => {
       </button>
       <aside
         id="default-sidebar"
-        class="fixed top-24 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full sm:translate-x-0"
+        class="fixed col-start-1 col-end-3 mt-20 z-40 w-64 h-screen  transition-transform -translate-x-full lg:translate-x-0"
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 py-4 rounded-tr-lg overflow-y-auto bg-gray-900">
+        <div class="h-full px-3 py-4  overflow-y-auto bg-gray-900 flex justify-center">
           <ul class="space-y-2 font-medium">
             <li>
               <Link

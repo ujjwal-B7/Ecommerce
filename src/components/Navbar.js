@@ -64,7 +64,6 @@ const Navbar = () => {
 
   // for component handling
   if (pathname === "/admin") return null;
-  if (pathname === "/admin/adminNav") return null;
   if (pathname === "/admin/notification") return null;
   if (pathname === "/admin/user") return null;
   if (pathname === "/admin/product") return null;

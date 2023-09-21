@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
   if (pathname === "/admin") return null;
-  if (pathname === "/admin/adminNav") return null;
   if (pathname === "/admin/inbox") return null;
   if (pathname === "/admin/notification") return null;
   if (pathname === "/admin/product") return null;
