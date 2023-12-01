@@ -25,60 +25,64 @@ const Contact = () => {
           <p className="font-semibold pb-2">Customer Support</p>
           Toll Free No: 1660-01-5-8888 (Toll Free)
           <br />
-          Viber : khalti.com/viber <br />
+          Viber : Ecommerce.com/viber <br />
           Whatsapp : 9801165561 <br />
-          Email: support@khalti.com Phone: 01-5970017 <br />
+          Email: support@Ecommerce.com Phone: 01-5970017 <br />
           (For general queries and assistance)
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
-          <p className="font-semibold pb-2">Khalti Pasal/Agent Inquiry</p>
-          Email: pasal@khalti.com <br />
+          <p className="font-semibold pb-2">Ecommerce Pasal/Agent Inquiry</p>
+          Email: pasal@Ecommerce.com <br />
           Contact Number: 01-5970017 <br />
           Viber: 8080808080 <br />
-          (To become a Khalti Pasal and sell Khalti services)
+          (To become a Ecommerce Pasal and sell Ecommerce services)
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
           <p className="font-semibold pb-2">
             Flight Ticketing Query and Support
           </p>
           Contact Number: 9801856364 ( 7 Am to 8 PM ) <br />
-          Email: traveldesk@khalti.com
+          Email: traveldesk@Ecommerce.com
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
           <p className="font-semibold pb-2">Event Ticket Partnership Queries</p>
-          Email: marketing@khalti.com <br />
+          Email: marketing@Ecommerce.com <br />
           Contact Number: 9801888108 <br />
-          (To partner for an event or sell tickets online from Khalti's
+          (To partner for an event or sell tickets online from Ecommerce's
           platform)
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
           <p className="font-semibold pb-2">Bank Partnership</p>
           Contact Number: 9801165586 <br />
-          Email: bfi@khalti.com <br />
-          (To partner with Khalti for fund transfer option)
-        </p>
-        <p className="w-[70%] whitespace-normal" data-aos="slide-up">
-          <p className="font-semibold pb-2">Khalti Payment Gateway Inquiry</p>
-          Contact Number: 9801856394 or 9801301162 <br />
-          Email: merchant@khalti.com
-        </p>
-        <p className="w-[70%] whitespace-normal" data-aos="slide-up">
-          <p className="font-semibold pb-2">Khalti Bazaar Business Inquiry</p>
-          Contact Number: 9801856369 <br />
-          Email: bazaar@khalti.com
+          Email: bfi@Ecommerce.com <br />
+          (To partner with Ecommerce for fund transfer option)
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
           <p className="font-semibold pb-2">
-            Khalti Education/School Business Inquiry
+            Ecommerce Payment Gateway Inquiry
+          </p>
+          Contact Number: 9801856394 or 9801301162 <br />
+          Email: merchant@Ecommerce.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="slide-up">
+          <p className="font-semibold pb-2">
+            Ecommerce Bazaar Business Inquiry
+          </p>
+          Contact Number: 9801856369 <br />
+          Email: bazaar@Ecommerce.com
+        </p>
+        <p className="w-[70%] whitespace-normal" data-aos="slide-up">
+          <p className="font-semibold pb-2">
+            Ecommerce Education/School Business Inquiry
           </p>
           Contact Number: 9801856422 or 9801856475 <br />
-          Email: education@khalti.com
+          Email: education@Ecommerce.com
         </p>
         <p className="w-[70%] whitespace-normal" data-aos="slide-up">
           <p className="font-semibold pb-2">Merchant Support Inquiry</p>
           Contact Number: 9801165565 9801856451 <br />
-          Email: merchantcare@khalti.com <br />
-          (To integrate Khalti to your business and other online platforms)
+          Email: merchantcare@Ecommerce.com <br />
+          (To integrate Ecommerce to your business and other online platforms)
         </p>
       </div>
       <p className="text-2xl font-semibold text-center mt-20">Our Location</p>

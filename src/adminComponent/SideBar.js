@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SideBar = () => {
+  const { pathname } = useLocation();
+  const location = useLocation();
   return (
     <section>
       <button
@@ -27,12 +30,16 @@ const SideBar = () => {
       </button>
       <aside
         id="default-sidebar"
-        class="fixed col-start-1 col-end-3 mt-20 z-40 w-64 h-screen  transition-transform -translate-x-full lg:translate-x-0"
+        class="fixed col-start-1 col-end-3 mt-20 z-40 w-64 h-screen  transition-transform -translate-x-full lg:translate-x-0 "
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 py-4  overflow-y-auto bg-gray-900 flex justify-center">
+        <div class="h-full px-3 py-4  overflow-y-auto bg-gray-900 flex justify-center ">
           <ul class="space-y-2 font-medium">
-            <li>
+            <li
+              className={
+                location.pathname === "/admin" ? "bg-gray-700 rounded-lg" : ""
+              }
+            >
               <Link
                 to="/admin"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
@@ -50,7 +57,13 @@ const SideBar = () => {
                 <span class="ml-3">Dashboard</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname === "/admin/notification"
+                  ? "bg-gray-700 rounded-lg"
+                  : ""
+              }
+            >
               <Link
                 to="/admin/notification"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
@@ -67,7 +80,13 @@ const SideBar = () => {
                 <span class="flex-1 ml-3 whitespace-nowrap">Notifications</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname === "/admin/inbox"
+                  ? "bg-gray-700 rounded-lg"
+                  : ""
+              }
+            >
               <Link
                 to="/admin/inbox"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
@@ -84,7 +103,13 @@ const SideBar = () => {
                 <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname === "/admin/user"
+                  ? "bg-gray-700 rounded-lg"
+                  : ""
+              }
+            >
               <Link
                 to="/admin/user"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
@@ -101,7 +126,13 @@ const SideBar = () => {
                 <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={
+                location.pathname === "/admin/product"
+                  ? "bg-gray-700 rounded-lg"
+                  : ""
+              }
+            >
               <Link
                 to="/admin/product"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"

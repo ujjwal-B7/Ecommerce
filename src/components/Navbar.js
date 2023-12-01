@@ -77,12 +77,12 @@ const Navbar = () => {
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
-        {showLoggedInMessage && (
+        {/* {showLoggedInMessage && (
           <MessageBox message="Logged in successfully!" />
         )}
         {showLoggedOutMessage && (
           <MessageBox message="Logged out successfully!" />
-        )}
+        )} */}
         <h1 className="text-3xl font-bold" data-aos="fade-right">
           <Link to="/">SLASH</Link>
         </h1>
@@ -120,6 +120,12 @@ const Navbar = () => {
             <li className={location.pathname === "/contact" ? "active" : ""}>
               <Link to="/contact">CONTACT US</Link>
             </li>
+            <li className="notifications relative">
+              <button onClick={() => setCart(!cart)}>
+                <ion-icon name="notifications"></ion-icon>
+              </button>
+              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-5 left-6 font-semibold">10</p>
+            </li>
             <li>
               <button onClick={() => setCart(!cart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
@@ -137,8 +143,8 @@ const Navbar = () => {
         </div>
         <ul
           ref={menuRef}
-          className={`lg:hidden absolute text-gray-900  bg-white/95  shadow-black shadow-2xl
-          rounded-bl-full w-[45%] h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-300 
+          className={`lg:hidden absolute text-gray-900  bg-[#FAF9F6]  shadow-black shadow-2xl
+          rounded-bl-3xl sm:w-[50%] w-[70%] h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-300 
           ${open ? "right-0" : "right-[-32rem]"}
           `}
         >
