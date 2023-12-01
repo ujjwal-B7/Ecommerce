@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Cart from "../userComponent/Cart";
+import Notifications from "../userComponent/Notifications";
 import Login from "../auth/Login";
 import LogOut from "../auth/LogOut";
 import MessageBox from "./MessageBox";
@@ -12,6 +13,7 @@ const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(false);
+  const [notifications, setNotifications] = useState(false);
   const [search, setSearch] = useState();
   const [showLoggedInMessage, setShowLoggedInMessage] = useState(false);
   const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false);
@@ -37,6 +39,7 @@ const Navbar = () => {
       if (menuRef && menuRef.current && !menuRef.current.contains(e.target)) {
         setOpen(false);
         setCart(false);
+        setNotifications(false);
       }
     };
     document.addEventListener("mousedown", handle);
@@ -120,22 +123,35 @@ const Navbar = () => {
             <li className={location.pathname === "/contact" ? "active" : ""}>
               <Link to="/contact">CONTACT US</Link>
             </li>
-            <li className="notifications relative">
-              <button onClick={() => setCart(!cart)}>
+            <li className="notification relative">
+              <button onClick={() => setNotifications(!notifications)}>
                 <ion-icon name="notifications"></ion-icon>
               </button>
-              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-5 left-6 font-semibold">10</p>
+              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-5 left-6 font-semibold">
+                10
+              </p>
             </li>
-            <li>
+            <li className="relative">
               <button onClick={() => setCart(!cart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
+              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-6 left-8 font-semibold">
+                10
+              </p>
             </li>
           </ul>
           <div className="lg:static absolute right-5">
             {!isAuthenticated ? <Login /> : <LogOut />}
           </div>
-          <div className="lg:static absolute right-32">
+          <div className="lg:static absolute right-40">
+            <button
+              className="lg:hidden "
+              onClick={() => setNotifications(!notifications)}
+            >
+              <ion-icon name="notifications" size="large"></ion-icon>
+            </button>
+          </div>
+          <div className="lg:static absolute right-28">
             <button className="lg:hidden " onClick={() => setCart(!cart)}>
               <ion-icon name="cart" size="large"></ion-icon>
             </button>
@@ -160,6 +176,18 @@ const Navbar = () => {
           <li className="py-5 lg:py-0">
             <Link to="/contact">CONTACT US</Link>
           </li>
+        </ul>
+        <ul
+          ref={menuRef}
+          className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
+          lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl transition-all ease-in duration-300 
+          ${notifications ? "right-0" : "right-[-45rem]"}
+          `}
+        >
+          <Notifications
+            notifications={notifications}
+            setNotifications={setNotifications}
+          />
         </ul>
         <ul
           ref={menuRef}
