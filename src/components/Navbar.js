@@ -140,8 +140,12 @@ const Navbar = () => {
               </p>
             </li>
           </ul>
-          <div className="lg:static absolute right-5">
-            {!isAuthenticated ? <Login /> : <LogOut />}
+          <div
+            className="lg:static absolute right-5 log-btn bg-white rounded-full h-6 w-6 ml-10 pl-1 text-gray-900"
+            data-aos="fade-left"
+          >
+            {/* {!isAuthenticated ? <Login /> : <LogOut />} */}
+            <ion-icon name="person"></ion-icon>
           </div>
           <div className="lg:static absolute right-40">
             <button
