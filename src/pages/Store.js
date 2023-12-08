@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import Loader from "../components/Loader";
+import ScrollToTop from "react-scroll-to-top";
+
 const Store = () => {
   const [click, setClick] = useState(true);
   const [search, setSearch] = useState();
@@ -306,6 +308,14 @@ const Store = () => {
         </div> */}
         </div>
       </section>
+      <ScrollToTop
+        smooth
+        color="white"
+        style={{
+          backgroundColor: "#111827",
+          padding: "5px",
+        }}
+      />
     </>
   );
 };

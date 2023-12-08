@@ -7,7 +7,6 @@ import Notifications from "../pagesAdmin/Notifications";
 import Products from "../pagesAdmin/Products";
 import Users from "../pagesAdmin/Users";
 import Inbox from "../pagesAdmin/Inbox";
-import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   const location = useLocation();

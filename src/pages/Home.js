@@ -4,6 +4,7 @@ import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
 import QuicView from "../components/QuicView";
 import { useState } from "react";
+import ScrollToTop from "react-scroll-to-top";
 const Home = () => {
   const [click, setClick] = useState(true);
   const openQuickView = () => {
@@ -154,6 +155,14 @@ const Home = () => {
           Shop Now
         </button>
       </div>
+      <ScrollToTop
+        smooth
+        color="white"
+        style={{
+          backgroundColor: "#111827",
+          padding: "5px",
+        }}
+      />
     </>
   );
 };

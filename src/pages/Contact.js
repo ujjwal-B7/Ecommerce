@@ -1,5 +1,7 @@
 import React from "react";
 import Loader from "../components/Loader";
+import ScrollToTop from "react-scroll-to-top";
+
 const Contact = () => {
   return (
     <>
@@ -87,14 +89,13 @@ const Contact = () => {
       </div>
       <p className="text-2xl font-semibold text-center mt-20">Our Location</p>
       <div
-        className="max-w-7xl sm:h-[30rem] h-auto  bg-blue-200 mx-auto mb-20 rounded-md"
+        className="max-w-7xl sm:h-[30rem] h-auto  bg-blue-200 mx-auto mb-20 rounded-md overflow-auto"
         data-aos="zoom-in"
       >
         <iframe
           width="100%"
           height="480"
           frameborder="0"
-          scrolling="no"
           marginheight="0"
           marginwidth="0"
           src="https://maps.google.com/maps?width=100%25&amp;height=480&amp;hl=en&amp;q=kathmandu,Nepal+(Our%20Store)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
@@ -104,6 +105,14 @@ const Contact = () => {
           </a>
         </iframe>
       </div>
+      <ScrollToTop
+        smooth
+        color="white"
+        style={{
+          backgroundColor: "#111827",
+          padding: "5px",
+        }}
+      />
     </>
   );
 };
