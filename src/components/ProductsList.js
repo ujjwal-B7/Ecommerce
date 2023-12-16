@@ -1,13 +1,20 @@
 import React from "react";
-
+import ReactStars from "react-rating-stars-component";
 const ProductsList = ({ click, setClick, openQuickView }) => {
   // const [click, setClick] = useState(true);
-
+  const options = {
+    edit: false,
+    color: "rgba(20,20,20,0.1)",
+    activeColor: "tomato",
+    size: window.innerWidth < 600 ? 20 : 25,
+    value: 2.5,
+    isHalf: true,
+  };
   return (
-    <section className="max-w-7xl mx-auto pb-40 text-gray-600 lg:px-0 md:px-10 ">
+    <section className="max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
       <div
-        className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-40 sm:gap-x-10 gap-y-20 mx-auto"
+        className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-48 sm:gap-x-10 gap-y-28 mx-auto"
         data-aos="slide-up"
         data-aos-duration="300"
       >
@@ -56,6 +63,10 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
         <div
           className="h-80 lg:w-[90%] sm:w-80 w-40  relative"
@@ -98,6 +109,10 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
 
         <div
@@ -141,6 +156,10 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
 
         <div
@@ -184,6 +203,10 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
         <div
           className=" h-80 lg:w-[90%] sm:w-80 w-40 relative"
@@ -226,6 +249,10 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
         <div
           className="h-80 lg:w-[90%] sm:w-80 w-40 relative"
@@ -268,10 +295,11 @@ const ProductsList = ({ click, setClick, openQuickView }) => {
               This is a comfortable chair made of up wood ..
             </span>
           </p>
+          <div className="lg:flex items-center gap-5">
+            <ReactStars {...options} />{" "}
+            <span className="cursor-pointer">. 200 reviews</span>
+          </div>
         </div>
-        {/* <div className={` ${click ? "hidden" : "block"} `}>
-          <QuicView click={click} setClick={setClick} />
-        </div> */}
       </div>
     </section>
   );
