@@ -9,7 +9,7 @@ const Cart = ({ cart, setCart }) => {
   };
 
   return (
-    <section className="text-gray-900 cart relative z-50">
+    <section className="text-gray-900 cart relative z-50 px-2">
       <p className="text-3xl font-semibold py-5 text-center">Cart</p>
       <div
         className="absolute lg:hidden top-5 right-4  text-center text-3xl"
@@ -17,7 +17,7 @@ const Cart = ({ cart, setCart }) => {
       >
         <ion-icon name="close"></ion-icon>
       </div>
-      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
+      <div className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           //   onClick={toggleDeleteVisibility}
@@ -44,7 +44,7 @@ const Cart = ({ cart, setCart }) => {
           </button>
         </div>
       </div>
-      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
+      <div className="bg-text w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2 ">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -70,7 +70,7 @@ const Cart = ({ cart, setCart }) => {
           </button>
         </div>
       </div>
-      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -96,7 +96,7 @@ const Cart = ({ cart, setCart }) => {
           </button>
         </div>
       </div>
-      <div className="bg-text md:w-[27rem] w-[23rem] h-24 mx-auto rounded-md flex justify-around items-center mb-2">
+      <div className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2">
         <div
           className="h-5 w-5 rounded-full bg-gray-400 text-white text-center"
           onClick={() => setClick(!click)}
@@ -122,7 +122,7 @@ const Cart = ({ cart, setCart }) => {
           </button>
         </div>
       </div>
-      <button className="bg-gray-900 text-white md:w-[27rem] w-[23rem] text-lg h-10 mx-4 hover:opacity-90 rounded-md sticky bottom-1">
+      <button className="bg-gray-900 text-white  w-full text-lg h-10 hover:opacity-90 rounded-md sticky bottom-1">
         Confirm Order
       </button>
       <div className={` ${click ? "hidden" : "block"} `}>

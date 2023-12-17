@@ -161,6 +161,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+        {/* mobile menus */}
         <ul
           ref={menuRef}
           className={`lg:hidden absolute text-gray-900  bg-[#FAF9F6]  shadow-black shadow-2xl
@@ -197,7 +198,7 @@ const Navbar = () => {
           ref={menuRef}
           className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
           lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl transition-all ease-in duration-300 
-          ${cart ? "right-0" : "right-[-45rem]"}
+          ${cart ? "right-0" : "right-[-55rem]"}
           `}
         >
           <Cart cart={cart} setCart={setCart} />
