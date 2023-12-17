@@ -6,7 +6,7 @@ import {
 } from "../constants/productConstants";
 
 export const productReducer = (state = { products: [] }, action) => {
-  switch (action.key) {
+  switch (action.type) {
     case ALL_PRODUCT_REQUEST:
       return {
         loading: true,

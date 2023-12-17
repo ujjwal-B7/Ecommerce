@@ -3,8 +3,10 @@ import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
 import QuicView from "../components/QuicView";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { UseSelector, useDispatch } from "react-redux";
 import ScrollToTop from "react-scroll-to-top";
+import { getProduct } from "../store/actions/productAction";
 const Home = () => {
   const [click, setClick] = useState(true);
   const openQuickView = () => {
@@ -13,6 +15,13 @@ const Home = () => {
   const closeQuickView = () => {
     document.body.style.overflow = "auto";
   };
+
+  const dispatch = useDispatch();
+  // fetching the product
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [dispatch]);
+
   return (
     <>
       <div
