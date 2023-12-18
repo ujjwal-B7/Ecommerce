@@ -4,23 +4,27 @@ import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
 import QuicView from "../components/QuicView";
 import { useState, useEffect } from "react";
-import { UseSelector, useDispatch } from "react-redux";
+import { UseSelector, useDispatch, useSelector } from "react-redux";
 import ScrollToTop from "react-scroll-to-top";
 import { getProduct } from "../store/actions/productAction";
-const Home = () => {
+const Home = ({openQuickView,closeQuickView}) => {
   const [click, setClick] = useState(true);
-  const openQuickView = () => {
-    document.body.style.overflow = "hidden";
-  };
-  const closeQuickView = () => {
-    document.body.style.overflow = "auto";
-  };
+  // const openQuickView = () => {
+  //   document.body.style.overflow = "hidden";
+  // };
+  // const closeQuickView = () => {
+  //   document.body.style.overflow = "auto";
+  // };
 
-  const dispatch = useDispatch();
   // fetching the product
-  useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // const { loading, error, products, productsCount } = useSelector(
+  //   (state) => state.products,
+  //   // state.productsCount
+  // );
+  // useEffect(() => {
+  //   dispatch(getProduct());
+  // }, [dispatch]);
 
   return (
     <>
@@ -98,6 +102,7 @@ const Home = () => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
+      <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
       <ProductsList
         click={click}
         setClick={setClick}

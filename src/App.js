@@ -12,12 +12,24 @@ import Dashboard from "./pagesAdmin/Dashboard";
 import { Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 function App() {
+  const openQuickView = () => {
+    document.body.style.overflow = "hidden";
+  };
+  const closeQuickView = () => {
+    document.body.style.overflow = "auto";
+  };
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/store" element={<Store />} />
+        <Route exact path="/" element={<Home 
+        openQuickView={openQuickView}
+        closeQuickView={closeQuickView}
+        />} />
+        <Route exact path="/store" element={<Store 
+         openQuickView={openQuickView}
+         closeQuickView={closeQuickView}
+        />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
