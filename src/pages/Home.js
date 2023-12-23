@@ -2,12 +2,13 @@ import React from "react";
 import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
+import LoginForm from "../components/LoginForm";
 import QuicView from "../components/QuicView";
 import { useState, useEffect } from "react";
 import { UseSelector, useDispatch, useSelector } from "react-redux";
 import ScrollToTop from "react-scroll-to-top";
 import { getProduct } from "../store/actions/productAction";
-const Home = ({openQuickView,closeQuickView}) => {
+const Home = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   // const openQuickView = () => {
   //   document.body.style.overflow = "hidden";

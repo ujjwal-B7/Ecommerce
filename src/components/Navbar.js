@@ -7,6 +7,7 @@ import Notifications from "../userComponent/Notifications";
 import Login from "../auth/Login";
 import LogOut from "../auth/LogOut";
 import MessageBox from "./MessageBox";
+import LoginForm from "./LoginForm";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -15,8 +16,7 @@ const Navbar = () => {
   const [cart, setCart] = useState(false);
   const [notifications, setNotifications] = useState(false);
   const [search, setSearch] = useState();
-  const [showLoggedInMessage, setShowLoggedInMessage] = useState(false);
-  const [showLoggedOutMessage, setShowLoggedOutMessage] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const location = useLocation();
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
     useAuth0();
@@ -36,10 +36,16 @@ const Navbar = () => {
 
   useEffect(() => {
     let handle = (e) => {
-      if (menuRef && menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuRef &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target)
+        // && !["INPUT", "BUTTON"].includes(e.target.tagName)
+      ) {
         setOpen(false);
         setCart(false);
         setNotifications(false);
+        // setShowForm(true);
       }
     };
     document.addEventListener("mousedown", handle);
@@ -50,20 +56,6 @@ const Navbar = () => {
     setScrollPosition(window.scrollY);
   };
   window.addEventListener("scroll", handleScroll);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      setShowLoggedInMessage(true);
-      setTimeout(() => setShowLoggedInMessage(false), 2000);
-    }
-  }, [isAuthenticated]);
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setShowLoggedOutMessage(true);
-      setTimeout(() => setShowLoggedOutMessage(false), 2000);
-    }
-  }, [isAuthenticated]);
 
   // for component handling
   if (pathname === "/admin") return null;
@@ -80,12 +72,6 @@ const Navbar = () => {
       `}
     >
       <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
-        {/* {showLoggedInMessage && (
-          <MessageBox message="Logged in successfully!" />
-        )}
-        {showLoggedOutMessage && (
-          <MessageBox message="Logged out successfully!" />
-        )} */}
         <h1 className="text-3xl font-bold" data-aos="fade-right">
           <Link to="/">SLASH</Link>
         </h1>
@@ -143,10 +129,19 @@ const Navbar = () => {
           <div
             className="lg:static absolute right-5 log-btn bg-white rounded-full h-6 w-6 ml-10 pl-1 text-gray-900"
             data-aos="fade-left"
+            onClick={() => setShowForm(!showForm)}
           >
             {/* {!isAuthenticated ? <Login /> : <LogOut />} */}
             <ion-icon name="person"></ion-icon>
           </div>
+          <div
+            ref={menuRef}
+            className={` ${showForm ? "hidden" : "block"} 
+      `}
+          >
+            <LoginForm showForm={showForm} setShowForm={setShowForm} />
+          </div>
+
           <div className="lg:static absolute right-40">
             <button
               className="lg:hidden "

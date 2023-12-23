@@ -5,14 +5,14 @@ const Login = () => {
     useAuth0();
   return (
     <button
-      onClick={() => loginWithRedirect()}
+      onClick=""
       className="log-btn bg-white rounded-full h-6 w-6 ml-10 text-gray-900"
       data-aos="fade-left"
     >
-      <ion-icon name="person"></ion-icon>
-      <p className="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute text-center right-[8.6%] top-[3.2rem]">
+      {/* <ion-icon name="person"></ion-icon>
+      <p classame="log hidden bg-white text-gray-900 w-14 rounded mt-1 absolute text-center right-[8.6%] top-[3.2rem]">
         Login
-      </p>
+      </p> */}
     </button>
   );
 };
