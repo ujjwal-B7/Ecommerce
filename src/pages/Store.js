@@ -4,7 +4,7 @@ import Loader from "../components/Loader";
 import ScrollToTop from "react-scroll-to-top";
 import ProductsList from "../components/ProductsList";
 import QuicView from "../components/QuicView";
-const Store = ({openQuickView,closeQuickView}) => {
+const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   const [search, setSearch] = useState();
   return (
@@ -41,7 +41,7 @@ const Store = ({openQuickView,closeQuickView}) => {
           <input
             type="text"
             placeholder="Search items"
-            className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2
+            className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2 shadow-lg
             focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-1
             "
             value={search}
@@ -52,7 +52,11 @@ const Store = ({openQuickView,closeQuickView}) => {
           </div>
         </div>
         <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
-        <ProductsList click={click} setClick={setClick} openQuickView={openQuickView}/>
+        <ProductsList
+          click={click}
+          setClick={setClick}
+          openQuickView={openQuickView}
+        />
       </section>
       <ScrollToTop
         smooth

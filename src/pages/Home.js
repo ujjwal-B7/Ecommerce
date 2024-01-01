@@ -19,10 +19,10 @@ const Home = ({ openQuickView, closeQuickView }) => {
 
   // fetching the product
   // const dispatch = useDispatch();
-  // const { loading, error, products, productsCount } = useSelector(
-  //   (state) => state.products,
-  //   // state.productsCount
-  // );
+  const { loading, error, products, productsCount } = useSelector(
+    (state) => state.products
+    // state.productsCount
+  );
   // useEffect(() => {
   //   dispatch(getProduct());
   // }, [dispatch]);
@@ -45,8 +45,9 @@ const Home = ({ openQuickView, closeQuickView }) => {
           className=" lg:h-screen sm:h-[67vh] h-[60vh] w-full object-cover "
           alt=""
         />
+
         <div className="lg:h-screen sm:h-[67vh] h-[60vh] w-full bg-black bg-opacity-30 text-white absolute  top-0 right-0">
-          <Loader />
+          <Loader loading={loading} />
           <div
             className=" text-white absolute  top-[40%] left-[9%]"
             data-aos="slide-up"
