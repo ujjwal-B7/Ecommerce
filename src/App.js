@@ -8,6 +8,7 @@ import AdminNav from "./adminComponent/AdminNav";
 import AdminLayout from "./layout/AdminLayout";
 import SideBar from "./adminComponent/SideBar";
 import Dashboard from "./pagesAdmin/Dashboard";
+import SingleProductDetails from "./pages/SingleProductDetails";
 
 import { Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -43,6 +44,7 @@ function App() {
             />
           }
         />
+        <Route exact path="/product/:id" element={<SingleProductDetails />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>

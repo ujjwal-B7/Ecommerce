@@ -4,12 +4,14 @@ import Loader from "../components/Loader";
 import ScrollToTop from "react-scroll-to-top";
 import ProductsList from "../components/ProductsList";
 import QuicView from "../components/QuicView";
+import { useSelector } from "react-redux";
 const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   const [search, setSearch] = useState();
+  const { loading } = useSelector((state) => state.products);
   return (
     <>
-      <Loader />
+      <Loader loading={loading} />
       <div
         className={` ${click ? "hidden" : "block"} 
       `}

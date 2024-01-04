@@ -5,11 +5,15 @@ import {
 } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { productReducer } from "../reducers/productReducers";
+import {
+  productReducer,
+  productDetailsReducer,
+} from "../reducers/productReducers";
 
 // reducer for all
 const reducer = combineReducers({
   products: productReducer,
+  productDetails: productDetailsReducer,
 });
 let initialState = {};
 const middleware = [thunk];
@@ -17,6 +21,7 @@ const middleware = [thunk];
 export const store = configureStore({
   reducer,
   initialState,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(middleware),
   devTools: composeWithDevTools(),
 });

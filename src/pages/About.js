@@ -1,11 +1,14 @@
 import React from "react";
 import Loader from "../components/Loader";
 import ScrollToTop from "react-scroll-to-top";
-
+import { useSelector } from "react-redux";
 const About = () => {
+  const { loading } = useSelector(
+    (state) => state.products
+  );
   return (
     <>
-      <Loader />
+      <Loader loading={loading}/>
       <div className="w-full lg:h-[60vh] md:h-[50vh] h-[34vh]">
         <img
           src="./images/about1.jpg"

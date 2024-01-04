@@ -5,9 +5,11 @@ import Loader from "../components/Loader";
 import LoginForm from "../components/LoginForm";
 import QuicView from "../components/QuicView";
 import { useState, useEffect } from "react";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ScrollToTop from "react-scroll-to-top";
 import { getProduct } from "../store/actions/productAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   // const openQuickView = () => {
@@ -18,17 +20,34 @@ const Home = ({ openQuickView, closeQuickView }) => {
   // };
 
   // fetching the product
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { loading, error, products, productsCount } = useSelector(
     (state) => state.products
     // state.productsCount
   );
-  // useEffect(() => {
-  //   dispatch(getProduct());
-  // }, [dispatch]);
+  useEffect(() => {
+    if (error) {
+      productFetchErrorToastify(error);
+    }
+    dispatch(getProduct());
+  }, [dispatch, error]);
 
+  function productFetchErrorToastify(error) {
+    toast.error(error, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
   return (
     <>
+      <Loader loading={loading} />
+      <ToastContainer />
       <div
         className={` ${click ? "hidden" : "block"} 
       `}
@@ -47,7 +66,6 @@ const Home = ({ openQuickView, closeQuickView }) => {
         />
 
         <div className="lg:h-screen sm:h-[67vh] h-[60vh] w-full bg-black bg-opacity-30 text-white absolute  top-0 right-0">
-          <Loader loading={loading} />
           <div
             className=" text-white absolute  top-[40%] left-[9%]"
             data-aos="slide-up"

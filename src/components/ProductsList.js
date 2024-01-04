@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../store/actions/productAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import QuicView from "./QuicView";
 // const [click, setClick] = useState(true);
 const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
@@ -22,7 +25,7 @@ const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
   );
   useEffect(() => {
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       <div
@@ -43,8 +46,8 @@ const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
                   closeQuickView={closeQuickView}
                 />
               </div> */}
-              <Link
-                to={product.id}
+              <div
+                // to={`/product/${product.id}`}
                 className="h-80 lg:w-[90%] sm:w-80 w-40"
                 data-aos="slide-up"
                 data-aos-duration="300"
@@ -82,20 +85,22 @@ const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
                     />
                   </div>
                 </div>
-                <p className="font-semibold text-gray-900 pt-4">
-                  {product.name}
-                  <span className="block text-gray-600">{product.price}</span>
-                  <span className="font-medium text-gray-600">
-                    {product.description}
-                  </span>
-                </p>
+                <Link to={`/product/${product.id}`}>
+                  <p className="font-semibold text-gray-900 pt-4">
+                    {product.name}
+                    <span className="block text-gray-600">{product.price}</span>
+                    <span className="font-medium text-gray-600">
+                      {product.description}
+                    </span>
+                  </p>
+                </Link>
                 <div className="lg:flex items-center gap-5">
                   <ReactStars {...options} value={product.ratings} />
                   <span className="cursor-pointer">
                     [ {product.numOfReviews} Reviews ]
                   </span>
                 </div>
-              </Link>
+              </div>
             </>
           ))}
       </div>

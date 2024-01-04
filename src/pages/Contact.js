@@ -1,11 +1,12 @@
 import React from "react";
 import Loader from "../components/Loader";
 import ScrollToTop from "react-scroll-to-top";
-
+import { useSelector } from "react-redux";
 const Contact = () => {
+  const { loading } = useSelector((state) => state.products);
   return (
     <>
-      <Loader />
+      <Loader loading={loading} />
       <div
         className="w-full lg:h-[40vh] h-[30vh] bg-[url('./images/contact.jpg')] bg-cover mb-10"
         data-aos="zoom-in"
