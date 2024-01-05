@@ -85,7 +85,7 @@ const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
                     />
                   </div>
                 </div>
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product._id}`}>
                   <p className="font-semibold text-gray-900 pt-4">
                     {product.name}
                     <span className="block text-gray-600">{product.price}</span>
