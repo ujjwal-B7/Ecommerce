@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
           />
         </div>
         <div className="md:ml-10">
-          <p className="text-3xl font-semibold">{review.name}</p>
+          <p className="text-xl font-semibold">{review.name}</p>
           <p>
             <ReactStars {...options} />
           </p>

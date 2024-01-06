@@ -71,7 +71,7 @@ const Navbar = () => {
       ${scrollPosition >= 200 ? "bg-gray-900" : "bg-transparent"}
       `}
     >
-      <section className="max-w-7xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
+      <section className="max-w-screen-xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
         <h1 className="text-3xl font-bold" data-aos="fade-right">
           <Link to="/">SLASH</Link>
         </h1>
