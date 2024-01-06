@@ -27,10 +27,10 @@ export const getProduct = () => async (dispatch) => {
 };
 
 // get product details
-export const getSingleProductDetails = (id) => async (dispatch) => {
+export const getSingleProductDetails = (_id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/products/${id}`);
+    const { data } = await axios.get(`/api/v1/products/${_id}`);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
