@@ -9,7 +9,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 import QuicView from "./QuicView";
 // const [click, setClick] = useState(true);
-const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
+const ProductsList = ({
+  click,
+  setClick,
+  openQuickView,
+  closeQuickView,
+  searchKeyword,
+  setSearchKeyword,
+}) => {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -24,8 +31,8 @@ const ProductsList = ({ click, setClick, openQuickView, closeQuickView }) => {
     // state.productsCount
   );
   useEffect(() => {
-    dispatch(getProduct());
-  }, [dispatch, error]);
+    dispatch(getProduct(searchKeyword));
+  }, [dispatch, searchKeyword]);
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       <div

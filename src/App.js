@@ -44,6 +44,7 @@ function App() {
             />
           }
         />
+        <Route path="/store/:keyword" element={<Store />} />
         <Route exact path="/product/:id" element={<SingleProductDetails />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />

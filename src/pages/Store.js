@@ -5,10 +5,21 @@ import ScrollToTop from "react-scroll-to-top";
 import ProductsList from "../components/ProductsList";
 import QuicView from "../components/QuicView";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
-  const [search, setSearch] = useState();
+  const [searchKeyword, setSearchKeyword] = useState("");
   const { loading } = useSelector((state) => state.products);
+  const navigate = useNavigate();
+
+  // search items function
+  const searchItems = (e) => {
+    if (searchKeyword.trim()) {
+      navigate(`/store/${searchKeyword}`);
+    } else {
+      navigate("/store");
+    }
+  };
   return (
     <>
       <Loader loading={loading} />
@@ -37,27 +48,35 @@ const Store = ({ openQuickView, closeQuickView }) => {
       </div>
       <section className="max-w-7xl mx-auto pb-40 text-gray-600">
         <div
-          className="w-[70%] mx-auto sticky top-[5.1rem] z-40"
+          className="w-[70%] flex mx-auto sticky top-[5.1rem] z-40"
           data-aos="zoom-in"
         >
           <input
             type="text"
             placeholder="Search items"
             className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2 shadow-lg
-            focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-1
+            focus:outline-none focus:ring focus:ring-blue-200 focus:ring-offset-1 relative
             "
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={searchKeyword}
+            onChange={(e) => searchItems(setSearchKeyword(e.target.value))}
           />
-          <div className="absolute right-4  top-4 text-gray-900">
-            <ion-icon name="search-outline"></ion-icon>
+          <div className="absolute right-44  top-3 text-gray-900">
+            <ion-icon name="searchKeyword-outline"></ion-icon>
           </div>
+          {/* <div>
+            <input
+              type="submit"
+              value="searchKeyword"
+              className="rounded-md h-11 bg-blue-200 w-32 ml-4 text-gray-900 hover:bg-blue-300"
+            />
+          </div> */}
         </div>
         <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
         <ProductsList
           click={click}
           setClick={setClick}
           openQuickView={openQuickView}
+          searchKeyword={searchKeyword}
         />
       </section>
       <ScrollToTop

@@ -120,7 +120,7 @@ const SingleProductDetails = ({ match }) => {
       <div className="shadow-lg max-w-screen-xl mx-auto">
         <div className="w-full flex md:flex-row items flex-col md:gap-10 md:p-5 p-2">
           <div
-            className="lg:w-[30rem] md:w-80 w-full md:h-[35rem] h-52"
+            className="lg:max-w-[30rem] w-full md:h-[35rem] h-52"
             data-aos="zoom-in"
           >
             <Carousel>
@@ -136,7 +136,7 @@ const SingleProductDetails = ({ match }) => {
             </Carousel>
           </div>
           <div
-            className="lg:w-[calc(100%-30rem)] md:w-96 w-full h-[35rem] bg-white p-3 relative"
+            className="lg:w-[calc(100%-30rem)] w-full h-[35rem] bg-white p-3 relative"
             data-aos="fade-left"
           >
             <h1 className="text-4xl text-gray-900 font-bold">{product.name}</h1>
