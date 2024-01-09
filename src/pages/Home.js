@@ -21,10 +21,7 @@ const Home = ({ openQuickView, closeQuickView }) => {
 
   // fetching the product
   const dispatch = useDispatch();
-  const { loading, error, products, productsCount } = useSelector(
-    (state) => state.products
-    // state.productsCount
-  );
+  const { loading, error } = useSelector((state) => state.products);
   useEffect(() => {
     if (error) {
       productFetchErrorToastify(error);

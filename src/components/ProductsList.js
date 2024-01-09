@@ -14,12 +14,10 @@ const ProductsList = ({
   openQuickView,
   closeQuickView,
   searchKeyword,
-  setSearchKeyword,
   currentPage,
-  setCurrentPage,
   limit,
+  price,
 }) => {
-  const [visible, setVisible] = useState(true);
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -34,23 +32,20 @@ const ProductsList = ({
     // state.productsCount
   );
   useEffect(() => {
-    dispatch(getProduct(searchKeyword, currentPage));
-  }, [dispatch, searchKeyword, currentPage]);
+    dispatch(getProduct(searchKeyword, currentPage, price));
+  }, [dispatch, searchKeyword, currentPage, price]);
 
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       {products.length > 0 && (
         <p
-          className="text-center pt-10 pb-10 text-4xl 
+          className="text-center md:pt-10 pt-24 pb-10 text-4xl 
        "
         >
           New Arrivals
         </p>
       )}
-      <div
-        className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-48 sm:gap-x-10 gap-y-28 mx-auto"
-      
-      >
+      <div className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-48 sm:gap-x-10 gap-y-28 mx-auto">
         {products &&
           products.slice(0, limit).map((product) => (
             <>

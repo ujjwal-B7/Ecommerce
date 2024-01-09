@@ -237,6 +237,9 @@ border-radius: 0 5px 5px 0;
 .pageLinkActive{
   color: white;
 }
+.filter{
+  width: 7rem;
+}
   @media only screen and (max-width: 768px) {
     .items{
       align-items: center;

@@ -7,10 +7,13 @@ import QuicView from "../components/QuicView";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import { Typography } from "@material-ui/core";
+import { Slider } from "@material-ui/core";
 const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([0, 25000]);
   const { loading, productsCount, productPerPage } = useSelector(
     (state) => state.products
   );
@@ -27,6 +30,11 @@ const Store = ({ openQuickView, closeQuickView }) => {
     } else {
       navigate("/store");
     }
+  };
+
+  // price handler
+  const priceHandler = (event, newPrice) => {
+    setPrice(newPrice);
   };
   return (
     <>
@@ -54,9 +62,9 @@ const Store = ({ openQuickView, closeQuickView }) => {
           </p>
         </div>
       </div>
-      <section className="max-w-7xl mx-auto pb-40 text-gray-600">
+      <section className="max-w-7xl relative mx-auto pb-40 text-gray-600 px-2">
         <div
-          className="w-[70%] flex mx-auto sticky top-[5.1rem] z-40"
+          className="md:w-[50%] w-full flex mx-auto sticky top-[5.1rem] z-40"
           // data-aos="zoom-in"
         >
           <input
@@ -67,16 +75,24 @@ const Store = ({ openQuickView, closeQuickView }) => {
             value={searchKeyword}
             onChange={(e) => searchItems(setSearchKeyword(e.target.value))}
           />
-          <div className="absolute right-44  top-3 text-gray-900">
-            <ion-icon name="searchKeyword-outline"></ion-icon>
-          </div>
           {/* <div>
             <input
-              type="submit"
-              value="searchKeyword"
-              className="rounded-md h-11 bg-blue-200 w-32 ml-4 text-gray-900 hover:bg-blue-300"
+            type="submit"
+            value="searchKeyword"
+            className="rounded-md h-11 bg-blue-200 w-32 ml-4 text-gray-900 hover:bg-blue-300"
             />
           </div> */}
+        </div>
+        <div className="filter absolute md:right-10 md:top-0 top-14 md:ml-0 ml-2">
+          <Typography>Price</Typography>
+          <Slider
+            value={price}
+            onChange={priceHandler}
+            valueLabelDisplay="auto"
+            aria-labelledby="range-slider"
+            min={0}
+            max={25000}
+          />
         </div>
         <ProductsList
           click={click}
@@ -84,8 +100,9 @@ const Store = ({ openQuickView, closeQuickView }) => {
           openQuickView={openQuickView}
           searchKeyword={searchKeyword}
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+          price={price}
         />
+
         {productsCount > 9 ? (
           <div className="paginationBox text-gray-400">
             <Pagination
