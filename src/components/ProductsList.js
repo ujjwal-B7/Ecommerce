@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../store/actions/productAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import QuicView from "./QuicView";
-// const [click, setClick] = useState(true);
 const ProductsList = ({
   click,
   setClick,
@@ -17,6 +16,7 @@ const ProductsList = ({
   searchKeyword,
   setSearchKeyword,
 }) => {
+  const [visible, setVisible] = useState(true);
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -33,8 +33,17 @@ const ProductsList = ({
   useEffect(() => {
     dispatch(getProduct(searchKeyword));
   }, [dispatch, searchKeyword]);
+
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
+      {products.length > 0 && (
+        <p
+          className="text-center pt-10 pb-5 text-4xl 
+       "
+        >
+          New Arrivals
+        </p>
+      )}
       <div
         className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-48 sm:gap-x-10 gap-y-28 mx-auto"
         data-aos="slide-up"
@@ -110,6 +119,11 @@ const ProductsList = ({
               </div>
             </>
           ))}
+        {!products.length && (
+          <p className="text-gray-400 text-4xl absolute top-36">
+            No products found
+          </p>
+        )}
       </div>
     </section>
   );

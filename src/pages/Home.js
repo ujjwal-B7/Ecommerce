@@ -122,7 +122,7 @@ const Home = ({ openQuickView, closeQuickView }) => {
         </div>
       </div>
       <hr className=" border-gray-500 w-[80%] mx-auto" />
-      <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
+      {/* <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>; */}
       <ProductsList
         click={click}
         setClick={setClick}

@@ -71,7 +71,6 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div> */}
         </div>
-        <p className="text-center pt-10 pb-5 text-4xl">New Arrivals</p>;
         <ProductsList
           click={click}
           setClick={setClick}
