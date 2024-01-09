@@ -207,6 +207,36 @@ border-radius: 4px;
     background-color: #EE6524;
   }
 
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.page-item{
+  background-color: white;
+  border:1.5px solid rgb(17 24 39);
+  padding: 5px 15px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.page-item:first-child{
+border-radius: 5px 0 0 5px;
+}
+.page-item:last-child{
+border-radius: 0 5px 5px 0;
+}
+.page-link{
+  transition: all 0.2s;
+}
+.page-item:hover{
+  background-color: rgb(156 163 175);
+  color:white;
+}
+.pageItemActive{
+  background-color: rgb(156 163 175);
+}
+.pageLinkActive{
+  color: white;
+}
   @media only screen and (max-width: 768px) {
     .items{
       align-items: center;

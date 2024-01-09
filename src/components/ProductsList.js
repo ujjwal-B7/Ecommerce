@@ -15,6 +15,9 @@ const ProductsList = ({
   closeQuickView,
   searchKeyword,
   setSearchKeyword,
+  currentPage,
+  setCurrentPage,
+  limit,
 }) => {
   const [visible, setVisible] = useState(true);
   const options = {
@@ -31,14 +34,14 @@ const ProductsList = ({
     // state.productsCount
   );
   useEffect(() => {
-    dispatch(getProduct(searchKeyword));
-  }, [dispatch, searchKeyword]);
+    dispatch(getProduct(searchKeyword, currentPage));
+  }, [dispatch, searchKeyword, currentPage]);
 
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       {products.length > 0 && (
         <p
-          className="text-center pt-10 pb-5 text-4xl 
+          className="text-center pt-10 pb-10 text-4xl 
        "
         >
           New Arrivals
@@ -46,11 +49,10 @@ const ProductsList = ({
       )}
       <div
         className="container grid lg:grid-cols-3 grid-cols-2 place-items-center lg:gap-x-10 sm:gap-y-48 sm:gap-x-10 gap-y-28 mx-auto"
-        data-aos="slide-up"
-        data-aos-duration="300"
+      
       >
         {products &&
-          products.map((product) => (
+          products.slice(0, limit).map((product) => (
             <>
               {/* <div
                 className={` ${click ? "hidden" : "block"} 
@@ -65,8 +67,8 @@ const ProductsList = ({
               <div
                 // to={`/product/${product.id}`}
                 className="h-80 lg:w-[90%] sm:w-80 w-40"
-                data-aos="slide-up"
-                data-aos-duration="300"
+                data-aos="zoom-in"
+                data-aos-duration="500"
               >
                 <div className="products overflow-hidden">
                   <img

@@ -11,12 +11,12 @@ import {
 
 // get product
 export const getProduct =
-  (searchKeyword = "") =>
+  (searchKeyword = "", currentPage = 1) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
       const { data } = await axios.get(
-        `/api/v1/products?keyword=${searchKeyword}`
+        `/api/v1/products?keyword=${searchKeyword}&page=${currentPage}`
       );
       dispatch({
         type: ALL_PRODUCT_SUCCESS,

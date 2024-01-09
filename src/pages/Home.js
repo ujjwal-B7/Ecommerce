@@ -127,6 +127,7 @@ const Home = ({ openQuickView, closeQuickView }) => {
         click={click}
         setClick={setClick}
         openQuickView={openQuickView}
+        limit={6}
       />
       <hr className=" border-gray-500 mx-auto w-[80%]" />
       <div
