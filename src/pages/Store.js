@@ -75,57 +75,61 @@ const Store = ({ openQuickView, closeQuickView }) => {
         </div>
       </div>
       <section className="max-w-7xl relative mx-auto pb-40 text-gray-600 px-2">
-        <div
-          className="md:w-[50%] w-full ml-auto sticky top-[5.1rem] z-40"
-          // data-aos="zoom-in"
-        >
-          <input
-            type="text"
-            placeholder="Search items"
-            className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2 shadow-md focus:border-gray-400 focus:border-[2px]  relative
+        <div className="flex justify-around items-center lg:gap-0 gap-8 lg:flex-row flex-col bg-white sticky top-[5rem] z-50 w-full px-2">
+          <div
+            className="lg:w-[50%] w-full"
+            // data-aos="zoom-in"
+          >
+            <input
+              type="text"
+              placeholder="Search items"
+              className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2  focus:border-gray-400 focus:border-[2px]  relative
             "
-            value={searchKeyword}
-            onChange={(e) => searchItems(setSearchKeyword(e.target.value))}
-          />
-          {/* <div>
+              value={searchKeyword}
+              onChange={(e) => searchItems(setSearchKeyword(e.target.value))}
+            />
+            {/* <div>
             <input
             type="submit"
             value="searchKeyword"
             className="rounded-md h-11 bg-blue-200 w-32 ml-4 text-gray-900 hover:bg-blue-300"
             />
           </div> */}
-        </div>
-        <div className="flex  space-x-28 -mt-12 ml-10">
-          <div className="w-28">
-            <p className="font-semibold text-lg text-gray-900">Price</p>
-            <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={25000}
-              style={{ color: "rgb(17 24 39)" }}
-            />
           </div>
-          <div>
-            <p className="font-semibold text-lg text-gray-900 pl-1">Category</p>
-            <select
-              className="categoryBox rounded-xl pl-2 border-2 border-r-gray-900 text-gray-400 font-light tracking-tight
+          <div className=" flex justify-around lg:w-96 w-full">
+            <div className="w-28">
+              <p className="font-semibold text-lg text-gray-900">Price</p>
+              <Slider
+                value={price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+                style={{ color: "rgb(17 24 39)" }}
+              />
+            </div>
+            <div>
+              <p className="font-semibold text-lg text-gray-900 pl-1">
+                Category
+              </p>
+              <select
+                className="categoryBox rounded-xl pl-2 border-2 border-r-gray-900 text-gray-400 font-light tracking-tight
 "
-              value={category}
-              onChange={(e) => categoryHandler(e)}
-            >
-              {categories.map((categoryItem) => (
-                <option
-                  className="cursor-pointer"
-                  key={categoryItem}
-                  value={categoryItem}
-                >
-                  {categoryItem}
-                </option>
-              ))}
-            </select>
+                value={category}
+                onChange={(e) => categoryHandler(e)}
+              >
+                {categories.map((categoryItem) => (
+                  <option
+                    className="cursor-pointer"
+                    key={categoryItem}
+                    value={categoryItem}
+                  >
+                    {categoryItem}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
         <ProductsList
