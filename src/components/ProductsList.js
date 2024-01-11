@@ -17,6 +17,7 @@ const ProductsList = ({
   currentPage,
   limit,
   price,
+  category,
 }) => {
   const options = {
     edit: false,
@@ -32,12 +33,12 @@ const ProductsList = ({
     // state.productsCount
   );
   useEffect(() => {
-    dispatch(getProduct(searchKeyword, currentPage, price));
-  }, [dispatch, searchKeyword, currentPage, price]);
+    dispatch(getProduct(searchKeyword, currentPage, price, category));
+  }, [dispatch, searchKeyword, currentPage, price, category]);
 
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
-      {products.length > 0 && (
+      {products && (
         <p
           className="text-center md:pt-10 pt-24 pb-10 text-4xl 
        "
@@ -116,7 +117,7 @@ const ProductsList = ({
               </div>
             </>
           ))}
-        {!products.length && (
+        {!products && (
           <p className="text-gray-400 text-4xl absolute top-36">
             No products found
           </p>

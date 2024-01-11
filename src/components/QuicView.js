@@ -9,6 +9,7 @@ const QuicView = ({ click, setClick, closeQuickView }) => {
         ${click ? "hidden" : "block"}
       `}
         >
+          
           <img src="./images/converse.jpg" className="p-[2px]" alt="" />
           <section className="p-4 relative">
             <div

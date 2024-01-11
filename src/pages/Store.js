@@ -9,12 +9,16 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { Typography } from "@material-ui/core";
 import { Slider } from "@material-ui/core";
+
+const categories = ["Footwear", "Bottom", "Tops", "Attire"];
+
 const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
-  const { loading, productsCount, productPerPage } = useSelector(
+  const [category, setCategory] = useState("");
+  const { loading, productsCount, products, productPerPage } = useSelector(
     (state) => state.products
   );
   const navigate = useNavigate();
@@ -64,7 +68,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
       </div>
       <section className="max-w-7xl relative mx-auto pb-40 text-gray-600 px-2">
         <div
-          className="md:w-[50%] w-full flex mx-auto sticky top-[5.1rem] z-40"
+          className="md:w-[50%] w-full ml-auto sticky top-[5.1rem] z-40"
           // data-aos="zoom-in"
         >
           <input
@@ -83,16 +87,33 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div> */}
         </div>
-        <div className="filter absolute md:right-10 md:top-0 top-14 md:ml-0 ml-2">
-          <Typography>Price</Typography>
-          <Slider
-            value={price}
-            onChange={priceHandler}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={0}
-            max={25000}
-          />
+        <div className="flex space-x-10 top-0 md:right-10">
+          <div className="w-28">
+            <p className="font-semibold text-lg text-gray-900">Price</p>
+            <Slider
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+              style={{ color: "rgb(17 24 39)" }}
+            />
+          </div>
+          <div>
+            <p className="font-semibold text-lg text-gray-900">Category</p>
+            <ul className="categoryBox ">
+              {categories.map((categoryItems) => (
+                <li
+                  className="cursor-pointer"
+                  key={categoryItems}
+                  onClick={() => setCategory(categoryItems)}
+                >
+                  {categoryItems}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <ProductsList
           click={click}
@@ -101,6 +122,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
           searchKeyword={searchKeyword}
           currentPage={currentPage}
           price={price}
+          category={category}
         />
 
         {productsCount > 9 ? (
