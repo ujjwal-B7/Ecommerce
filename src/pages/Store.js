@@ -10,7 +10,7 @@ import Pagination from "react-js-pagination";
 import { Typography } from "@material-ui/core";
 import { Slider } from "@material-ui/core";
 
-const categories = ["Footwear", "Bottom", "Tops", "Attire"];
+const categories = ["Select Category", "Footwear", "Bottom", "Tops", "Attire"];
 
 const Store = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
@@ -39,6 +39,14 @@ const Store = ({ openQuickView, closeQuickView }) => {
   // price handler
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
+  };
+
+  const categoryHandler = (e) => {
+    if (e.target.value === "Select Category") {
+      setCategory("");
+    } else {
+      setCategory(e.target.value);
+    }
   };
   return (
     <>
@@ -87,7 +95,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div> */}
         </div>
-        <div className="flex space-x-10 top-0 md:right-10">
+        <div className="flex  space-x-28 -mt-12 ml-10">
           <div className="w-28">
             <p className="font-semibold text-lg text-gray-900">Price</p>
             <Slider
@@ -101,18 +109,23 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div>
           <div>
-            <p className="font-semibold text-lg text-gray-900">Category</p>
-            <ul className="categoryBox ">
-              {categories.map((categoryItems) => (
-                <li
+            <p className="font-semibold text-lg text-gray-900 pl-1">Category</p>
+            <select
+              className="categoryBox rounded-xl pl-2 border-2 border-r-gray-900 text-gray-400 font-light tracking-tight
+"
+              value={category}
+              onChange={(e) => categoryHandler(e)}
+            >
+              {categories.map((categoryItem) => (
+                <option
                   className="cursor-pointer"
-                  key={categoryItems}
-                  onClick={() => setCategory(categoryItems)}
+                  key={categoryItem}
+                  value={categoryItem}
                 >
-                  {categoryItems}
-                </li>
+                  {categoryItem}
+                </option>
               ))}
-            </ul>
+            </select>
           </div>
         </div>
         <ProductsList
