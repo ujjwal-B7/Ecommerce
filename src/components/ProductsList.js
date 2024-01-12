@@ -18,6 +18,7 @@ const ProductsList = ({
   limit,
   price,
   category,
+  ratings,
 }) => {
   const options = {
     edit: false,
@@ -33,14 +34,14 @@ const ProductsList = ({
     // state.productsCount
   );
   useEffect(() => {
-    dispatch(getProduct(searchKeyword, currentPage, price, category));
-  }, [dispatch, searchKeyword, currentPage, price, category]);
+    dispatch(getProduct(searchKeyword, currentPage, price, category, ratings));
+  }, [dispatch, searchKeyword, currentPage, price, category, ratings]);
 
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       {products && (
         <p
-          className="text-center md:pt-10 pt-24 pb-10 text-4xl 
+          className="text-center pt-10 pb-10 text-4xl 
        "
         >
           New Arrivals

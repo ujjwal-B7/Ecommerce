@@ -160,7 +160,7 @@ const Navbar = () => {
         <ul
           ref={menuRef}
           className={`lg:hidden absolute text-gray-900  bg-[#FAF9F6]  shadow-black shadow-2xl
-          rounded-bl-3xl sm:w-[50%] w-[70%] h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-300 
+          rounded-bl-3xl sm:w-[50%] w-[70%] h-screen top-0  ham  text-xl text-center pt-20 transition-all ease-in duration-300 z-[1000]
           ${open ? "right-0" : "right-[-32rem]"}
           `}
         >

@@ -3,13 +3,12 @@ import React from "react";
 const QuicView = ({ click, setClick, closeQuickView }) => {
   return (
     <>
-      <div className="fixed w-full h-screen bg-black bg-opacity-50 flex justify-center items-center z-50">
+      <div className="fixed w-full h-screen bg-black bg-opacity-50 flex justify-center items-center z-[100] ">
         <div
           className={`shadow-lg rounded-lg bg-text w-[55%] h-[60%] flex  
         ${click ? "hidden" : "block"}
       `}
         >
-          
           <img src="./images/converse.jpg" className="p-[2px]" alt="" />
           <section className="p-4 relative">
             <div

@@ -191,20 +191,22 @@ const SingleProductDetails = ({ match }) => {
       </div>
 
       {/* review section */}
-      <div className="md:w-[44rem] w-[95%] min-h-[30rem] mx-auto shadow my-10 px-2">
+      <div className="lg:w-[calc(100%-18rem)] w-[95%] min-h-[30rem] mx-auto shadow my-10 px-2">
         <h2 className="text-4xl font-bold text-center py-3">REVIEWS</h2>
-        <hr className=" border-gray-400" />
-        {product.reviews && product.reviews[0] ? (
-          <div>
-            {product.reviews.map((review) => (
-              <ReviewCard review={review} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-400 text-xl text-center pt-20">
-            "No Reviews Yet"
-          </p>
-        )}
+        <div className="w-[70%] mx-auto">
+          <hr className=" border-gray-400" />
+          {product.reviews && product.reviews[0] ? (
+            <div>
+              {product.reviews.map((review) => (
+                <ReviewCard review={review} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-400 text-xl text-center pt-20">
+              "No Reviews Yet"
+            </p>
+          )}
+        </div>
       </div>
     </>
   );

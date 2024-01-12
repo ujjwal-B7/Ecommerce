@@ -18,6 +18,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
+  const [ratings, setRatings] = useState(0);
   const { loading, productsCount, products, productPerPage } = useSelector(
     (state) => state.products
   );
@@ -38,6 +39,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
 
   // price handler
   const priceHandler = (event, newPrice) => {
+    event.preventDefault();
     setPrice(newPrice);
   };
 
@@ -75,15 +77,15 @@ const Store = ({ openQuickView, closeQuickView }) => {
         </div>
       </div>
       <section className="max-w-7xl relative mx-auto pb-40 text-gray-600 px-2">
-        <div className="flex justify-around items-center lg:gap-0 gap-8 lg:flex-row flex-col bg-white sticky top-[5rem] z-50 w-full px-2">
+        <div className="flex justify-between items-center lg:gap-0 gap-8 lg:flex-row flex-col bg-white sticky top-[5rem] z-30 w-full px-1 md:py-5 py-2">
           <div
-            className="lg:w-[50%] w-full"
+            className="lg:w-[48%] w-full"
             // data-aos="zoom-in"
           >
             <input
               type="text"
               placeholder="Search items"
-              className="border-blue-200 border-[3px] bg-text rounded-md h-11 w-full pl-2  focus:border-gray-400 focus:border-[2px]  relative
+              className="border-gray-400 border-[3px] bg-text rounded-md h-11 w-full pl-2  focus:border-gray-500 focus:border-[2px]  relative 
             "
               value={searchKeyword}
               onChange={(e) => searchItems(setSearchKeyword(e.target.value))}
@@ -96,9 +98,12 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div> */}
           </div>
-          <div className=" flex justify-around lg:w-96 w-full">
+          <div className="storeIcons flex justify-around lg:w-[45%] w-full md:gap-0 gap-7">
             <div className="w-28">
-              <p className="font-semibold text-lg text-gray-900">Price</p>
+              <div className="flex items-center gap-1">
+                <ion-icon name="pricetags"></ion-icon>
+                <p className="font-semibold text-md text-gray-900">Price</p>
+              </div>
               <Slider
                 value={price}
                 onChange={priceHandler}
@@ -110,12 +115,14 @@ const Store = ({ openQuickView, closeQuickView }) => {
               />
             </div>
             <div>
-              <p className="font-semibold text-lg text-gray-900 pl-1">
-                Category
-              </p>
+              <div className="flex items-center ml-1">
+                <ion-icon name="grid"></ion-icon>
+                <p className="font-semibold text-md text-gray-900 pl-1">
+                  Category
+                </p>
+              </div>
               <select
-                className="categoryBox rounded-xl pl-2 border-2 border-r-gray-900 text-gray-400 font-light tracking-tight
-"
+                className="categoryBox rounded-xl pl-2 border-2 border-gray-900 text-gray-400 font-light tracking-tight"
                 value={category}
                 onChange={(e) => categoryHandler(e)}
               >
@@ -130,6 +137,25 @@ const Store = ({ openQuickView, closeQuickView }) => {
                 ))}
               </select>
             </div>
+            <fieldset>
+              <div className="flex items-center gap-1">
+                <ion-icon name="star-half"></ion-icon>
+                <p className="font-semibold text-md text-gray-900">
+                  Rated Products
+                </p>
+              </div>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+                style={{ color: "rgb(17 24 39)" }}
+              />
+            </fieldset>
           </div>
         </div>
         <ProductsList
@@ -140,6 +166,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
           currentPage={currentPage}
           price={price}
           category={category}
+          ratings={ratings}
         />
 
         {productsCount > 9 ? (
