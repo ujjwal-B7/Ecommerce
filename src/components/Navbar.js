@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Cart from "../userComponent/Cart";
 import Notifications from "../userComponent/Notifications";
 import LoginForm from "./LoginForm";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ const Navbar = () => {
   //   document.addEventListener("mousedown", handle);
   //   return () => document.removeEventListener("mousedown", handle);
   // });
+  const { user, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     let handle = (e) => {
@@ -120,12 +122,17 @@ const Navbar = () => {
             </li>
           </ul>
           <div
-            className="lg:static absolute right-5 log-btn bg-white rounded-full h-6 w-6 ml-10 pl-1 text-gray-900"
+            className="lg:static absolute right-5 log-btn bg-white rounded-full h-9 w-9 ml-10 text-gray-900 bg-[url('./images/Profile.png')] bg-cover"
             data-aos="fade-left"
             onClick={() => setShowForm(!showForm)}
           >
-            {/* {!isAuthenticated ? <Login /> : <LogOut />} */}
-            <ion-icon name="person"></ion-icon>
+            {isAuthenticated && (
+              <img
+                src={user.profile.url}
+                className="h-9 w-9 rounded-full object-cover"
+                alt=""
+              />
+            )}
           </div>
           <div
             ref={menuRef}

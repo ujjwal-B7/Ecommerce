@@ -48,7 +48,7 @@ const RegisterForm = ({
     if (e.target.name === "profile") {
       const reader = new FileReader();
       reader.onload = () => {
-        //readystates=> 0:processing,1:processing,2:done
+        //readystates=> 0:initial state,1:processing,2:done
         if (reader.readyState === 2) {
           setProfilePreview(reader.result);
           setProfile(reader.result);
