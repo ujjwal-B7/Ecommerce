@@ -1,22 +1,62 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import RegisterForm from "./RegisterForm";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, loginUser } from "../store/actions/userAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const LoginForm = ({ showForm, setShowForm }) => {
+  const [formContainer, setFormContainer] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [showRegisterForm, setShowRegisterForm] = useState(true);
   const [shiftToRegister, setShiftToRegister] = useState(false);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const loginForm = useRef(null);
+  // dispatching the function
+  const dispatch = useDispatch();
+
+  // login form handler
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(loginEmail, loginPassword));
+    toast.success("Logged in successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setShowForm(true);
+    }
+  }, [isAuthenticated, setShowForm, showForm]);
   return (
     <>
+      <ToastContainer />
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50 flex justify-center items-center z-50
+        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60 flex justify-center items-center z-50
       `}
       >
         <form
-          className={`max-w-sm relative mx-auto bg-white/95 w-11/12 p-5 rounded-xl shadow-xl
+          ref={loginForm}
+          onSubmit={loginSubmit}
+          className={`lg:w-[27%] sm:w-[60%] w-[90%] relative mx-auto bg-white p-5 rounded-xl shadow-xl
          ${showForm ? "hidden" : "block"}
          ${shiftToRegister ? "hidden" : "block"}
         `}
-          // data-aos="fade-up"
+          // data-aos="zoom-in"
         >
           <div
             className="text-gray-900 h-5 w-5 pl-[1px] hover:bg-gray-400 absolute right-2 top-2 rounded-full"
@@ -40,6 +80,8 @@ const LoginForm = ({ showForm, setShowForm }) => {
             <input
               type="email"
               id="email"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
               className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
               // style={{ backgroundColor: "gray" }}
               placeholder="abc@gmail.com"
@@ -55,7 +97,8 @@ const LoginForm = ({ showForm, setShowForm }) => {
             </label>
             <input
               type={showPassword ? "password" : "text"}
-              id="password"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
               className="border border-gray-900 bg-transparent text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
               placeholder="********"
               required
@@ -64,11 +107,9 @@ const LoginForm = ({ showForm, setShowForm }) => {
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
               <input
-                id="remember"
                 type="checkbox"
                 value=""
                 className="text-gray-900 w-3 h-3 mt-[5px] border bg-transparent border-gray-900 rounded focus:ring-3 focus:ring-gray-300 "
-                required
                 onClick={() => setShowPassword(!showPassword)}
               />
             </div>
@@ -78,13 +119,19 @@ const LoginForm = ({ showForm, setShowForm }) => {
           </div>
           <button
             type="submit"
-            className="text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center "
+            value="Login"
+            disabled={loading ? true : false}
+            className="mt-4 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 gap-4 flex justify-center items-center"
           >
-            Submit
+            {loading && <span className="loader-btn"></span>}
+            <p>Submit</p>
           </button>
-          <p className="text-blue-900  text-sm pt-2 hover:underline cursor-pointer">
+          <Link
+            to="/password/forgot"
+            className="text-blue-900  text-sm pt-2 hover:underline cursor-pointer"
+          >
             Forgot Password?
-          </p>
+          </Link>
           <p
             className="text-center font-semibold underline cursor-pointer text-gray-900 text-sm pt-5"
             onClick={() => {
@@ -103,6 +150,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
           setShowRegisterForm={setShowRegisterForm}
           shiftToRegister={shiftToRegister}
           setShiftToRegister={setShiftToRegister}
+          setShowForm={setShowForm}
         />
       </div>
     </>

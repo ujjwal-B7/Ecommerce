@@ -2,7 +2,6 @@ import React from "react";
 import ProductsList from "../components/ProductsList";
 import FeaturedList from "../components/FeaturedList";
 import Loader from "../components/Loader";
-import LoginForm from "../components/LoginForm";
 import QuicView from "../components/QuicView";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Home = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
+
   // const openQuickView = () => {
   //   document.body.style.overflow = "hidden";
   // };

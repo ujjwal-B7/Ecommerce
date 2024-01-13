@@ -1,12 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import Cart from "../userComponent/Cart";
 import Notifications from "../userComponent/Notifications";
-import Login from "../auth/Login";
-import LogOut from "../auth/LogOut";
-import MessageBox from "./MessageBox";
 import LoginForm from "./LoginForm";
 
 const Navbar = () => {
@@ -15,11 +11,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useState(false);
   const [notifications, setNotifications] = useState(false);
-  const [search, setSearch] = useState();
   const [showForm, setShowForm] = useState(true);
   const location = useLocation();
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading, error } =
-    useAuth0();
   const menuRef = useRef();
   const hamRef = useRef();
 

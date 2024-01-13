@@ -9,11 +9,12 @@ import {
   productReducer,
   productDetailsReducer,
 } from "../reducers/productReducers";
-
+import { userReducer } from "../reducers/userReducers";
 // reducer for all
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
+  user: userReducer,
 });
 let initialState = {};
 const middleware = [thunk];

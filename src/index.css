@@ -120,6 +120,28 @@ border-radius: 4px;
   }
 }  */
 
+
+/* button loader */
+.loader-btn{
+  width: 20px;
+  height: 20px;
+  border: 3px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+/* content loader */
 .loader {
     position: fixed;
   transform: translate(-50%,-50%);
@@ -271,7 +293,17 @@ flex-wrap: wrap;
   }
 }
 
-
+#registerImage input::file-selector-button{
+  cursor: pointer;
+  z-index: 2;
+  height: 5vh;
+  width: 100%;
+  margin: 0%;
+  background-color: gray;
+  transition: all 0.5s;
+  color:white;
+  padding: 0 1vmax;
+}
 
 
 
