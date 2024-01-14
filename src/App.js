@@ -9,16 +9,23 @@ import AdminLayout from "./layout/AdminLayout";
 import SideBar from "./adminComponent/SideBar";
 import Dashboard from "./pagesAdmin/Dashboard";
 import SingleProductDetails from "./pages/SingleProductDetails";
-
 import { Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { loadUser } from "./store/actions/loadUserAction";
+import { store } from "./store/app/store";
+import { useDispatch } from "react-redux";
 function App() {
+  const dispatch = useDispatch();
   const openQuickView = () => {
     document.body.style.overflow = "hidden";
   };
   const closeQuickView = () => {
     document.body.style.overflow = "auto";
   };
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
   return (
     <div className="App">

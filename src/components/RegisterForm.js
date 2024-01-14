@@ -21,10 +21,10 @@ const RegisterForm = ({
   });
   const dispatch = useDispatch();
   const { name, email, password } = user;
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
   // register form handler
   const registerForm = useRef(null);
-  // register form handler
-  const registerSubmit = (e) => {
+  const registerSubmit = async (e) => {
     e.preventDefault();
     const myForm = new FormData();
     myForm.set("name", name);
@@ -59,10 +59,6 @@ const RegisterForm = ({
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-
-  const { loading, error, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -172,6 +168,9 @@ const RegisterForm = ({
               show password
             </label>
           </div>
+          <label htmlFor="profile" className="text-gray-900">
+            Upload a photo
+          </label>
           <div id="registerImage" className="flex items-center gap-7">
             <div className="pic ">
               <input
