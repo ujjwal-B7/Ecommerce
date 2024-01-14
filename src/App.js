@@ -12,8 +12,10 @@ import SingleProductDetails from "./pages/SingleProductDetails";
 import { Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { store } from "./store/app/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./store/actions/userAction";
+import Profile from "./pages/Profile";
+import UpdateProfile from "./pages/UpdateProfile";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -22,7 +24,7 @@ function App() {
   const closeQuickView = () => {
     document.body.style.overflow = "auto";
   };
-
+  const { isAuthenticated } = useSelector((state) => state.user);
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
@@ -53,6 +55,12 @@ function App() {
         />
         <Route path="/store/:keyword" element={<Store />} />
         <Route exact path="/product/:id" element={<SingleProductDetails />} />
+        {isAuthenticated && (
+          <Route exact path="/profile" element={<Profile />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/updateProfile" element={<UpdateProfile />} />
+        )}
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>

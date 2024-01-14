@@ -4,8 +4,6 @@ import RegisterForm from "./RegisterForm";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loginUser } from "../store/actions/userAction";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 const LoginForm = ({ showForm, setShowForm }) => {
   const [formContainer, setFormContainer] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
@@ -21,16 +19,6 @@ const LoginForm = ({ showForm, setShowForm }) => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(loginEmail, loginPassword));
-    toast.success("Logged in successfully", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
   };
 
   const { loading, error, isAuthenticated } = useSelector(
@@ -44,7 +32,6 @@ const LoginForm = ({ showForm, setShowForm }) => {
   }, [isAuthenticated, setShowForm, showForm]);
   return (
     <>
-      <ToastContainer />
       <div
         className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60 flex justify-center items-center z-50
       `}
@@ -70,6 +57,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
             Login Form
           </p>
           <div className="my-5">
+            {error && <p className="text-red-500 text-md">{error}</p>}
             <label
               htmlFor="email"
               className="block mb-2 text-md font-semibold text-gray-900"
@@ -117,11 +105,24 @@ const LoginForm = ({ showForm, setShowForm }) => {
               show password
             </label>
           </div>
-          <button
+          {/* <button
             type="submit"
             value="Login"
             disabled={loading ? true : false}
             className="mt-4 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 gap-4 flex justify-center items-center"
+          >
+            {loading && <span className="loader-btn"></span>}
+            <p>Submit</p>
+          </button> */}
+          <button
+            disabled={loginPassword.length < 8}
+            type="submit"
+            value="Login"
+            style={{
+              opacity: loginPassword.length < 8 ? 0.5 : 1,
+              cursor: loginPassword.length < 8 ? "not-allowed" : "pointer",
+            }}
+            className="mt-4 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 gap-4 flex justify-center items-center"
           >
             {loading && <span className="loader-btn"></span>}
             <p>Submit</p>

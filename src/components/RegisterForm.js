@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, registerUser } from "../store/actions/userAction";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import defaultpic from "../images/defaultpic.jpg";
 const RegisterForm = ({
   showRegisterForm,
   setShowRegisterForm,
@@ -14,6 +13,10 @@ const RegisterForm = ({
   const [showPassword, setShowPassword] = useState(true);
   const [profile, setProfile] = useState();
   const [profilePreview, setProfilePreview] = useState("/Profile.png");
+  // error
+  const [errors, setErrors] = useState({
+    password: "",
+  });
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -21,7 +24,9 @@ const RegisterForm = ({
   });
   const dispatch = useDispatch();
   const { name, email, password } = user;
-  const { loading, isAuthenticated } = useSelector((state) => state.user);
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
   // register form handler
   const registerForm = useRef(null);
   const registerSubmit = async (e) => {
@@ -32,16 +37,6 @@ const RegisterForm = ({
     myForm.set("password", password);
     myForm.set("profile", profile);
     dispatch(registerUser(myForm));
-    toast.success("User Registered successfully", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
   };
 
   const registerDataChange = (e) => {
@@ -57,6 +52,11 @@ const RegisterForm = ({
       reader.readAsDataURL(e.target.files[0]);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
+      setErrors({
+        ...errors,
+        [e.target.name]:
+          e.target.value.length < 8 ? "Must be at least 8 characters" : "",
+      });
     }
   };
 
@@ -66,9 +66,9 @@ const RegisterForm = ({
       setShowRegisterForm(true);
     }
   }, [setShowRegisterForm, isAuthenticated, setShowForm]);
+
   return (
     <>
-      <ToastContainer />
       <form
         ref={registerForm}
         encType="multipart/form-data"
@@ -86,6 +86,7 @@ const RegisterForm = ({
             Register Your Account
           </p>
           <div className="my-5">
+            {error && <p className="text-red-500 text-md">{error}</p>}
             <label
               htmlFor="text"
               className="block mb-2 text-md font-semibold text-gray-900"
@@ -111,7 +112,6 @@ const RegisterForm = ({
             >
               Your email
             </label>
-
             <input
               type="email"
               name="email"
@@ -139,22 +139,11 @@ const RegisterForm = ({
               placeholder="********"
               required
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
           </div>
-          {/* <div className="mb-5">
-            <label
-              htmlFor="password"
-              className="block mb-2 text-md font-semibold text-gray-900"
-            >
-              Confirm Your password
-            </label>
-            <input
-              type={showPassword ? "password" : "text"}
-              id="password"
-              className="border border-gray-900 bg-transparent text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
-              placeholder="********"
-              required
-            />
-          </div> */}
+
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
               <input
@@ -189,16 +178,29 @@ const RegisterForm = ({
               />
             </div>
           </div>
-          <button
-            disabled={loading ? true : false}
+          {/* <button
+            disabled={password.length < 8 ? true : false}
             type="submit"
             value="Register"
-            // disabled={loading ? true : false}
             className="mt-4 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 gap-4 flex justify-center items-center"
           >
             {loading && <span className="loader-btn"></span>}
             <p>Submit</p>
+          </button> */}
+          <button
+            disabled={password.length < 8}
+            type="submit"
+            value="Register"
+            style={{
+              opacity: password.length < 8 ? 0.5 : 1,
+              cursor: password.length < 8 ? "not-allowed" : "pointer",
+            }}
+            className="mt-4 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 gap-4 flex justify-center items-center"
+          >
+            {loading && <span className="loader-btn"></span>}
+            <p>Submit</p>
           </button>
+
           <p
             className="text-gray-900 text-center pt-5 font-semibold text-sm cursor-pointer underline"
             onClick={() => {

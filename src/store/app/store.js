@@ -9,20 +9,20 @@ import {
   productReducer,
   productDetailsReducer,
 } from "../reducers/productReducers";
-import { userReducer } from "../reducers/userReducers";
+import { updateProfileReducer, userReducer } from "../reducers/userReducers";
 // reducer for all
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
+  updateProfile: updateProfileReducer,
 });
 let initialState = {};
 const middleware = [thunk];
-
 export const store = configureStore({
   reducer,
   initialState,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middleware),
+    getDefaultMiddleware().concat(...middleware),
   devTools: composeWithDevTools(),
 });

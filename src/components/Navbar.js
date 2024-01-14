@@ -5,6 +5,7 @@ import Cart from "../userComponent/Cart";
 import Notifications from "../userComponent/Notifications";
 import LoginForm from "./LoginForm";
 import { useSelector } from "react-redux";
+import UserOptions from "./UserOptions";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -52,8 +53,9 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", handleScroll);
 
-  // for component handling
-  if (pathname === "/admin") return null;
+  if (pathname === "/admin")
+    // for component handling
+    return null;
   if (pathname === "/admin/notification") return null;
   if (pathname === "/admin/user") return null;
   if (pathname === "/admin/product") return null;
@@ -121,17 +123,18 @@ const Navbar = () => {
               </p>
             </li>
           </ul>
-          <div
-            className="lg:static absolute right-5 log-btn bg-white rounded-full h-9 w-9 ml-10 text-gray-900 bg-[url('./images/Profile.png')] bg-cover"
-            data-aos="fade-left"
-            onClick={() => setShowForm(!showForm)}
-          >
-            {isAuthenticated && (
-              <img
-                src={user.profile.url}
-                className="h-9 w-9 rounded-full object-cover"
-                alt=""
-              />
+          <div>
+            {isAuthenticated ? (
+              <>
+                <div className="lg:static absolute right-4 top-5 log-btn  rounded-full ml-10 text-gray-900">
+                  <UserOptions user={user} />
+                </div>
+              </>
+            ) : (
+              <div
+                className="lg:static absolute right-4 top-5 log-btn bg-white rounded-full h-9 w-9 ml-10 text-gray-900 bg-[url('./images/Profile.png')] bg-cover"
+                onClick={() => setShowForm(!showForm)}
+              ></div>
             )}
           </div>
           <div

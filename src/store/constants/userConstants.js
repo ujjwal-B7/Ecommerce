@@ -12,4 +12,16 @@ export const REGISTER_USER_FAIL = "REGISTER_USER_FAIL";
 export const LOAD_USER_REQUEST = "LOAD_USER_REQUEST";
 export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
 export const LOAD_USER_FAIL = "LOAD_USER_FAIL";
+
+// logout reducers
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
+
+// update profile reducers
+export const UPDATE_PROFILE_REQUEST = "UPDATE_PROFILE_REQUEST";
+export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
+export const UPDATE_PROFILE_RESET = "UPDATE_PROFILE_RESET";
+export const UPDATE_PROFILE_FAIL = "UPDATE_PROFILE_FAIL";
+
+// clear error reducers
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
