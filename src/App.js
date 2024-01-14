@@ -11,9 +11,9 @@ import Dashboard from "./pagesAdmin/Dashboard";
 import SingleProductDetails from "./pages/SingleProductDetails";
 import { Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { loadUser } from "./store/actions/loadUserAction";
 import { store } from "./store/app/store";
 import { useDispatch } from "react-redux";
+import { loadUser } from "./store/actions/userAction";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
