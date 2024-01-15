@@ -47,7 +47,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response?.data?.message || "Invalid email or password",
+      payload: error.response.data.error,
     });
   }
 };
@@ -72,7 +72,7 @@ export const registerUser = (user) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: REGISTER_USER_FAIL,
-      payload: error.response?.data?.message || "Email already exists",
+      payload: error.response.data.error,
     });
   }
 };
@@ -156,9 +156,19 @@ export const updatePassword = (passwords) => async (dispatch) => {
     });
     dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
   } catch (error) {
+    toast.error(error.response.data.error, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     dispatch({
       type: UPDATE_PASSWORD_FAIL,
-      payload: error.response?.data?.message || "Passwords doesnt match",
+      payload: error.response.data.error,
     });
   }
 };
