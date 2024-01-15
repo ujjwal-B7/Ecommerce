@@ -50,7 +50,7 @@ const UserOptions = ({ user }) => {
         </span>
       </div>
       <div
-        className={`bg-white w-32 rounded-xl shadow-lg text-center absolute right-20 top-16
+        className={`bg-white w-32 rounded-xl shadow-lg text-center absolute right-28 top-16
         ${options ? "hidden" : "block"}`}
       >
         {optionsArray.map((option) => (

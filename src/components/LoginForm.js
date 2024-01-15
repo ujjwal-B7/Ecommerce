@@ -33,7 +33,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60 flex justify-center items-center z-50
+        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-70   flex justify-center items-center z-50
       `}
       >
         <form

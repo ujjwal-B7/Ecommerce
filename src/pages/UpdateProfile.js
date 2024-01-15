@@ -98,7 +98,7 @@ const UpdateProfile = () => {
                 type="text"
                 name="name"
                 value={name}
-                onChange={updateProfileDataChange}
+                onChange={(e) => setName(e.target.value)}
                 className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
                 // style={{ backgroundColor: "gray" }}
                 placeholder="Name"
@@ -116,7 +116,7 @@ const UpdateProfile = () => {
                 type="email"
                 name="email"
                 value={email}
-                onChange={updateProfileDataChange}
+                onChange={(e) => setEmail(e.target.value)}
                 className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
                 // style={{ backgroundColor: "gray" }}
                 placeholder="abc@gmail.com"
