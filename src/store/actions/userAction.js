@@ -18,6 +18,13 @@ import {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_FAIL,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  FORGOT_PASSWORD_,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
@@ -168,6 +175,70 @@ export const updatePassword = (passwords) => async (dispatch) => {
     });
     dispatch({
       type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+// forgot password
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+    const { data } = await axios.post(`/api/v1/forgotPassword`, email, config);
+    toast.success(data.message, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};
+
+// reset password
+export const resetPassword = (token, password) => async (dispatch) => {
+  try {
+    dispatch({ type: RESET_PASSWORD_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+    const { data } = await axios.put(
+      `/api/v1/resetPassword/${token}`,
+      password,
+      config
+    );
+    toast.success("New Password created successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    toast.error(error.response.data.error, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
       payload: error.response.data.error,
     });
   }

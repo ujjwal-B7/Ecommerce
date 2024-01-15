@@ -17,6 +17,8 @@ import { loadUser } from "./store/actions/userAction";
 import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/UpdateProfile";
 import UpdatePassword from "./pages/UpdatePassword";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -30,48 +32,50 @@ function App() {
     store.dispatch(loadUser());
   }, []);
 
-    return (
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Home
-                openQuickView={openQuickView}
-                closeQuickView={closeQuickView}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/store"
-            element={
-              <Store
-                openQuickView={openQuickView}
-                closeQuickView={closeQuickView}
-              />
-            }
-          />
-          <Route path="/store/:keyword" element={<Store />} />
-          <Route exact path="/product/:id" element={<SingleProductDetails />} />
-          {isAuthenticated && (
-            <Route exact path="/profile" element={<Profile />} />
-          )}
-          {isAuthenticated && (
-            <Route exact path="/updateProfile" element={<UpdateProfile />} />
-          )}
-          {isAuthenticated && (
-            <Route exact path="/updatePassword" element={<UpdatePassword />} />
-          )}
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/contact" element={<Contact />} />
-        </Routes>
-        <AdminLayout />
-        <Footer />
-      </div>
-    );
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              openQuickView={openQuickView}
+              closeQuickView={closeQuickView}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/store"
+          element={
+            <Store
+              openQuickView={openQuickView}
+              closeQuickView={closeQuickView}
+            />
+          }
+        />
+        <Route path="/store/:keyword" element={<Store />} />
+        <Route exact path="/product/:id" element={<SingleProductDetails />} />
+        {isAuthenticated && (
+          <Route exact path="/profile" element={<Profile />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/updateProfile" element={<UpdateProfile />} />
+        )}
+        {isAuthenticated && (
+          <Route exact path="/updatePassword" element={<UpdatePassword />} />
+        )}
+        <Route exact path="/forgotPassword" element={<ForgotPassword />} />
+        <Route exact path="/resetPassword/:token" element={<ResetPassword />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/contact" element={<Contact />} />
+      </Routes>
+      <AdminLayout />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

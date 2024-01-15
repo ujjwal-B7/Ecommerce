@@ -128,7 +128,8 @@ const LoginForm = ({ showForm, setShowForm }) => {
             <p>Submit</p>
           </button>
           <Link
-            to="/password/forgot"
+            onClick={() => setShowForm(!showForm)}
+            to="/forgotPassword"
             className="text-blue-900  text-sm pt-2 hover:underline cursor-pointer"
           >
             Forgot Password?
