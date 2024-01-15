@@ -60,6 +60,7 @@ const Navbar = () => {
   if (pathname === "/admin/user") return null;
   if (pathname === "/admin/product") return null;
   if (pathname === "/admin/inbox") return null;
+  if (pathname === "/updatePassword") return null;
   return (
     <nav
       className={`fixed h-20 w-full text-white z-50 md:${

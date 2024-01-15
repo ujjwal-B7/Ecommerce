@@ -14,6 +14,10 @@ import {
   UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_RESET,
+  UPDATE_PASSWORD_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
@@ -125,6 +129,36 @@ export const updateProfile = (user) => async (dispatch) => {
     dispatch({
       type: UPDATE_PROFILE_FAIL,
       payload: error.response?.data?.message || "Email already exists",
+    });
+  }
+};
+
+// update password
+export const updatePassword = (passwords) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PASSWORD_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/api/v1/updatePassword`,
+      passwords,
+      config
+    );
+    toast.success("Password updated successfully", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response?.data?.message || "Passwords doesnt match",
     });
   }
 };

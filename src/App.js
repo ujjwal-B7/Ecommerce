@@ -9,13 +9,14 @@ import AdminLayout from "./layout/AdminLayout";
 import SideBar from "./adminComponent/SideBar";
 import Dashboard from "./pagesAdmin/Dashboard";
 import SingleProductDetails from "./pages/SingleProductDetails";
-import { Router, Routes, Route } from "react-router-dom";
+import { Router, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { store } from "./store/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./store/actions/userAction";
 import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/UpdateProfile";
+import UpdatePassword from "./pages/UpdatePassword";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -29,45 +30,48 @@ function App() {
     store.dispatch(loadUser());
   }, []);
 
-  return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Home
-              openQuickView={openQuickView}
-              closeQuickView={closeQuickView}
-            />
-          }
-        />
-        <Route
-          exact
-          path="/store"
-          element={
-            <Store
-              openQuickView={openQuickView}
-              closeQuickView={closeQuickView}
-            />
-          }
-        />
-        <Route path="/store/:keyword" element={<Store />} />
-        <Route exact path="/product/:id" element={<SingleProductDetails />} />
-        {isAuthenticated && (
-          <Route exact path="/profile" element={<Profile />} />
-        )}
-        {isAuthenticated && (
-          <Route exact path="/updateProfile" element={<UpdateProfile />} />
-        )}
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/contact" element={<Contact />} />
-      </Routes>
-      <AdminLayout />
-      <Footer />
-    </div>
-  );
+    return (
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Home
+                openQuickView={openQuickView}
+                closeQuickView={closeQuickView}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/store"
+            element={
+              <Store
+                openQuickView={openQuickView}
+                closeQuickView={closeQuickView}
+              />
+            }
+          />
+          <Route path="/store/:keyword" element={<Store />} />
+          <Route exact path="/product/:id" element={<SingleProductDetails />} />
+          {isAuthenticated && (
+            <Route exact path="/profile" element={<Profile />} />
+          )}
+          {isAuthenticated && (
+            <Route exact path="/updateProfile" element={<UpdateProfile />} />
+          )}
+          {isAuthenticated && (
+            <Route exact path="/updatePassword" element={<UpdatePassword />} />
+          )}
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact" element={<Contact />} />
+        </Routes>
+        <AdminLayout />
+        <Footer />
+      </div>
+    );
 }
 
 export default App;

@@ -8,6 +8,7 @@ const Footer = () => {
   if (pathname === "/admin/notification") return null;
   if (pathname === "/admin/product") return null;
   if (pathname === "/admin/user") return null;
+  if (pathname === "/updatePassword") return null;
 
   return (
     <>
