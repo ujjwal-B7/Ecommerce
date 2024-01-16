@@ -29,7 +29,7 @@ const ForgotPassword = () => {
   }, [dispatch, message, navigate]);
   return (
     <>
-      <Loader loading={loading} />
+      {/* <Loader loading={loading} /> */}
       <div
         className="w-full h-32 bg-[url('./images/store.jpg')] bg-cover"
         data-aos="zoom-in"

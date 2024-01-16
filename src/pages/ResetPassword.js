@@ -28,7 +28,7 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (success) {
-      navigate("/profile");
+      navigate("/");
       dispatch({ type: UPDATE_PASSWORD_RESET });
     }
   }, [dispatch, success, navigate]);

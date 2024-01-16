@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,9 +11,11 @@ import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addToCart } from "../store/actions/cartAction";
 const SingleProductDetails = ({ match }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
   const { loading, product, error } = useSelector(
     (state) => state.productDetails
   );
@@ -41,6 +43,38 @@ const SingleProductDetails = ({ match }) => {
     size: window.innerWidth < 600 ? 20 : 25,
     value: product.ratings,
     isHalf: true,
+  };
+
+  // increase quantity
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  // decrease quantity
+  const decreaseQuantity = () => {
+    const qty = quantity - 1;
+    if (qty < 1) {
+      setQuantity(1);
+    } else {
+      setQuantity(qty);
+    }
+  };
+
+  //add to cart handler
+  const addToCartHandler = () => {
+    dispatch(addToCart(id, quantity));
+    toast.success("Item Added to cart", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <>
@@ -154,19 +188,29 @@ const SingleProductDetails = ({ match }) => {
             <hr />
             <div className="md:flex gap-5 md:pb-5">
               <div className="md:pt-5 pt-2">
-                <button className="md:w-10 h-10 w-[31%] bg-gray-900 text-white rounded-lg">
+                <button
+                  className="md:w-10 h-10 w-[31%] bg-gray-900 text-white rounded-lg"
+                  onClick={decreaseQuantity}
+                >
                   -
                 </button>
                 <input
                   className="md:w-16 h-10 w-[31%] mx-2 rounded-lg border-2 border-gray-900 text-center"
+                  readOnly
                   type="number"
-                  value="1"
+                  value={quantity}
                 />
-                <button className="md:w-10 h-10 w-[31%] bg-gray-900 text-white rounded-lg">
+                <button
+                  className="md:w-10 h-10 w-[31%] bg-gray-900 text-white rounded-lg"
+                  onClick={increaseQuantity}
+                >
                   +
                 </button>
               </div>
-              <button className="magenta hover:opacity-90 text-white md:w-36 w-full h-10 rounded-lg mt-5">
+              <button
+                className="magenta hover:opacity-90 text-white md:w-36 w-full h-10 rounded-lg mt-5"
+                onClick={addToCartHandler}
+              >
                 Add to Cart
               </button>
             </div>
@@ -179,6 +223,17 @@ const SingleProductDetails = ({ match }) => {
                 {product.Stock < 1 ? "Out Of Stock" : "InStock"}
               </span>
             </p>
+            <p className="py-5 font-semibold">
+              Stock:
+              <span
+                className={`pl-2 ${
+                  product.Stock < 1 ? "text-red-600" : "text-[#EE6524]"
+                }`}
+              >
+                {product.Stock}
+              </span>
+            </p>
+
             <hr />
             <p className="font-light tracking-tight text-lg pt-2 pb-10">
               Description: {product.description}

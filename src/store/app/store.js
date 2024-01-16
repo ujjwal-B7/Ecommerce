@@ -9,7 +9,14 @@ import {
   productReducer,
   productDetailsReducer,
 } from "../reducers/productReducers";
-import { updateProfileReducer, userReducer,forgotPasswordReducer } from "../reducers/userReducers";
+import {
+  updateProfileReducer,
+  userReducer,
+  forgotPasswordReducer,
+} from "../reducers/userReducers";
+import { cartReducer } from "../reducers/cartReducers";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // reducer for all
 const reducer = combineReducers({
   products: productReducer,
@@ -17,8 +24,25 @@ const reducer = combineReducers({
   user: userReducer,
   updateProfile: updateProfileReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
-let initialState = {};
+
+// let initialState = {
+//   cart: {
+//     cartItems: localStorage.getItem("cartItems")
+//       ? JSON.parse(localStorage.getItem("cartItems"))
+//       : [],
+//   },
+// };
+let initialState = {
+  cart: {
+    cartItems: (() => {
+      const storedData = localStorage.getItem("cartItems");
+      return storedData ? JSON.parse(storedData) : [];
+    })(),
+  },
+};
+
 const middleware = [thunk];
 export const store = configureStore({
   reducer,

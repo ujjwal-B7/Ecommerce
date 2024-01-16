@@ -63,91 +63,95 @@ const UpdateProfile = () => {
         className="w-full h-32 bg-[url('./images/store.jpg')] bg-cover"
         data-aos="zoom-in"
       ></div>
-      <section className=" max-w-screen-xl  mx-auto h-[80vh] flex justify-evenly items-center">
-        <div>
-          <h1 className="text-4xl text-gray-900 font-semibold">
-            Update your profile
-          </h1>
-          <div className="pt-5 h-60 w-60 ">
-            <img
-              className="h-60 w-60 object-cover rounded-full"
-              src={profile}
-              alt=""
-            />
+      <section className="max-w-screen-xl  mx-auto h-[80vh]  items-center">
+        <h1 className="text-center text-2xl my-7 text-gray-900 font-semibold">
+          Update your profile
+        </h1>
+        <div className=" shadow-xl w-[30rem] mt-5 rounded-xl mx-auto">
+          <div>
+            <div className="pt-5 h-32 w-32 mx-auto">
+              <img
+                className="h-32 w-32 object-cover rounded-full"
+                src={profile}
+                alt=""
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <form
-            encType="multipart/form-data"
-            onSubmit={updateProfileSubmit}
-            className={`w-[30rem] relative mx-auto p-5 rounded-xl
+          <div>
+            <form
+              encType="multipart/form-data"
+              onSubmit={updateProfileSubmit}
+              className={`w-[30rem] relative mx-auto p-5 rounded-xl
           `}
-            // data-aos="fade-up"
-          >
-            {/* <div className="text-gray-900 h-5 w-5 pl-[1px] hover:bg-gray-400 absolute right-2 top-2 rounded-full">
+              // data-aos="fade-up"
+            >
+              {/* <div className="text-gray-900 h-5 w-5 pl-[1px] hover:bg-gray-400 absolute right-2 top-2 rounded-full">
           <ion-icon name="close" size="small"></ion-icon>
         </div> */}
-            <div>
-              <div className="my-10">
-                {error && <p className="text-red-500 text-md">{error}</p>}
-                <label
-                  htmlFor="text"
-                  className="block mb-2 text-md font-semibold text-gray-900"
-                >
-                  Your Name
-                </label>
+              <div>
+                <div className="my-5">
+                  {error && <p className="text-red-500 text-md">{error}</p>}
+                  <label
+                    htmlFor="text"
+                    className="block mb-2 text-md font-semibold text-gray-900"
+                  >
+                    Your Name
+                  </label>
 
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
-                  // style={{ backgroundColor: "gray" }}
-                  placeholder="Name"
-                  required
-                />
-              </div>
-              <div className="my-10">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-md font-semibold text-gray-900"
-                >
-                  Your email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
-                  // style={{ backgroundColor: "gray" }}
-                  placeholder="abc@gmail.com"
-                  required
-                />
-              </div>
-              <label htmlFor="profile" className="text-gray-900">
-                Upload a photo
-              </label>
-              <div id="updateProfileImage" className="flex items-center gap-7">
-                <div className="pic ">
                   <input
-                    className="rounded-xl"
-                    type="file"
-                    name="profile"
-                    accept="image/*"
-                    onChange={updateProfileDataChange}
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
+                    // style={{ backgroundColor: "gray" }}
+                    placeholder="Name"
+                    required
                   />
                 </div>
-                {/* <div className=" h-12 w-12">
+                <div className="my-5">
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-md font-semibold text-gray-900"
+                  >
+                    Your email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className=" border border-gray-900 bg-transparent  text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
+                    // style={{ backgroundColor: "gray" }}
+                    placeholder="abc@gmail.com"
+                    required
+                  />
+                </div>
+                <label htmlFor="profile" className="text-gray-900">
+                  Upload a photo
+                </label>
+                <div
+                  id="updateProfileImage"
+                  className="flex items-center gap-7"
+                >
+                  <div className="pic ">
+                    <input
+                      className="rounded-xl"
+                      type="file"
+                      name="profile"
+                      accept="image/*"
+                      onChange={updateProfileDataChange}
+                    />
+                  </div>
+                  {/* <div className=" h-12 w-12">
                 <img
                   className="rounded-full h-12 w-12 object-cover"
                   src={profile}
                   alt=""
                   />
                 </div> */}
-              </div>
-              {/* <button
+                </div>
+                {/* <button
             disabled={password.length < 8 ? true : false}
             type="submit"
             value="updateProfile"
@@ -156,16 +160,17 @@ const UpdateProfile = () => {
             {loading && <span className="loader-btn"></span>}
             <p>Submit</p>
           </button> */}
-              <button
-                type="submit"
-                value="updateProfile"
-                className="mt-10 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 gap-4 flex justify-center items-center"
-              >
-                {loading && <span className="loader-btn"></span>}
-                <p>Submit</p>
-              </button>
-            </div>
-          </form>
+                <button
+                  type="submit"
+                  value="updateProfile"
+                  className="mt-5 text-white bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 gap-4 flex justify-center items-center"
+                >
+                  {loading && <span className="loader-btn"></span>}
+                  <p>Submit</p>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </>

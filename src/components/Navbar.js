@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import Cart from "../userComponent/Cart";
-import Notifications from "../userComponent/Notifications";
+import Cart from "../pages/Cart";
+import Notifications from "../pages/Notifications";
 import LoginForm from "./LoginForm";
 import { useSelector } from "react-redux";
 import UserOptions from "./UserOptions";
@@ -11,7 +11,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
-  const [cart, setCart] = useState(false);
+  const [showCart, setShowCart] = useState(false);
   const [notifications, setNotifications] = useState(false);
   const [showForm, setShowForm] = useState(true);
   const location = useLocation();
@@ -22,7 +22,7 @@ const Navbar = () => {
   //   let handle = (e) => {
   //     if (!menuRef.current.contains(e.target)) {
   //       setOpen(false);
-  //       setCart(false);
+  //       setshowCart(false);
   //     }
   //   };
   //   document.addEventListener("mousedown", handle);
@@ -39,7 +39,7 @@ const Navbar = () => {
         // && !["INPUT", "BUTTON"].includes(e.target.tagName)
       ) {
         setOpen(false);
-        setCart(false);
+        setShowCart(false);
         setNotifications(false);
         // setShowForm(true);
       }
@@ -116,7 +116,7 @@ const Navbar = () => {
               </p>
             </li>
             <li className="relative">
-              <button onClick={() => setCart(!cart)}>
+              <button onClick={() => setShowCart(!showCart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
               <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-6 left-8 font-semibold">
@@ -155,8 +155,11 @@ const Navbar = () => {
             </button>
           </div>
           <div className="lg:static absolute right-28">
-            <button className="lg:hidden " onClick={() => setCart(!cart)}>
-              <ion-icon name="cart" size="large"></ion-icon>
+            <button
+              className="lg:hidden "
+              onClick={() => setShowCart(!showCart)}
+            >
+              <ion-icon name="Cart" size="large"></ion-icon>
             </button>
           </div>
         </div>
@@ -197,10 +200,10 @@ const Navbar = () => {
           ref={menuRef}
           className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
           lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl transition-all ease-in duration-300 
-          ${cart ? "right-0" : "right-[-55rem]"}
+          ${showCart ? "right-0" : "right-[-55rem]"}
           `}
         >
-          <Cart cart={cart} setCart={setCart} />
+          <Cart showCart={showCart} setShowCart={setShowCart} />
         </ul>
         <div
           ref={hamRef}

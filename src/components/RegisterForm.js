@@ -45,11 +45,12 @@ const RegisterForm = ({
       reader.onload = () => {
         //readystates=> 0:initial state,1:processing,2:done
         if (reader.readyState === 2) {
-          setProfilePreview(reader.result);
-          setProfile(reader.result);
+          const profileUrl = reader.result || "../images/defaultpic.jpg";
+          setProfilePreview(profileUrl);
+          setProfile(profileUrl);
         }
       };
-      reader.readAsDataURL(e.target.files[0]);
+      reader.readAsDataURL(e.target.files[0] || "../images/defaultpic.jpg");
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
       setErrors({

@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../store/actions/userAction";
 import { UPDATE_PASSWORD_RESET } from "../store/constants/userConstants";
-
 const UpdatePassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,12 +33,13 @@ const UpdatePassword = () => {
     }
   }, [dispatch, isUpdated, navigate]);
   return (
-    <section className=" max-w-screen-xl mx-auto h-[80vh] flex items-center">
+    <section className=" mx-auto h-screen bg-slate-200 flex items-center">
       <form
         onSubmit={updatePasswordSubmit}
-        className={`lg:w-[40%] sm:w-[60%] w-[90%] relative mx-auto bg-white p-5 rounded-xl shadow-xl
+        className={` lg:w-[30%] sm:w-[60%] w-[90%] relative mx-auto bg-white p-5 rounded-xl shadow-xl
     `}
       >
+        <p className="text-2xl font-semibold text-center ">Update Password</p>
         <div className="my-5">
           {error && <p className="text-red-500 text-md">{error}</p>}
           <div className="mb-5">
