@@ -17,7 +17,7 @@ const Navbar = () => {
   const location = useLocation();
   const menuRef = useRef();
   const hamRef = useRef();
-
+  const { cartItems } = useSelector((state) => state.cart);
   // useEffect(() => {
   //   let handle = (e) => {
   //     if (!menuRef.current.contains(e.target)) {
@@ -119,8 +119,8 @@ const Navbar = () => {
               <button onClick={() => setShowCart(!showCart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
-              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-6 left-8 font-semibold">
-                10
+              <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
+                {cartItems.length}
               </p>
             </li>
           </ul>
@@ -133,7 +133,7 @@ const Navbar = () => {
               </>
             ) : (
               <div
-                className="lg:static absolute right-4 top-5 log-btn bg-white rounded-full h-9 w-9 ml-10 text-gray-900 bg-[url('./images/Profile.png')] bg-cover"
+                className="lg:static absolute right-4 top-5 log-btn bg-white rounded-full h-9 w-9 ml-10 text-gray-900 bg-[url('./images/defaultpic.jpg')] bg-cover"
                 onClick={() => setShowForm(!showForm)}
               ></div>
             )}

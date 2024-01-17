@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { removeCartItem } from "../store/actions/cartAction";
 const DeleteConfirm = ({
   todo,
   toggleDeleteVisibility,
@@ -8,12 +9,18 @@ const DeleteConfirm = ({
   setIsDeleteVisible,
   click,
   setClick,
+  item,
 }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleDelete = () => {
-    toggleDeleteVisibility();
-  };
+  const handleDelete = () => {};
 
+  // cart item delete handler
+  const deleteCartItemHandler = (id) => {
+    dispatch(removeCartItem(id));
+    // toggleDeleteVisibility();
+    setClick(!click);
+  };
   return (
     <div className="w-full h-screen absolute top-0  bg-black/20">
       <div
@@ -32,7 +39,7 @@ const DeleteConfirm = ({
         </button>
         <button
           className="bg-[#D11A2A] h-10 w-24 rounded-md mx-2 text-white hover:shadow-md"
-          onClick={handleDelete}
+          onClick={()=>deleteCartItemHandler(item.product)}
         >
           Delete
         </button>

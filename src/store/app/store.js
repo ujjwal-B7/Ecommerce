@@ -27,21 +27,21 @@ const reducer = combineReducers({
   cart: cartReducer,
 });
 
-// let initialState = {
-//   cart: {
-//     cartItems: localStorage.getItem("cartItems")
-//       ? JSON.parse(localStorage.getItem("cartItems"))
-//       : [],
-//   },
-// };
 let initialState = {
   cart: {
-    cartItems: (() => {
-      const storedData = localStorage.getItem("cartItems");
-      return storedData ? JSON.parse(storedData) : [];
-    })(),
+    cartItems: localStorage.getItem("addedCartItems")
+      ? JSON.parse(localStorage.getItem("addedCartItems"))
+      : [],
   },
 };
+// let initialState = {
+//   cart: {
+//     cartItems: (() => {
+//       const storedData = localStorage.getItem("cartItems");
+//       return storedData ? JSON.parse(storedData) : [];
+//     })(),
+//   },
+// };
 
 const middleware = [thunk];
 export const store = configureStore({

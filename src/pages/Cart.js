@@ -33,65 +33,69 @@ const Cart = ({ showCart, setShowCart }) => {
       </div>
       {cartItems &&
         cartItems.map((item) => (
-          <div
-            key={item.product}
-            className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2 "
-          >
+          <>
             <div
-              className="trash h-6 w-6 rounded-full text-center"
-              //   onClick={toggleDeleteVisibility}
-              onClick={() => setClick(!click)}
+              key={item.product}
+              className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2 "
             >
-              <ion-icon name="trash-outline"></ion-icon>
-            </div>
-            <img src={item.image} alt="" className="h-20 w-16" />
-            <p className="text-lg">
-              {item.name}
-              <span className="block text-xs text-gray-600">
-                Stock: {item.stock}
-              </span>
-              <span className="block text-xs text-gray-600">
-                Quantity: {item.quantity}
-              </span>
-              <span className="block text-xs text-gray-600">{item.price}</span>
-              <span className="block text-xs text-gray-600">
-                subtotal:{item.quantity * item.price}
-              </span>
-            </p>
-            <div className="flex space-x-1">
-              <button
-                className="bg-gray-400 h-8 w-8 text-white text-lg rounded-md"
-                onClick={() =>
-                  decreaseQuantity(item.product, item.quantity, item.stock)
-                }
+              <div
+                className="text-red-700  h-6 w-6 rounded-full text-center"
+                //   onClick={toggleDeleteVisibility}
+                onClick={() => setClick(!click)}
               >
-                -
-              </button>
-              <input
-                type="number"
-                value={item.quantity}
-                readOnly
-                className="border border-gray-900 h-8 w-14 text-gray-900 text-lg rounded-md p-1 text-center"
-              />
+                <ion-icon name="trash-outline"></ion-icon>
+              </div>
+              <img src={item.image} alt="" className="h-20 w-16" />
+              <p className="text-lg">
+                {item.name}
+                <span className="block text-xs text-gray-600">
+                  Stock: {item.stock}
+                </span>
+                <span className="block text-xs text-gray-600">
+                  Quantity: {item.quantity}
+                </span>
+                <span className="block text-xs text-gray-600">
+                  {item.price}
+                </span>
+                <span className="block text-xs text-gray-600">
+                  subtotal:{item.quantity * item.price}
+                </span>
+              </p>
+              <div className="flex space-x-1">
+                <button
+                  className="bg-gray-400 h-8 w-8 text-white text-lg rounded-md"
+                  onClick={() =>
+                    decreaseQuantity(item.product, item.quantity, item.stock)
+                  }
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  value={item.quantity}
+                  readOnly
+                  className="border border-gray-900 h-8 w-14 text-gray-900 text-lg rounded-md p-1 text-center"
+                />
 
-              <button
-                className="bg-gray-400 h-8 w-8 text-white text-lg rounded-md"
-                onClick={() =>
-                  increaseQuantity(item.product, item.quantity, item.stock)
-                }
-              >
-                +
-              </button>
+                <button
+                  className="bg-gray-400 h-8 w-8 text-white text-lg rounded-md"
+                  onClick={() =>
+                    increaseQuantity(item.product, item.quantity, item.stock)
+                  }
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
+            <div className={` ${click ? "hidden" : "block"} `}>
+              <DeleteConfirm click={click} setClick={setClick} item={item} />
+            </div>
+          </>
         ))}
 
       <button className="bg-gray-900 text-white  w-[95%] text-lg h-10 hover:opacity-90 rounded-md absolute bottom-1">
         Confirm Order
       </button>
-      <div className={` ${click ? "hidden" : "block"} `}>
-        <DeleteConfirm click={click} setClick={setClick} />
-      </div>
 
       {/* {isDeleteVisible && (
         <DeleteConfirm toggleDeleteVisibility={toggleDeleteVisibility} />

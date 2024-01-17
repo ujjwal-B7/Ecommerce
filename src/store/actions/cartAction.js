@@ -1,5 +1,8 @@
-import { ADD_TO_CART } from "../constants/cartConstants";
+import { ADD_TO_CART, REMOVE_CART_ITEM } from "../constants/cartConstants";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // add to cart
 export const addToCart = (id, quantity) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v1/products/${id}`);
@@ -14,5 +17,30 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
       quantity,
     },
   });
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem(
+    "addedCartItems",
+    JSON.stringify(getState().cart.cartItems)
+  );
+};
+
+// remove from cart
+export const removeCartItem = (id) => async (dispatch, getState) => {
+  dispatch({
+    type: REMOVE_CART_ITEM,
+    payload: id,
+  });
+  toast.success("Item removed from cart.", {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+  localStorage.setItem(
+    "addedCartItems",
+    JSON.stringify(getState().cart.cartItems)
+  );
 };
