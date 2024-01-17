@@ -29,6 +29,7 @@ const Navbar = () => {
   //   return () => document.removeEventListener("mousedown", handle);
   // });
   const { user, isAuthenticated } = useSelector((state) => state.user);
+  const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
 
   useEffect(() => {
     let handle = (e) => {
@@ -120,7 +121,7 @@ const Navbar = () => {
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
-                {cartItems.length}
+                {fetchedCartItems.length}
               </p>
             </li>
           </ul>
