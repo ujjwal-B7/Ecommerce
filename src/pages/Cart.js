@@ -21,9 +21,9 @@ const Cart = ({ showCart, setShowCart }) => {
     if (newQuantity <= 0) return;
     dispatch(addToCart(id, newQuantity));
   };
- 
-  const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
 
+  const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
+console.log(fetchedCartItems);
   return (
     <section className="text-gray-900 cart relative z-50 px-2 h-full">
       <p className="text-3xl font-semibold py-5 text-center">Cart</p>
