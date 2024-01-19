@@ -31,7 +31,7 @@ export const removeCartItem = (id) => async (dispatch, getState) => {
   });
   toast.success("Item removed from cart.", {
     position: "top-center",
-    autoClose: 3000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

@@ -11,7 +11,7 @@ const RegisterForm = ({
   setShowForm,
 }) => {
   const [showPassword, setShowPassword] = useState(true);
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState("./images/defaultpic.jpg");
   const [profilePreview, setProfilePreview] = useState("/Profile.png");
   // error
   const [errors, setErrors] = useState({
@@ -45,12 +45,12 @@ const RegisterForm = ({
       reader.onload = () => {
         //readystates=> 0:initial state,1:processing,2:done
         if (reader.readyState === 2) {
-          const profileUrl = reader.result || "../images/defaultpic.jpg";
+          const profileUrl = reader.result;
           setProfilePreview(profileUrl);
           setProfile(profileUrl);
         }
       };
-      reader.readAsDataURL(e.target.files[0] || "../images/defaultpic.jpg");
+      reader.readAsDataURL(e.target.files[0]);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
       setErrors({

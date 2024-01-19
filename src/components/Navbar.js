@@ -117,7 +117,7 @@ const Navbar = () => {
               </p>
             </li>
             <li className="relative">
-              <button onClick={() => setShowCart(!showCart)}>
+              <button className={`${fetchedCartItems.length>0 ?"text-red-400":"text-white" }`} onClick={() => setShowCart(!showCart)}>
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">

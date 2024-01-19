@@ -67,7 +67,7 @@ const SingleProductDetails = ({ match }) => {
     dispatch(addToCart(id, quantity));
     toast.success("Item Added to cart", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

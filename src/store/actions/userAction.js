@@ -42,7 +42,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     );
     toast.success("Logged in successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -67,7 +67,7 @@ export const registerUser = (user) => async (dispatch) => {
     const { data } = await axios.post(`/api/v1/registerUser`, user, config);
     toast.success("User Registered successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -101,7 +101,7 @@ export const logOut = () => async (dispatch) => {
     await axios.post(`/api/v1/logoutUser`);
     toast.success("Logout successfull", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -123,7 +123,7 @@ export const updateProfile = (user) => async (dispatch) => {
     const { data } = await axios.put(`/api/v1/updateProfile`, user, config);
     toast.success("User updated successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -153,7 +153,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
     );
     toast.success("Password updated successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -165,7 +165,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
   } catch (error) {
     toast.error(error.response.data.error, {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -188,7 +188,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     const { data } = await axios.post(`/api/v1/forgotPassword`, email, config);
     toast.success(data.message, {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -217,7 +217,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
     );
     toast.success("New Password created successfully", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -229,7 +229,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
   } catch (error) {
     toast.error(error.response.data.error, {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

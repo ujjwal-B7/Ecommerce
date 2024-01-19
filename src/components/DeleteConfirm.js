@@ -9,6 +9,7 @@ const DeleteConfirm = ({
   setIsDeleteVisible,
   click,
   setClick,
+  itemID,
   item,
 }) => {
   const dispatch = useDispatch();
@@ -24,12 +25,13 @@ const DeleteConfirm = ({
   return (
     <div className="w-full h-screen absolute top-0  bg-black/20">
       <div
+        key={itemID}
         className={`del w-96 h-44 absolute bg-white shadow-lg text-center text-sm rounded-md pt-5  
     ${click ? "hidden" : "block"}
     `}
       >
         <ion-icon name="alert-circle-outline" size="large"></ion-icon>
-        <p className="mb-5 text-lg">Remove item from cart?</p>
+        <p className="mb-5 text-lg">Remove {item.name} from cart?</p>
         <button
           className="bg-text h-10 w-24 rounded-md mx-2 hover:shadow-md"
           // onClick={toggleDeleteVisibility}
@@ -38,8 +40,9 @@ const DeleteConfirm = ({
           Cancel
         </button>
         <button
+          key={itemID}
           className="bg-[#D11A2A] h-10 w-24 rounded-md mx-2 text-white hover:shadow-md"
-          onClick={()=>deleteCartItemHandler(item.product)}
+          onClick={() => deleteCartItemHandler(itemID)}
         >
           Delete
         </button>
