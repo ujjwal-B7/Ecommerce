@@ -26,6 +26,7 @@ import ConfirmOrder from "./pages/ConfirmOrder";
 import Payment from "./pages/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import MyOrders from "./pages/MyOrders";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,7 +85,16 @@ function App() {
 
             <Route exact path="/shippingInfo" element={<ShippingInfo />} />
             <Route exact path="/confirmOrder" element={<ConfirmOrder />} />
-            <Route exact path="/orderPayment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>} />
+            <Route exact path="/success" element={<MyOrders />} />
+            <Route
+              exact
+              path="/orderPayment"
+              element={
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              }
+            />
           </>
         )}
         <Route exact path="/forgotPassword" element={<ForgotPassword />} />

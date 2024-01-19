@@ -22,6 +22,7 @@ const Payment = () => {
   const payBtn = useRef(null);
   const navigate = useNavigate();
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  console.log(orderInfo);
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useSelector((state) => state.user);
@@ -72,11 +73,24 @@ const Payment = () => {
         });
       } else {
         if (result.paymentIntent.status === "succeeded") {
+          toast.success(
+            `${orderInfo && orderInfo.totalPrice} successfully paid.Thankyou.`,
+            {
+              position: "top-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            }
+          );
           navigate("/success");
         } else {
           toast.error("Payment processing issue", {
             position: "top-center",
-            autoClose: 1000,
+            autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -90,7 +104,7 @@ const Payment = () => {
       payBtn.current.disabled = false;
       toast.error(error.response.data.message, {
         position: "top-center",
-        autoClose: 1000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -114,9 +128,10 @@ const Payment = () => {
           onSubmit={(e) => submitHandler(e)}
         >
           <label htmlFor="">Card Info</label>
-          <div >
+          <div className="flex items-center px-2 border border-gray-900 rounded-lg h-10">
             <CreditCardIcon />
-            <CardNumberElement className="flex items-center px-2 border border-gray-900 text-gray-900 rounded-lg h-10" />
+            {/* 4242 4242 4242 4242 */}
+            <CardNumberElement className=" bg-transparent  text-gray-900 text-sm focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5" />
           </div>
           <div className="flex items-center px-2 border border-gray-900 rounded-lg h-10">
             <EventIcon />
