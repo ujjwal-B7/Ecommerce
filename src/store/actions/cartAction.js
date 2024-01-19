@@ -1,4 +1,8 @@
-import { ADD_TO_CART, REMOVE_CART_ITEM } from "../constants/cartConstants";
+import {
+  ADD_TO_CART,
+  SHIPPING_INFO,
+  REMOVE_CART_ITEM,
+} from "../constants/cartConstants";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,4 +47,13 @@ export const removeCartItem = (id) => async (dispatch, getState) => {
     "addedCartItems",
     JSON.stringify(getState().cart.cartItems)
   );
+};
+
+// confirm order
+export const checkOutOrder = (data) => async (dispatch) => {
+  dispatch({
+    type: SHIPPING_INFO,
+    payload: data,
+  });
+  localStorage.setItem("shippingInfo", JSON.stringify(data));
 };

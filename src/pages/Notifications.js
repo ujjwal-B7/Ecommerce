@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-
 const Notifications = ({ notifications, setNotifications }) => {
   const [click, setClick] = useState(true);
 

@@ -1,26 +1,54 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeleteConfirm from "../components/DeleteConfirm";
 import { addToCart } from "../store/actions/cartAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Cart = ({ showCart, setShowCart }) => {
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isDeleteVisible, setIsDeleteVisible] = useState(false);
   const [click, setClick] = useState(true);
   const toggleDeleteVisibility = () => {
     setIsDeleteVisible(!isDeleteVisible);
   };
+  const { isAuthenticated } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
+  // increase quantity
   const increaseQuantity = (id, quantity, stock) => {
     const newQuantity = quantity + 1;
     if (stock <= quantity) return;
     dispatch(addToCart(id, newQuantity));
   };
+  // decrease quantity
   const decreaseQuantity = (id, quantity, stock) => {
     const newQuantity = quantity - 1;
     if (newQuantity <= 0) return;
     dispatch(addToCart(id, newQuantity));
+  };
+
+  // confirm order
+  const checkOutHandler = () => {
+    {
+      !isAuthenticated &&
+        toast.error("Please login first to place order.", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+    }
+    {
+      isAuthenticated && navigate("/shippingInfo");
+    }
+    setShowCart(!showCart);
   };
   return (
     <section className="text-gray-900 cart relative z-50 px-2 h-full">
@@ -125,8 +153,11 @@ const Cart = ({ showCart, setShowCart }) => {
                 )}
             </p>
 
-            <button className="bg-gray-900 text-white w-full text-lg h-10 hover:opacity-90 rounded-md mb-2">
-              Confirm Order
+            <button
+              className="bg-gray-900 text-white w-full text-lg h-10 hover:opacity-90 rounded-md mb-2"
+              onClick={checkOutHandler}
+            >
+              Check Out
             </button>
           </div>
         </>
