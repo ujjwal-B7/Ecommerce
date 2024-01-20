@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,6 +19,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Payment = () => {
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
   const fetchedShippingInfo = JSON.parse(localStorage.getItem("shippingInfo"));
+  const [showPaymentLoader, setShowPaymentLoader] = useState(true);
+
   const payBtn = useRef(null);
   const navigate = useNavigate();
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -34,6 +36,7 @@ const Payment = () => {
   //   submit payment
   const submitHandler = async (e) => {
     e.preventDefault();
+    setShowPaymentLoader(!showPaymentLoader);
     payBtn.current.disabled = true;
     try {
       const config = {
@@ -86,6 +89,7 @@ const Payment = () => {
               theme: "light",
             }
           );
+          setShowPaymentLoader(!showPaymentLoader);
           navigate("/success");
         } else {
           toast.error("Payment processing issue", {
@@ -114,12 +118,24 @@ const Payment = () => {
       });
     }
   };
+
   return (
     <>
       <div
-        className="w-full h-32 bg-[url('./images/store.jpg')] bg-cover"
-        data-aos="zoom-in"
-      ></div>
+        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60   flex justify-center items-center z-50
+${showPaymentLoader ? "hidden" : "block"}
+      `}
+      >
+        <div class="payment-loader space-y-5 pt-5 bg-white rounded-xl">
+          <div class="pad">
+            <div class="chip"></div>
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+          </div>
+          <p className="text-lg text-center">Payment processing...</p>
+        </div>
+      </div>
+      <div className="w-full h-32 bg-[url('./images/store.jpg')] bg-cover"></div>
       <CheckoutSteps activeStep={2} />
       <div className="flex justify-center min-h-screen">
         <form

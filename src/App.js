@@ -33,9 +33,11 @@ function App() {
   const openQuickView = () => {
     document.body.style.overflow = "hidden";
   };
+
   const closeQuickView = () => {
     document.body.style.overflow = "auto";
   };
+
   const { isAuthenticated } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
 
@@ -46,7 +48,7 @@ function App() {
   }
   useEffect(() => {
     store.dispatch(loadUser());
-    getStripeApiKey();
+    isAuthenticated && getStripeApiKey();
   }, []);
 
   return (
