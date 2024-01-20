@@ -16,6 +16,8 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { clearErrors } from "../store/actions/orderAction";
+import { createOrder } from "../store/actions/orderAction";
 const Payment = () => {
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
   const fetchedShippingInfo = JSON.parse(localStorage.getItem("shippingInfo"));
@@ -23,16 +25,27 @@ const Payment = () => {
 
   const payBtn = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   console.log(orderInfo);
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
     amount: orderInfo.totalPrice * 100,
   };
-
+  console.log(fetchedShippingInfo);
+  // order object
+  const order = {
+    shippingInfo: fetchedShippingInfo,
+    orderItems: fetchedCartItems,
+    itemsPrice: orderInfo.subtotal,
+    shippingPrice: orderInfo.shippingCharges,
+    totalPrice: orderInfo.totalPrice,
+  };
+  console.log("this", order);
   //   submit payment
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -76,19 +89,12 @@ const Payment = () => {
         });
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          toast.success(
-            `${orderInfo && orderInfo.totalPrice} successfully paid.Thankyou.`,
-            {
-              position: "top-center",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            }
-          );
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch(createOrder(order));
+
           setShowPaymentLoader(!showPaymentLoader);
           navigate("/success");
         } else {
@@ -119,6 +125,9 @@ const Payment = () => {
     }
   };
 
+  useEffect(() => {
+    error && dispatch(clearErrors());
+  }, [dispatch, error]);
   return (
     <>
       <div
@@ -140,10 +149,12 @@ ${showPaymentLoader ? "hidden" : "block"}
       <div className="flex justify-center min-h-screen">
         <form
           action=""
-          className="w-[30%] space-y-10"
+          className="w-[30%] space-y-10 text-center mt-5"
           onSubmit={(e) => submitHandler(e)}
         >
-          <label htmlFor="">Card Info</label>
+          <label htmlFor="" className="text-xl font-semibold">
+            Card Info
+          </label>
           <div className="flex items-center px-2 border border-gray-900 rounded-lg h-10">
             <CreditCardIcon />
             {/* 4242 4242 4242 4242 */}

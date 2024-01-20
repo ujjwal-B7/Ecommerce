@@ -48,7 +48,7 @@ function App() {
   }
   useEffect(() => {
     store.dispatch(loadUser());
-    isAuthenticated && getStripeApiKey();
+    getStripeApiKey();
   }, []);
 
   return (

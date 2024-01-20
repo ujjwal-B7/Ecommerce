@@ -15,6 +15,7 @@ import {
   forgotPasswordReducer,
 } from "../reducers/userReducers";
 import { cartReducer } from "../reducers/cartReducers";
+import { newOrderReducer } from "../reducers/orderReducers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // reducer for all
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   updateProfile: updateProfileReducer,
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
+  newOrder: newOrderReducer,
 });
 
 let initialState = {

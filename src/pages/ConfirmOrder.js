@@ -21,11 +21,11 @@ const ConfirmOrder = () => {
   //   additional info
   const shippingCharges = subtotal > 1000 ? 100 : 200;
   const totalPrice = subtotal + shippingCharges;
-  const address = `${fetchedShippingInfo.address}, ${fetchedShippingInfo.city}, ${fetchedShippingInfo.state}`;
-
+  const address = `${fetchedShippingInfo.address}, ${fetchedShippingInfo.city}, ${fetchedShippingInfo.state}, ${fetchedShippingInfo.phoneNo}`;
   //   payment handler
   const proceedToPayment = (e) => {
     const data = {
+      address,
       subtotal,
       shippingCharges,
       totalPrice,

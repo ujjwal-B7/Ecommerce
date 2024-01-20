@@ -7,6 +7,7 @@ import { checkOutOrder } from "../store/actions/cartAction";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useNavigate } from "react-router-dom";
 const ShippingInfo = () => {
+  const fetchedShippingInfo = JSON.parse(localStorage.getItem("shippingInfo"));
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { shippingInfo } = useSelector((state) => state.cart);
@@ -98,7 +99,7 @@ const ShippingInfo = () => {
                 htmlFor=""
                 className="block mb-2 text-md font-semibold text-gray-900"
               >
-                State
+                Province
               </label>
               <input
                 type="text"
