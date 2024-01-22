@@ -15,7 +15,11 @@ import {
   forgotPasswordReducer,
 } from "../reducers/userReducers";
 import { cartReducer } from "../reducers/cartReducers";
-import { newOrderReducer } from "../reducers/orderReducers";
+import {
+  newOrderReducer,
+  myOrdersReducer,
+  orderDetailsReducer,
+} from "../reducers/orderReducers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // reducer for all
@@ -27,6 +31,8 @@ const reducer = combineReducers({
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
   newOrder: newOrderReducer,
+  myOrder: myOrdersReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 let initialState = {

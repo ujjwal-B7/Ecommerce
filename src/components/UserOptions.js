@@ -23,7 +23,7 @@ const UserOptions = ({ user }) => {
   }
   function Orders() {
     setOptions(!options);
-    navigate("/orders");
+    navigate("/myOrders");
   }
   function Dashboard() {
     setOptions(!options);

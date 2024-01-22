@@ -96,7 +96,7 @@ const Payment = () => {
           dispatch(createOrder(order));
 
           setShowPaymentLoader(!showPaymentLoader);
-          navigate("/success");
+          navigate("/myOrders");
         } else {
           toast.error("Payment processing issue", {
             position: "top-center",
