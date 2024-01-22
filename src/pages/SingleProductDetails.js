@@ -3,6 +3,7 @@ import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
+  createProductReview,
   getSingleProductDetails,
 } from "../store/actions/productAction";
 import ReactStars from "react-rating-stars-component";
@@ -12,10 +13,15 @@ import Loader from "../components/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addToCart } from "../store/actions/cartAction";
+import { Rating } from "@material-ui/lab";
+import { PRODUCT_REVIEW_RESET } from "../store/constants/productConstants";
 const SingleProductDetails = ({ match }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [showReviewBox, setShowReviewBox] = useState(true);
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
   const { loading, product, error } = useSelector(
     (state) => state.productDetails
   );
@@ -33,6 +39,20 @@ const SingleProductDetails = ({ match }) => {
       });
       dispatch(clearErrors());
     }
+    if (reviewError) {
+      toast.error(reviewError, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      dispatch(clearErrors());
+    }
+    dispatch({ type: PRODUCT_REVIEW_RESET });
     dispatch(getSingleProductDetails(id));
   }, [dispatch, id, error]);
 
@@ -89,9 +109,61 @@ const SingleProductDetails = ({ match }) => {
       theme: "light",
     });
   };
+
+  const { success, error: reviewError } = useSelector(
+    (state) => state.productReview
+  );
+  // review handler
+  const submitReview = (e) => {
+    const myform = new FormData();
+    myform.set("rating", rating);
+    myform.set("comment", comment);
+    myform.set("productId", id);
+    dispatch(createProductReview(myform));
+    setShowReviewBox(!showReviewBox);
+  };
   return (
     <>
       <Loader loading={loading} />
+      <div
+        className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60   flex justify-center items-center z-50
+        ${showReviewBox ? "hidden" : "block"}
+      `}
+      >
+        <div className="w-96 h-72 bg-white rounded-xl p-2">
+          <h1 className="text-center font-semibold pb-4">Submit Review</h1>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className="rounded-lg p-2 border-gray-400"
+            placeholder="Submit your review"
+            name=""
+            id=""
+            cols="42"
+            rows="6"
+          ></textarea>
+          <Rating
+            onChange={(e) => setRating(e.target.value)}
+            value={rating}
+            size="small"
+          />
+          <div className="text-end space-x-4">
+            <button
+              className="text-green-600"
+              onClick={() => setShowReviewBox(!showReviewBox)}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="magenta text-white rounded-lg px-4 py-1"
+              onClick={submitReview}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
       <div
         className="w-full h-32 bg-[url('./images/store.jpg')] bg-cover"
         data-aos="zoom-in"
@@ -184,7 +256,10 @@ const SingleProductDetails = ({ match }) => {
             <p className="font-light tracking-tight text-lg pt-2 pb-10">
               Description: {product.description}
             </p>
-            <button className="bg-gray-400 hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white">
+            <button
+              className="bg-gray-400 hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+              onClick={() => setShowReviewBox(!showReviewBox)}
+            >
               Submit Review
             </button>
           </div>

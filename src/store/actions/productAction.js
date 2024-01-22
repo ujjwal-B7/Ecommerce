@@ -6,9 +6,13 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  PRODUCT_REVIEW_REQUEST,
+  PRODUCT_REVIEW_SUCCESS,
+  PRODUCT_REVIEW_FAIL,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // get product
 export const getProduct =
   (
@@ -50,6 +54,34 @@ export const getSingleProductDetails = (_id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// create product review
+export const createProductReview = (review) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_REVIEW_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+    const { data } = await axios.put("/api/v1/products/review", review, config);
+    toast.success("Review submitted.", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: PRODUCT_REVIEW_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_REVIEW_FAIL,
       payload: error.response.data.message,
     });
   }
