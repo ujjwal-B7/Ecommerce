@@ -1,7 +1,9 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 import sharbani from "../images/sharbani.jpg";
+import { useSelector } from "react-redux";
 const ReviewCard = ({ review }) => {
+  const { user } = useSelector((state) => state.user);
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -15,7 +17,11 @@ const ReviewCard = ({ review }) => {
       <div className="flex gap-5 pt-5">
         <div className="h-20 w-20 rounded-full bg-gray-400">
           <img
-            src={sharbani}
+            src={
+              user && user.profile.url
+                ? user.profile.url
+                : "./images/defaultpic.jpg"
+            }
             className="h-20 w-20 rounded-full object-cover"
             alt=""
           />
