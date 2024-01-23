@@ -75,7 +75,7 @@ const ConfirmOrder = () => {
                     {/* <b>subtotal:</b> */}
                     <span className="pl-2">
                       {item.quantity} X {item.price}={" "}
-                      <b>Rs-{item.price * item.quantity}</b>
+                      <b>Rs.{item.price * item.quantity}</b>
                     </span>
                   </div>
                 </div>
@@ -88,15 +88,15 @@ const ConfirmOrder = () => {
           </p>
           <div className="flex justify-between">
             <b>Subtotal:</b>
-            <span>RS-{subtotal}</span>
+            <span>Rs.{subtotal}</span>
           </div>
           <div className="flex justify-between">
             <b>Shipping Charges:</b>
-            <span>RS-{shippingCharges}</span>
+            <span>Rs.{shippingCharges}</span>
           </div>
           <div className="flex justify-between">
             <b>Total:</b>
-            <span>RS-{totalPrice}</span>
+            <span>Rs.{totalPrice}</span>
           </div>
           <button
             onClick={proceedToPayment}

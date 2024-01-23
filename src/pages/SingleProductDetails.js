@@ -25,6 +25,7 @@ const SingleProductDetails = ({ match }) => {
   const { loading, product, error } = useSelector(
     (state) => state.productDetails
   );
+  const { orders } = useSelector((state) => state.myOrder);
   useEffect(() => {
     if (error) {
       toast.error(error, {
@@ -256,12 +257,23 @@ const SingleProductDetails = ({ match }) => {
             <p className="font-light tracking-tight text-lg pt-2 pb-10">
               Description: {product.description}
             </p>
-            <button
-              className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
-              onClick={() => setShowReviewBox(!showReviewBox)}
-            >
-              Submit Review
-            </button>
+            {orders &&
+              orders.map((order) => (
+                <div>
+                  {order.orderItems.map((item) =>
+                    item.name === product.name ? (
+                      <button
+                        className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+                        onClick={() => setShowReviewBox(!showReviewBox)}
+                      >
+                        Submit Review
+                      </button>
+                    ) : (
+                      ""
+                    )
+                  )}
+                </div>
+              ))}
           </div>
         </div>
       </div>

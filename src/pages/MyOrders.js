@@ -50,7 +50,7 @@ const MyOrders = () => {
         orientation: "portrait",
       },
     };
-    html2pdf().from(itemsPdf).save();
+    html2pdf().from(itemsPdf).set(pdfOptions).save();
   };
   return (
     <>
