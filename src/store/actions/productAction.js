@@ -66,7 +66,7 @@ export const createProductReview = (review) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.put("/api/v1/products/review", review, config);
     toast.success("Review submitted.", {
-      position: "top-right",
+      position: "top-center",
       autoClose: 1500,
       hideProgressBar: false,
       closeOnClick: true,

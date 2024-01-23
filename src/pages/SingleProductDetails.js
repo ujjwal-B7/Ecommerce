@@ -257,7 +257,7 @@ const SingleProductDetails = ({ match }) => {
               Description: {product.description}
             </p>
             <button
-              className="bg-gray-400 hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+              className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
               onClick={() => setShowReviewBox(!showReviewBox)}
             >
               Submit Review
@@ -267,7 +267,7 @@ const SingleProductDetails = ({ match }) => {
       </div>
 
       {/* review section */}
-      <div className="lg:w-[calc(100%-18rem)] w-[95%] min-h-[30rem] mx-auto shadow my-10 px-2">
+      <div className="lg:w-[calc(100%-16rem)] w-[95%] min-h-[30rem] mx-auto shadow my-10 px-2">
         <h2 className="text-4xl font-bold text-center py-3">REVIEWS</h2>
         <div className="w-[70%] mx-auto">
           <hr className=" border-gray-400" />

@@ -95,12 +95,17 @@ const Navbar = () => {
               <button onClick={() => setNotifications(!notifications)}>
                 <ion-icon name="notifications"></ion-icon>
               </button>
-              <p className="text-xs h-6 w-6 bg-white p-1 text-gray-900 rounded-full absolute bottom-5 left-6 font-semibold">
+              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
                 10
               </p>
             </li>
             <li className="relative">
-              <button className={`${fetchedCartItems.length>0 ?"text-red-400":"text-white" }`} onClick={() => setShowCart(!showCart)}>
+              <button
+                className={`cartIcon ${
+                  fetchedCartItems.length > 0 ? "text-slate-200" : "text-white"
+                }`}
+                onClick={() => setShowCart(!showCart)}
+              >
                 <ion-icon name="cart" size="large"></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
