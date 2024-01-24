@@ -58,12 +58,16 @@ const SingleProductDetails = ({ match }) => {
   }, [dispatch, id, error]);
 
   const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
+    // edit: false,
+    // color: "rgba(20,20,20,0.1)",
+    // activeColor: "tomato",
+    // size: window.innerWidth < 600 ? 20 : 25,
+    // value: product.ratings,
+    // isHalf: true,
+    size: "small",
     value: product.ratings,
-    isHalf: true,
+    redaOnly: true,
+    prescision: 0.5,
   };
 
   // increase quantity
@@ -111,9 +115,7 @@ const SingleProductDetails = ({ match }) => {
     });
   };
 
-  const { success, error: reviewError } = useSelector(
-    (state) => state.productReview
-  );
+  const { error: reviewError } = useSelector((state) => state.productReview);
   // review handler
   const submitReview = (e) => {
     const myform = new FormData();
@@ -194,7 +196,7 @@ const SingleProductDetails = ({ match }) => {
           >
             <h1 className="text-4xl text-gray-900 font-bold">{product.name}</h1>
             <div className="lg:flex items-center gap-5">
-              <ReactStars {...options} value={product.ratings} />
+              <Rating style={{ color: "tomato" }} {...options} />
               <span className="cursor-pointer text-gray-400">
                 [ {product.numOfReviews} Reviews ]
               </span>

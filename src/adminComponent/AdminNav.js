@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogOut from "../auth/LogOut";
 
 const AdminNav = () => {
   return (
@@ -10,10 +9,9 @@ const AdminNav = () => {
           className="text-3xl font-bold text-white pl-3"
           data-aos="fade-right"
         >
-          <Link to="/admin">SLASH</Link>
+          <Link to="/admin/dashboard">SLASH</Link>
         </h1>
         <div className="">
-          <LogOut />
         </div>
       </section>
     </nav>

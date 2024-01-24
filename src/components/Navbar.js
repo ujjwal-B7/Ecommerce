@@ -54,7 +54,7 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", handleScroll);
 
-  if (pathname === "/admin")
+  if (pathname === "/admin/dashboard")
     // for component handling
     return null;
   if (pathname === "/admin/notification") return null;

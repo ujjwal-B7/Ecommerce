@@ -9,6 +9,7 @@ import ScrollToTop from "react-scroll-to-top";
 import { getProduct } from "../store/actions/productAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 const Home = ({ openQuickView, closeQuickView }) => {
   const [click, setClick] = useState(true);
 
@@ -70,9 +71,11 @@ const Home = ({ openQuickView, closeQuickView }) => {
             <p className="sm:text-6xl text-4xl font-semibold w-[70%] pb-4">
               Stay productive and get more work done!
             </p>
-            <button className="shop sm:h-12 h-8 w-52 border-white border text-white rounded-md">
-              Shop More
-            </button>
+            <Link to="/store">
+              <button className="shop sm:h-12 h-8 w-52 border-white border text-white rounded-md">
+                Shop More
+              </button>
+            </Link>
           </div>
         </div>
       </div>

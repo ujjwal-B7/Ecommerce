@@ -24,7 +24,7 @@ import Payment from "./pages/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import MyOrders from "./pages/MyOrders";
-
+import Dashboard from "./pagesAdmin/Dashboard";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -94,15 +94,18 @@ function App() {
                 </Elements>
               }
             />
+
+            {/* admin routes */}
+            <Route exact path="/admin/dashboard" element={<Dashboard />} />
           </>
         )}
         <Route exact path="/forgotPassword" element={<ForgotPassword />} />
         <Route exact path="/resetPassword/:token" element={<ResetPassword />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route path="*" element={<Page404 />} />
+        {/* <Route path="*" element={<Page404 />} /> */}
       </Routes>
-      <AdminLayout />
+      {/* <AdminLayout /> */}
       <Footer />
     </div>
   );

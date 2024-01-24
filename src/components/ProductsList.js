@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../store/actions/productAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Rating } from "@material-ui/lab";
 import QuicView from "./QuicView";
 const ProductsList = ({
   click,
@@ -21,11 +21,14 @@ const ProductsList = ({
   ratings,
 }) => {
   const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
-    isHalf: true,
+    // edit: false,
+    // color: "rgba(20,20,20,0.1)",
+    // activeColor: "tomato",
+    // size: window.innerWidth < 600 ? 20 : 25,
+    // isHalf: true,
+    size: "small",
+    redaOnly: true,
+    prescision: 0.5,
   };
   const dispatch = useDispatch();
   const [passProductDetails, setPassProductDetails] = useState(null);
@@ -110,7 +113,11 @@ const ProductsList = ({
                   </p>
                 </Link>
                 <div className="lg:flex items-center gap-5">
-                  <ReactStars {...options} value={product.ratings} />
+                  <Rating
+                    style={{ color: "tomato" }}
+                    {...options}
+                    value={product.ratings}
+                  />
                   <span className="cursor-pointer">
                     [ {product.numOfReviews} Reviews ]
                   </span>
