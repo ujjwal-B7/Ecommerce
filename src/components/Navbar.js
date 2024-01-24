@@ -93,10 +93,10 @@ const Navbar = () => {
             </li>
             <li className="notification relative">
               <button onClick={() => setNotifications(!notifications)}>
-                <ion-icon name="notifications"></ion-icon>
+                <ion-icon name="notifications" ></ion-icon>
               </button>
               <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
-                10
+                0
               </p>
             </li>
             <li className="relative">
@@ -106,7 +106,7 @@ const Navbar = () => {
                 }`}
                 onClick={() => setShowCart(!showCart)}
               >
-                <ion-icon name="cart" size="large"></ion-icon>
+                <ion-icon name="cart" ></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
                 {fetchedCartItems.length}

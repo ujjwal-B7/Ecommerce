@@ -9,12 +9,28 @@ const UserOptions = ({ user }) => {
   const dispatch = useDispatch();
   // profile options
   const optionsArray = [
-    { function: Profile, option: "Profile" },
-    { function: Orders, option: "Orders" },
-    { function: Logout, option: "Logout" },
+    {
+      function: Profile,
+      logo: <ion-icon name="person-circle-outline"></ion-icon>,
+      option: "Profile",
+    },
+    {
+      function: Orders,
+      logo: <ion-icon name="gift-outline"></ion-icon>,
+      option: "Orders",
+    },
+    {
+      function: Logout,
+      logo: <ion-icon name="log-out-outline"></ion-icon>,
+      option: "Logout",
+    },
   ];
   if (user.role === "admin") {
-    optionsArray.unshift({ function: Dashboard, option: "Dashboard" });
+    optionsArray.unshift({
+      function: Dashboard,
+      logo: <ion-icon name="grid-outline"></ion-icon>,
+      option: "Dashboard",
+    });
   }
 
   function Profile() {
@@ -50,17 +66,19 @@ const UserOptions = ({ user }) => {
         </span>
       </div>
       <div
-        className={`bg-white w-32 rounded-xl shadow-lg text-center absolute right-28 top-16
+        className={`bg-white w-32 rounded-lg shadow-lg absolute right-36 top-16
         ${options ? "hidden" : "block"}`}
       >
         {optionsArray.map((option) => (
-          <p
-            key={option.option}
-            className="cursor-pointer hover:bg-slate-200"
+          <div
+            className="dropdown space-x-4 p-2 hover:bg-slate-200 rounded-lg"
             onClick={option.function}
           >
-            {option.option}
-          </p>
+            <span className="">{option.logo}</span>
+            <span key={option.option} className="cursor-pointer">
+              {option.option}
+            </span>
+          </div>
         ))}
       </div>
     </>
