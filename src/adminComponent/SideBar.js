@@ -33,7 +33,7 @@ const SideBar = () => {
         class="fixed col-start-1 col-end-3 mt-20 z-40 w-64 h-screen  transition-transform -translate-x-full lg:translate-x-0 "
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 py-4  overflow-y-auto bg-gray-900/95 flex justify-center ">
+        <div class="h-full px-3 py-4  overflow-y-auto bg-[#121212] flex justify-center">
           <ul class="space-y-2 font-medium">
             <li
               className={
@@ -84,13 +84,13 @@ const SideBar = () => {
             </li>
             <li
               className={
-                location.pathname === "/admin/Products"
+                location.pathname === "/admin/products"
                   ? "bg-gray-700 rounded-lg"
                   : ""
               }
             >
               <Link
-                to="/admin/Products"
+                to="/admin/products"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
               >
                 <svg
@@ -151,7 +151,7 @@ const SideBar = () => {
                 <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
               </Link>
             </li>
-            <li
+            {/* <li
               className={
                 location.pathname === "/admin/reviews"
                   ? "bg-gray-700 rounded-lg"
@@ -173,7 +173,7 @@ const SideBar = () => {
                 </svg>
                 <span class="flex-1 ml-3 whitespace-nowrap">Reviews</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </aside>

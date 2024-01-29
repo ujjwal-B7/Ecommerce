@@ -23,7 +23,7 @@ const DeleteConfirm = ({
     setClick(!click);
   };
   return (
-    <div className="w-full h-screen absolute top-0  bg-black/20">
+    <div className="w-full h-screen absolute z-10 top-0  bg-black/20">
       <div
         key={itemID}
         className={`del w-96 h-44 absolute bg-white shadow-lg text-center text-sm rounded-md pt-5  

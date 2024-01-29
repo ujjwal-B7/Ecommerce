@@ -54,7 +54,7 @@ const ProductsList = ({
         {products &&
           products.slice(0, limit).map((product) => (
             <>
-              <div
+              {/* <div
                 className={` ${click ? "hidden" : "block"} 
           `}
               >
@@ -63,7 +63,7 @@ const ProductsList = ({
                   setClick={setClick}
                   closeQuickView={closeQuickView}
                 />
-              </div>
+              </div> */}
               <div
                 // to={`/product/${product.id}`}
                 className="h-80 lg:w-[90%] sm:w-80 w-40"

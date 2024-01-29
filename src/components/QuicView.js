@@ -45,9 +45,9 @@ const QuicView = ({ click, setClick, closeQuickView }) => {
                 <img src="./images/card4.svg" alt="" className="h-10" />
               </div>
             </div>
-            <button className="bg-gray-900 hover:opacity-90 text-white w-full h-10 rounded-md mt-2">
+            {/* <button className="bg-gray-900 hover:opacity-90 text-white w-full h-10 rounded-md mt-2">
               Add to Cart
-            </button>
+            </button> */}
           </section>
         </div>
       </div>

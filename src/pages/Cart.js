@@ -51,7 +51,7 @@ const Cart = ({ showCart, setShowCart }) => {
     setShowCart(!showCart);
   };
   return (
-    <section className="text-gray-900 cart relative z-50 px-2 h-full">
+    <section className="text-gray-900 cart relative z-50 h-full">
       <p className="text-3xl font-semibold py-5 text-center">Cart</p>
       <div
         className="absolute lg:hidden top-5 right-4  text-center text-3xl"
@@ -71,7 +71,7 @@ const Cart = ({ showCart, setShowCart }) => {
                 <>
                   <div
                     key={item.product}
-                    className="bg-text  w-full h-24 mx-auto rounded-md flex justify-around items-center mb-2 "
+                    className="bg-text  w-[95%] h-24 mx-auto rounded-md flex justify-around items-center mb-2"
                   >
                     <div
                       key={item.product}

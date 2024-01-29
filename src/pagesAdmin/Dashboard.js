@@ -40,18 +40,17 @@ const Dashboard = () => {
     labels: ["Out of Stock", "InStock"],
     datasets: [
       {
-        backgroundColor: ["red", "#6800B4"],
+        backgroundColor: ["#880808", " #4D286D"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
         data: [2, 10],
       },
     ],
   };
+
   return (
     <>
-      <div className="grid grid-cols-12">
-        <AdminNav />
-        <SideBar />
-        <div className="col-start-3 col-end-13 mt-24 w-[95%] rounded-lg m-10 text-gray-900">
+      {/* <div className="grid grid-cols-12"> */}
+        <div className="col-start-3 col-end-13 mt-20 w-full p-10 text-gray-900 bg-slate-200">
           <div className=" text-center">
             <h1 className="font-semibold">Dashboard</h1>
             <span className="font-semibold">Total Amount:</span>
@@ -83,7 +82,6 @@ const Dashboard = () => {
             >
               <Doughnut data={doughnutState} />
               <Doughnut data={doughnutState} />
-              <Doughnut data={doughnutState} />
             </div>
             <div className="pt-20">
               <Line
@@ -93,7 +91,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 };

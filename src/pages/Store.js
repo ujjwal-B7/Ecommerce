@@ -64,11 +64,11 @@ const Store = ({ openQuickView, closeQuickView }) => {
         />
       </div>
       <div
-        className="w-full lg:h-[33vh] h-[30vh] bg-[url('./images/store.jpg')] bg-cover mb-2"
+        className="w-full lg:h-[33vh] md:h-[30vh] h-[20vh] bg-[url('./images/store.jpg')] bg-cover mb-2"
         data-aos="zoom-in"
       >
-        <div className="w-full lg:h-[33vh] h-[30vh] bg-black bg-opacity-40 pt-20">
-          <p className="text-white text-5xl font-semibold text-center py-10">
+        <div className="w-full lg:h-[33vh] md:h-[30vh] h-[20vh] bg-black bg-opacity-40 pt-20">
+          <p className="text-white text-5xl font-semibold text-center md:py-10 py-5">
             SHOP
             <span className="block text-sm mx-auto w-[80%]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
@@ -98,7 +98,7 @@ const Store = ({ openQuickView, closeQuickView }) => {
             />
           </div> */}
           </div>
-          <div className="storeIcons flex justify-around lg:w-[45%] w-full md:gap-0 gap-7">
+          <div className="storeIcons flex justify-around lg:w-[45%] w-full md:gap-0">
             <div className="w-28">
               <div className="flex items-center gap-1">
                 <ion-icon name="pricetags"></ion-icon>

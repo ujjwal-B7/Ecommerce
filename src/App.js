@@ -25,6 +25,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import MyOrders from "./pages/MyOrders";
 import Dashboard from "./pagesAdmin/Dashboard";
+import Products from "./pagesAdmin/Products";
+import SideBar from "./adminComponent/SideBar";
+import AdminNav from "./adminComponent/AdminNav";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -35,7 +38,7 @@ function App() {
     document.body.style.overflow = "auto";
   };
 
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   // fetching stripe api key
@@ -94,9 +97,13 @@ function App() {
                 </Elements>
               }
             />
-
             {/* admin routes */}
-            <Route exact path="/admin/dashboard" element={<Dashboard />} />
+            {/* {user && user.role === "admin" && (
+              <>
+                <Route exact path="/admin/dashboard" element={<Dashboard />} />
+                <Route exact path="/admin/products" element={<Products />} />
+              </>
+            )} */}
           </>
         )}
         <Route exact path="/forgotPassword" element={<ForgotPassword />} />
@@ -105,7 +112,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         {/* <Route path="*" element={<Page404 />} /> */}
       </Routes>
-      {/* <AdminLayout /> */}
+      <AdminLayout />
       <Footer />
     </div>
   );

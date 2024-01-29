@@ -54,13 +54,12 @@ const Navbar = () => {
   };
   window.addEventListener("scroll", handleScroll);
 
-  if (pathname === "/admin/dashboard")
-    // for component handling
-    return null;
-  if (pathname === "/admin/notification") return null;
-  if (pathname === "/admin/user") return null;
-  if (pathname === "/admin/product") return null;
-  if (pathname === "/admin/inbox") return null;
+  // for component handling
+  if (pathname === "/admin/dashboard") return null;
+  if (pathname === "/admin/addProducts") return null;
+  if (pathname === "/admin/users") return null;
+  if (pathname === "/admin/products") return null;
+  if (pathname === "/admin/orders") return null;
   if (pathname === "/updatePassword") return null;
   return (
     <nav
@@ -93,7 +92,7 @@ const Navbar = () => {
             </li>
             <li className="notification relative">
               <button onClick={() => setNotifications(!notifications)}>
-                <ion-icon name="notifications" ></ion-icon>
+                <ion-icon name="notifications"></ion-icon>
               </button>
               <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
                 0
@@ -106,7 +105,7 @@ const Navbar = () => {
                 }`}
                 onClick={() => setShowCart(!showCart)}
               >
-                <ion-icon name="cart" ></ion-icon>
+                <ion-icon name="cart"></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
                 {fetchedCartItems.length}
@@ -116,7 +115,7 @@ const Navbar = () => {
           <div>
             {isAuthenticated ? (
               <>
-                <div className="lg:static absolute right-4 top-5 log-btn  rounded-full ml-10 text-gray-900">
+                <div className="lg:static absolute right-2 top-5 log-btn  rounded-full ml-10 text-gray-900">
                   <UserOptions user={user} />
                 </div>
               </>
@@ -196,8 +195,9 @@ const Navbar = () => {
         </ul>
         <div
           ref={hamRef}
-          className="lg:hidden text-3xl text-white lg:p-0 pr-12"
+          className="lg:hidden text-3xl text-white lg:p-0 pr-14"
           onClick={() => setOpen(!open)}
+
         >
           <ion-icon name={open ? "none" : "menu"}></ion-icon>
         </div>

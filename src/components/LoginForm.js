@@ -12,6 +12,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const loginForm = useRef(null);
+  
   // dispatching the function
   const dispatch = useDispatch();
 

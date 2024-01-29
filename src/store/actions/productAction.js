@@ -9,6 +9,9 @@ import {
   PRODUCT_REVIEW_REQUEST,
   PRODUCT_REVIEW_SUCCESS,
   PRODUCT_REVIEW_FAIL,
+  ADMIN_PRODUCT_REQUEST,
+  ADMIN_PRODUCT_SUCCESS,
+  ADMIN_PRODUCT_FAIL,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 import { ToastContainer, toast } from "react-toastify";
@@ -82,6 +85,24 @@ export const createProductReview = (review) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_REVIEW_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// get products by admin
+export const getAdminProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCT_REQUEST });
+
+    const { data } = await axios.get("api/v1/admin/products");
+    dispatch({
+      type: ADMIN_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ADMIN_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

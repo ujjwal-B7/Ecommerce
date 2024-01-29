@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
   if (pathname === "/admin/dashboard") return null;
-  if (pathname === "/admin/inbox") return null;
-  if (pathname === "/admin/notification") return null;
-  if (pathname === "/admin/product") return null;
-  if (pathname === "/admin/user") return null;
+  if (pathname === "/admin/addProducts") return null;
+  if (pathname === "/admin/users") return null;
+  if (pathname === "/admin/products") return null;
+  if (pathname === "/admin/orders") return null;
   if (pathname === "/profile") return null;
   if (pathname === "/updateProfile") return null;
   if (pathname === "/updatePassword") return null;
