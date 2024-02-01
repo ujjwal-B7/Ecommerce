@@ -12,6 +12,9 @@ import {
   ADMIN_PRODUCT_REQUEST,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_FAIL,
+  CREATE_PRODUCT_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 import { ToastContainer, toast } from "react-toastify";
@@ -103,6 +106,48 @@ export const getAdminProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ADMIN_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// create products by admin
+export const createProducts = (product) => async (dispatch) => {
+  try {
+    dispatch({ type: CREATE_PRODUCT_REQUEST });
+    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const { data } = await axios.post(
+      "api/v1/admin/products/new",
+      product,
+      config
+    );
+    toast.success("Product created successfully.", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: CREATE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    toast.error(error.response.data, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: CREATE_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

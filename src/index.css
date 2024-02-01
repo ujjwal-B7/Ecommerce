@@ -12,6 +12,9 @@
 ::-webkit-scrollbar{
     display: none;
 }
+.logo{
+  font-family: "Poppins";
+}
 button:active{
   scale: 0.95;
   transition: 0.1s ease;
@@ -487,4 +490,8 @@ flex-wrap: wrap;
 .dashboardDetails:last-child{
   @apply bg-gray-400 text-white;
 
+}
+.productTable th,tr,td{
+  border: 2px solid black;
+padding: 10px;
 }

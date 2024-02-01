@@ -9,6 +9,7 @@ import {
   productReducer,
   productDetailsReducer,
   productReviewsReducer,
+  createProductReducer,
 } from "../reducers/productReducers";
 import {
   updateProfileReducer,
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   myOrder: myOrdersReducer,
   orderDetails: orderDetailsReducer,
   productReview: productReviewsReducer,
+  createProduct: createProductReducer,
 });
 
 let initialState = {

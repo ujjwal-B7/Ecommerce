@@ -70,8 +70,8 @@ const Navbar = () => {
       `}
     >
       <section className="max-w-screen-xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
-        <h1 className="text-3xl font-bold" data-aos="fade-right">
-          <Link to="/">SLASH</Link>
+        <h1 className=" text-3xl font-bold" data-aos="fade-right">
+          <Link to="/" className="logo">NEWPINCH</Link>
         </h1>
         <div className="flex items-center">
           <ul
@@ -197,7 +197,6 @@ const Navbar = () => {
           ref={hamRef}
           className="lg:hidden text-3xl text-white lg:p-0 pr-14"
           onClick={() => setOpen(!open)}
-
         >
           <ion-icon name={open ? "none" : "menu"}></ion-icon>
         </div>

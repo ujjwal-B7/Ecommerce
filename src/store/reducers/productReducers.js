@@ -12,6 +12,10 @@ import {
   ADMIN_PRODUCT_REQUEST,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_SUCCESS,
+  CREATE_PRODUCT_FAIL,
+  CREATE_PRODUCT_RESET,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
@@ -102,6 +106,42 @@ export const productReviewsReducer = (state = {}, action) => {
         error: action.payload,
       };
     case PRODUCT_REVIEW_RESET:
+      return {
+        ...state,
+        success: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+// product create reducer
+export const createProductReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case CREATE_PRODUCT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CREATE_PRODUCT_SUCCESS:
+      return {
+        loading: false,
+        success: action.payload.success,
+        product: action.payload.product,
+      };
+    case CREATE_PRODUCT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CREATE_PRODUCT_RESET:
       return {
         ...state,
         success: false,

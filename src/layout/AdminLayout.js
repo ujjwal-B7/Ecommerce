@@ -15,7 +15,7 @@ const AdminLayout = () => {
   // Define an array of paths where the sidebar should be visible (admin paths)
   const adminPaths = [
     "/admin/dashboard",
-    "/admin/addProducts",
+    "/addProducts",
     "/admin/products",
     "/admin/orders",
     "/admin/users",
@@ -25,7 +25,7 @@ const AdminLayout = () => {
   const isOnAdminPage = adminPaths.includes(location.pathname);
 
   return (
-    <div className="grid grid-cols-12 bg-gray-50">
+    <div className="lg:grid lg:grid-cols-12 bg-gray-50">
       {/* Conditionally render the admin sidebar and navbar */}
       {isOnAdminPage && <AdminNav />}
       {isOnAdminPage && <SideBar />}
@@ -33,7 +33,7 @@ const AdminLayout = () => {
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/notification" element={<Notifications />} />
         <Route path="/admin/products" element={<Products />} />
-        <Route path="/admin/addProducts" element={<AddProduct />} />
+        <Route path="/addProducts" element={<AddProduct />} />
         <Route path="/admin/user" element={<Users />} />
         <Route path="/admin/inbox" element={<Inbox />} />
       </Routes>
