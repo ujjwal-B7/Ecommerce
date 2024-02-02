@@ -15,7 +15,7 @@ const AdminLayout = () => {
   // Define an array of paths where the sidebar should be visible (admin paths)
   const adminPaths = [
     "/admin/dashboard",
-    "/addProducts",
+    "/admin/addProducts",
     "/admin/products",
     "/admin/orders",
     "/admin/users",
@@ -33,7 +33,7 @@ const AdminLayout = () => {
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/notification" element={<Notifications />} />
         <Route path="/admin/products" element={<Products />} />
-        <Route path="/addProducts" element={<AddProduct />} />
+        <Route path="/admin/addProducts" element={<AddProduct />} />
         <Route path="/admin/user" element={<Users />} />
         <Route path="/admin/inbox" element={<Inbox />} />
       </Routes>

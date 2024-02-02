@@ -67,7 +67,7 @@ const SideBar = () => {
               }
             >
               <Link
-                to="/addProducts"
+                to="/admin/addProducts"
                 class="flex items-center p-2 text-gray-100 rounded-lg hover:bg-gray-700 group"
               >
                 <svg

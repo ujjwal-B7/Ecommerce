@@ -15,6 +15,9 @@ import {
   CREATE_PRODUCT_REQUEST,
   CREATE_PRODUCT_FAIL,
   CREATE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 import { ToastContainer, toast } from "react-toastify";
@@ -98,7 +101,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("api/v1/admin/products");
+    const { data } = await axios.get("/api/v1/admin/products");
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
       payload: data,
@@ -117,7 +120,7 @@ export const createProducts = (product) => async (dispatch) => {
     dispatch({ type: CREATE_PRODUCT_REQUEST });
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     const { data } = await axios.post(
-      "api/v1/admin/products/new",
+      "/api/v1/admin/products/new",
       product,
       config
     );
@@ -148,6 +151,43 @@ export const createProducts = (product) => async (dispatch) => {
     });
     dispatch({
       type: CREATE_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// delete products by admin
+export const deleteProducts = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_PRODUCT_REQUEST });
+    const { data } = await axios.delete(`/api/v1/admin/products/${id}`);
+    toast.success("Product deleted successfully.", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    toast.error(error.response.data, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

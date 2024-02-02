@@ -10,6 +10,7 @@ import {
   productDetailsReducer,
   productReviewsReducer,
   createProductReducer,
+  deleteProductReducer,
 } from "../reducers/productReducers";
 import {
   updateProfileReducer,
@@ -37,6 +38,7 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   productReview: productReviewsReducer,
   createProduct: createProductReducer,
+  deleteProduct: deleteProductReducer,
 });
 
 let initialState = {

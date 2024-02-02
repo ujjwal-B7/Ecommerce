@@ -4,6 +4,7 @@ import RegisterForm from "./RegisterForm";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loginUser } from "../store/actions/userAction";
+import MessageBox from "./MessageBox";
 const LoginForm = ({ showForm, setShowForm }) => {
   const [formContainer, setFormContainer] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
@@ -12,7 +13,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const loginForm = useRef(null);
-  
+
   // dispatching the function
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
     dispatch(loginUser(loginEmail, loginPassword));
   };
 
-  const { loading, error, isAuthenticated } = useSelector(
+  const { loading, error, isAuthenticated, success } = useSelector(
     (state) => state.user
   );
 
@@ -33,6 +34,7 @@ const LoginForm = ({ showForm, setShowForm }) => {
   }, [isAuthenticated, setShowForm, showForm]);
   return (
     <>
+    
       <div
         className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60   flex justify-center items-center z-50
       `}
