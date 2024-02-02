@@ -6,7 +6,7 @@ const Products = () => {
   const {  products } = useSelector((state) => state.products);
   return (
     <>
-      <div className="productTable col-start-3 col-end-13 mt-24 w-[95%] rounded-lg mx-auto">
+      <div className="productTable col-start-3 col-end-13 mt-24 w-[95%] rounded-lg mx-auto pb-10">
         <table className="">
           <tr>
             <th>Item id</th>
