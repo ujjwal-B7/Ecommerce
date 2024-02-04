@@ -477,21 +477,13 @@ flex-wrap: wrap;
 /* admin */
 .dashboardDetails{
   text-align: center;
-  background-color: rgba(232, 7, 7, 0.856);
   color: white;
-  width: 15rem;
-  height: 6rem;
-  padding-top: 20px;
+  width: 20%;
+  padding: 1rem 0 1rem 0;
   border-radius: 10px;
 }
-.dashboardDetails:first-child{
-  @apply bg-slate-200 text-gray-900;
-}
-.dashboardDetails:last-child{
-  @apply bg-gray-400 text-white;
 
-}
 .productTable th,tr,td{
-  border: 2px solid black;
+  /* border: 1px solid  rgb(75 85 99); */
 padding: 10px;
 }

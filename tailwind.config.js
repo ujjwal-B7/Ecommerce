@@ -162,6 +162,7 @@ export const theme = {
     rose: colors.rose,
     text: "#f8f8f8",
     back: "#333333",
+    admin: "#edf1f5",
   }),
   columns: {
     auto: "auto",

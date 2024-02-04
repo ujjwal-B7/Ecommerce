@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import Loader from "../components/Loader";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   clearErrors,
-  createOrder,
   getMyOrders,
 } from "../store/actions/orderAction";
 import html2pdf from "html2pdf.js";
@@ -36,7 +34,7 @@ const MyOrders = () => {
     const itemsPdf = document.getElementById("orderedItemsPdf");
     const pdfOptions = {
       margin: 10,
-      filename: "basic.pdf",
+      filename: "bill.pdf",
       image: {
         type: "jpeg",
         quality: 1.0,

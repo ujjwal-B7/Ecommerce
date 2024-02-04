@@ -59,13 +59,13 @@ const AddProduct = () => {
     }
   }, [dispatch, error, success, navigate]);
   return (
-    <div className="col-start-3 col-end-13 mt-24 w-[95%] rounded-lg mx-auto">
-      <h1 className="text-center font-semibold text-xl py-2">Add Products</h1>
+    <div className="col-start-3 col-end-13 mt-20 w-full h-screen bg-admin rounded-lg mx-auto">
       <form
         onSubmit={productSubmit}
         encType="multipart/form-data"
-        className="lg:w-[50%] mx-auto p-4"
+        className="lg:w-[50%] mx-auto mt-5 px-4 py-2 bg-white shadow"
       >
+        <h1 className="text-center font-semibold text-xl py-2">Add Products</h1>
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900">
             Product Name

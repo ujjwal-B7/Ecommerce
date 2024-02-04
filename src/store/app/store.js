@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  combineReducers,
-  applyMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
@@ -23,7 +19,6 @@ import {
   myOrdersReducer,
   orderDetailsReducer,
 } from "../reducers/orderReducers";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // reducer for all
 const reducer = combineReducers({

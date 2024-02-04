@@ -33,7 +33,7 @@ const SideBar = () => {
         class="fixed col-start-1 col-end-3 mt-20 z-40 w-64 h-screen  transition-transform -translate-x-full lg:translate-x-0 "
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 py-4  overflow-y-auto bg-[#121212] flex justify-center">
+        <div class="h-full py-4  overflow-y-auto bg-[#4f5467] flex justify-center">
           <ul class="space-y-2 font-medium">
             <li
               className={

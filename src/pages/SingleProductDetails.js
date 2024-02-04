@@ -6,11 +6,11 @@ import {
   createProductReview,
   getSingleProductDetails,
 } from "../store/actions/productAction";
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 import ReviewCard from "../components/ReviewCard";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addToCart } from "../store/actions/cartAction";
 import { Rating } from "@material-ui/lab";
@@ -25,7 +25,9 @@ const SingleProductDetails = ({ match }) => {
   const { loading, product, error } = useSelector(
     (state) => state.productDetails
   );
+  const { isAuthenticated } = useSelector((state) => state.user);
   const { orders } = useSelector((state) => state.myOrder);
+  const { error: reviewError } = useSelector((state) => state.productReview);
   useEffect(() => {
     if (error) {
       toast.error(error, {
@@ -55,7 +57,7 @@ const SingleProductDetails = ({ match }) => {
     }
     dispatch({ type: PRODUCT_REVIEW_RESET });
     dispatch(getSingleProductDetails(id));
-  }, [dispatch, id, error]);
+  }, [dispatch, id, error, reviewError]);
 
   const options = {
     // edit: false,
@@ -115,7 +117,6 @@ const SingleProductDetails = ({ match }) => {
     });
   };
 
-  const { error: reviewError } = useSelector((state) => state.productReview);
   // review handler
   const submitReview = (e) => {
     const myform = new FormData();
@@ -125,6 +126,7 @@ const SingleProductDetails = ({ match }) => {
     dispatch(createProductReview(myform));
     setShowReviewBox(!showReviewBox);
   };
+
   return (
     <>
       <Loader loading={loading} />
@@ -259,23 +261,15 @@ const SingleProductDetails = ({ match }) => {
             <p className="font-light tracking-tight text-lg pt-2 pb-10">
               Description: {product.description}
             </p>
-            {/* {orders &&
-              orders.map((order) => (
-                <div>
-                  {order.orderItems.map((item) =>
-                    item.name === product.name ? ( */}
-            <button
-              className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
-              onClick={() => setShowReviewBox(!showReviewBox)}
-            >
-              Submit Review
-            </button>
-            {/* ) : (
-                      ""
-                    )
-                  )}
-                </div>
-              ))} */}
+            <p>{product._id}</p>
+            {isAuthenticated && (
+              <button
+                className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+                onClick={() => setShowReviewBox(!showReviewBox)}
+              >
+                Submit Review
+              </button>
+            )}
           </div>
         </div>
       </div>

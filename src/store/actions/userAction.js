@@ -11,12 +11,10 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   UPDATE_PROFILE_REQUEST,
-  UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
-  UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_FAIL,
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
@@ -27,7 +25,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // login handler
 export const loginUser = (email, password) => async (dispatch) => {

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../store/actions/productAction";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@material-ui/lab";
 import QuicView from "./QuicView";
@@ -31,8 +30,7 @@ const ProductsList = ({
     prescision: 0.5,
   };
   const dispatch = useDispatch();
-  const [passProductDetails, setPassProductDetails] = useState(null);
-  const { loading, error, products, productsCount } = useSelector(
+  const {  products} = useSelector(
     (state) => state.products
     // state.productsCount
   );

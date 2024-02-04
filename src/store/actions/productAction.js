@@ -20,7 +20,7 @@ import {
   DELETE_PRODUCT_REQUEST,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // get product
 export const getProduct =
@@ -104,7 +104,7 @@ export const getAdminProducts = () => async (dispatch) => {
     const { data } = await axios.get("/api/v1/admin/products");
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
-      payload: data,
+      payload: data.products,
     });
   } catch (error) {
     dispatch({

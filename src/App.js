@@ -112,7 +112,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         {/* <Route path="*" element={<Page404 />} /> */}
       </Routes>
-      <AdminLayout />
+      {isAuthenticated && user.role === "admin" && <AdminLayout />}
       <Footer />
     </div>
   );

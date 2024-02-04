@@ -1,9 +1,9 @@
-import React from "react";
-import AdminNav from "../adminComponent/AdminNav";
-import SideBar from "../adminComponent/SideBar";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Doughnut, Line } from "react-chartjs-2";
+import { clearErrors, getAdminProducts } from "../store/actions/productAction";
+
 import {
   Chart as ChartJS,
   LineElement,
@@ -25,7 +25,9 @@ ChartJS.register(
   Legend
 );
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
+  const { orders } = useSelector((state) => state.myOrder);
   const { users } = useSelector((state) => state.user);
   let outOfStock = 0;
   products &&
@@ -56,44 +58,44 @@ const Dashboard = () => {
     ],
   };
 
+  useEffect(() => {
+    dispatch(getAdminProducts());
+  }, [dispatch]);
   return (
     <>
       {/* <div className="grid grid-cols-12"> */}
-      <div className="col-start-3 col-end-13 mt-20 w-full p-10 text-gray-900 bg-slate-200">
-        <div className=" text-center">
-          <h1 className="font-semibold">Dashboard</h1>
-          <span className="font-semibold">Total Amount:</span>
-          <span>10000</span>
-        </div>
-        <div className="flex justify-around pt-2">
-          <Link className="dashboardDetails" to="/admin/products">
-            <p>Products</p>
-            <p>{products.length}</p>
-          </Link>
-          <Link
-            className="dashboardDetails "
-            style={{ backgroundColor: "rgba(110, 36, 238, 0.856)" }}
-            to="/admin/orders"
-          >
-            <p>Orders</p>
-            <p>10</p>
-          </Link>
-          <Link className="dashboardDetails" to="/admin/users">
-            <p>Users</p>
-            <p>{users}</p>
-          </Link>
+      <div className="col-start-3 col-end-13 mt-16 w-full h-screen px-10 py-11 text-gray-900 bg-admin">
+        <div className="bg-white p-2 rounded-xl text-gray-600">
+          <div>
+            <h1 className="font-semibold">Dashboard</h1>
+            <span className="font-semibold">Total Amount:</span>
+            <span>10000</span>
+          </div>
+          <div className="flex gap-4 pt-2">
+            <Link
+              className="dashboardDetails bg-[#fb9678]"
+              to="/admin/products"
+            >
+              <p>Products</p>
+              <p>{products.length}</p>
+            </Link>
+            <Link className="dashboardDetails bg-[#01c0c8]" to="/admin/orders">
+              <p>Orders</p>
+              <p>10</p>
+            </Link>
+            <Link className="dashboardDetails bg-[#4f5467]" to="/admin/users">
+              <p>Users</p>
+              <p>{users}</p>
+            </Link>
+          </div>
         </div>
         {/* charts */}
-        <div className="pl-20 pt-20">
-          <div
-            className="flex gap-40"
-            style={{ width: "250px", height: "250px" }}
-          >
-            <Doughnut data={doughnutState} />
-            <Doughnut data={doughnutState} />
+        <div className="rounded-xl mt-5 flex gap-5">
+          <div className="bg-white rounded-xl w-[35%] py-14">
+            <Doughnut data={doughnutState} style={{ margin: "auto" }} />
           </div>
-          <div className="pt-20">
-            <Line data={lineState} style={{ width: "70vw", height: "500px" }} />
+          <div className="w-[65%] bg-white rounded-xl p-2">
+            <Line data={lineState} style={{ width: "100%", height: "500px" }} />
           </div>
         </div>
       </div>
