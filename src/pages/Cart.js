@@ -59,7 +59,7 @@ const Cart = ({ showCart, setShowCart }) => {
       >
         <ion-icon name="close"></ion-icon>
       </div>
-      {fetchedCartItems.length === 0 ? (
+      {fetchedCartItems && fetchedCartItems.length === 0 ? (
         <div className="text-gray-400 text-center pt-20 text-2xl">
           "No products added"
         </div>

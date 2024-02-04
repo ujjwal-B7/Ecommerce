@@ -36,8 +36,8 @@ const Products = () => {
   let i = 1;
   return (
     <>
-      <div className="productTable col-start-3 col-end-13 w-full h-screen overflor-y-auto rounded-lg  pb-10 bg-admin pt-24 px-4">
-        <table className=" bg-white w-full">
+      <div className="productTable col-start-3 col-end-13 w-full h-screen overflow-y-auto rounded-lg  pb-10 bg-admin pt-24 px-4">
+        <table className="w-full">
           <tr className="text-left bg-[#4f5467] text-white uppercase">
             <th>No.</th>
             <th>Item id</th>
@@ -54,10 +54,10 @@ const Products = () => {
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.Stock}</td>
-                <td>
+                <td className="space-y-3">
                   <Link
-                    to={product._id}
-                    className="mx-1 px-4 py-1 bg-green-400 rounded-xl text-white"
+                    to={`/admin/editProducts/${product._id}`}
+                    className="mx-1 px-6 py-2 bg-green-400 rounded-xl text-white"
                   >
                     Edit
                   </Link>

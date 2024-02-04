@@ -71,7 +71,9 @@ const Navbar = () => {
     >
       <section className="max-w-screen-xl mx-auto flex flex-wrap h-20 justify-between items-center px-4">
         <h1 className=" text-3xl font-bold" data-aos="fade-right">
-          <Link to="/" className="logo">NEWPINCH</Link>
+          <Link to="/" className="logo">
+            NEWPINCH
+          </Link>
         </h1>
         <div className="flex items-center">
           <ul
@@ -101,14 +103,16 @@ const Navbar = () => {
             <li className="relative">
               <button
                 className={`cartIcon ${
-                  fetchedCartItems.length > 0 ? "text-slate-200" : "text-white"
+                  fetchedCartItems && fetchedCartItems.length > 0
+                    ? "text-slate-200"
+                    : "text-white"
                 }`}
                 onClick={() => setShowCart(!showCart)}
               >
                 <ion-icon name="cart"></ion-icon>
               </button>
               <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
-                {fetchedCartItems.length}
+                {fetchedCartItems && fetchedCartItems.length}
               </p>
             </li>
           </ul>

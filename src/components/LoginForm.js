@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import RegisterForm from "./RegisterForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loginUser } from "../store/actions/userAction";
 import MessageBox from "./MessageBox";
 const LoginForm = ({ showForm, setShowForm }) => {
+  const navigate = useNavigate();
   const [formContainer, setFormContainer] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
   const [showRegisterForm, setShowRegisterForm] = useState(true);
@@ -23,18 +24,21 @@ const LoginForm = ({ showForm, setShowForm }) => {
     dispatch(loginUser(loginEmail, loginPassword));
   };
 
-  const { loading, error, isAuthenticated, success } = useSelector(
+  const { loading, error, isAuthenticated, success, user } = useSelector(
     (state) => state.user
   );
-
   useEffect(() => {
     if (isAuthenticated) {
       setShowForm(true);
+      // if (user.role === "admin") {
+      //   navigate("/admin/dashboard");
+      // } else {
+      //   navigate("/");
+      // }
     }
-  }, [isAuthenticated, setShowForm, showForm]);
+  }, [isAuthenticated, setShowForm, showForm, navigate]);
   return (
     <>
-    
       <div
         className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-60   flex justify-center items-center z-50
       `}

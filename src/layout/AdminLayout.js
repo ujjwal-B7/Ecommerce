@@ -3,19 +3,21 @@ import AdminNav from "../adminComponent/AdminNav";
 import SideBar from "../adminComponent/SideBar";
 import { Routes, Route, useLocation } from "react-router-dom"; // Import useLocation
 import Dashboard from "../pagesAdmin/Dashboard";
-import Notifications from "../pagesAdmin/Notifications";
 import Products from "../pagesAdmin/Products";
+import Notifications from "../pagesAdmin/Notifications";
 import Users from "../pagesAdmin/Users";
 import Inbox from "../pagesAdmin/Inbox";
 import AddProduct from "../pagesAdmin/AddProduct";
+import EditProducts from "../pagesAdmin/EditProducts";
 
-const AdminLayout = () => {
+const AdminLayout = ({ children }) => {
   const location = useLocation();
 
   // Define an array of paths where the sidebar should be visible (admin paths)
   const adminPaths = [
     "/admin/dashboard",
     "/admin/addProducts",
+    "/admin/editProducts/:id",
     "/admin/products",
     "/admin/orders",
     "/admin/users",
@@ -29,11 +31,14 @@ const AdminLayout = () => {
       {/* Conditionally render the admin sidebar and navbar */}
       {isOnAdminPage && <AdminNav />}
       {isOnAdminPage && <SideBar />}
+      {/* <AdminNav />
+      <SideBar /> */}
       <Routes>
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/notification" element={<Notifications />} />
         <Route path="/admin/products" element={<Products />} />
         <Route path="/admin/addProducts" element={<AddProduct />} />
+        <Route path="/admin/editProducts/:id" element={<EditProducts />} />
         <Route path="/admin/user" element={<Users />} />
         <Route path="/admin/inbox" element={<Inbox />} />
       </Routes>

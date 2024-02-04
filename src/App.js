@@ -28,6 +28,11 @@ import Dashboard from "./pagesAdmin/Dashboard";
 import Products from "./pagesAdmin/Products";
 import SideBar from "./adminComponent/SideBar";
 import AdminNav from "./adminComponent/AdminNav";
+import Notifications from "./pagesAdmin/Notifications";
+import Users from "./pagesAdmin/Users";
+import Inbox from "./pagesAdmin/Inbox";
+import AddProduct from "./pagesAdmin/AddProduct";
+import EditProducts from "./pagesAdmin/EditProducts";
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -53,7 +58,14 @@ function App() {
 
   return (
     <div className="App">
+      {/* {user && user.role === "admin" ? (
+        <>
+          <AdminNav />
+          <SideBar />
+        </>
+      ) : ( */}
       <Navbar />
+      {/* )} */}
       <Routes>
         <Route
           exact
@@ -97,13 +109,6 @@ function App() {
                 </Elements>
               }
             />
-            {/* admin routes */}
-            {/* {user && user.role === "admin" && (
-              <>
-                <Route exact path="/admin/dashboard" element={<Dashboard />} />
-                <Route exact path="/admin/products" element={<Products />} />
-              </>
-            )} */}
           </>
         )}
         <Route exact path="/forgotPassword" element={<ForgotPassword />} />
@@ -111,7 +116,19 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
         {/* <Route path="*" element={<Page404 />} /> */}
+
+        {/* admin routes */}
+        {/* <>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/notification" element={<Notifications />} />
+          <Route path="/admin/products" element={<Products />} />
+          <Route path="/admin/addProducts" element={<AddProduct />} />
+          <Route path="/admin/editProducts/:id" element={<EditProducts />} />
+          <Route path="/admin/user" element={<Users />} />
+          <Route path="/admin/inbox" element={<Inbox />} />
+        </> */}
       </Routes>
+      {/* <AdminLayout /> */}
       {isAuthenticated && user.role === "admin" && <AdminLayout />}
       <Footer />
     </div>

@@ -5,6 +5,7 @@ const Footer = () => {
   const { pathname } = useLocation();
   if (pathname === "/admin/dashboard") return null;
   if (pathname === "/admin/addProducts") return null;
+  if (pathname === "/admin/editProducts/:id") return null;
   if (pathname === "/admin/users") return null;
   if (pathname === "/admin/products") return null;
   if (pathname === "/admin/orders") return null;
