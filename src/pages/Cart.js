@@ -82,8 +82,10 @@ const Cart = ({ showCart, setShowCart }) => {
                       <ion-icon name="trash-outline"></ion-icon>
                     </div>
                     <img src={item.image} alt="" className="h-20 w-16" />
-                    <p className="text-lg">
-                      {item.name}
+                    <p className="text-sm">
+                      {item.name.length < 8
+                        ? `${item.name}`
+                        : `${item.name.substr(0, 10)}...`}
                       <span className="block text-xs text-gray-600">
                         Stock: {item.stock}
                       </span>

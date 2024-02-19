@@ -17,14 +17,16 @@ const AdminLayout = ({ children }) => {
   const adminPaths = [
     "/admin/dashboard",
     "/admin/addProducts",
-    "/admin/editProducts/:id",
+    "/admin/editProducts",
     "/admin/products",
     "/admin/orders",
     "/admin/users",
   ];
 
   // Check if the current location is in the adminPaths array
-  const isOnAdminPage = adminPaths.includes(location.pathname);
+  const isOnAdminPage = adminPaths.some(path => location.pathname.startsWith(path));
+
+  // const isOnAdminPage = adminPaths.includes(location.pathname);
 
   return (
     <div className="lg:grid lg:grid-cols-12 bg-gray-50">
@@ -39,7 +41,7 @@ const AdminLayout = ({ children }) => {
         <Route path="/admin/products" element={<Products />} />
         <Route path="/admin/addProducts" element={<AddProduct />} />
         <Route path="/admin/editProducts/:id" element={<EditProducts />} />
-        <Route path="/admin/user" element={<Users />} />
+        <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/inbox" element={<Inbox />} />
       </Routes>
     </div>

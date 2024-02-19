@@ -7,6 +7,7 @@ import {
   productReviewsReducer,
   createProductReducer,
   deleteProductReducer,
+  updateProductReducer,
 } from "../reducers/productReducers";
 import {
   updateProfileReducer,
@@ -20,6 +21,7 @@ import {
   orderDetailsReducer,
 } from "../reducers/orderReducers";
 import "react-toastify/dist/ReactToastify.css";
+
 // reducer for all
 const reducer = combineReducers({
   products: productReducer,
@@ -34,6 +36,7 @@ const reducer = combineReducers({
   productReview: productReviewsReducer,
   createProduct: createProductReducer,
   deleteProduct: deleteProductReducer,
+  updateProduct: updateProductReducer,
 });
 
 let initialState = {

@@ -18,6 +18,10 @@ import {
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
   DELETE_PRODUCT_REQUEST,
+  EDIT_PRODUCT_REQUEST,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_FAIL,
+  EDIT_PRODUCT_RESET,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 import { toast } from "react-toastify";
@@ -160,6 +164,7 @@ export const createProducts = (product) => async (dispatch) => {
 export const deleteProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
+
     const { data } = await axios.delete(`/api/v1/admin/products/${id}`);
     toast.success("Product deleted successfully.", {
       position: "top-center",
@@ -188,6 +193,48 @@ export const deleteProducts = (id) => async (dispatch) => {
     });
     dispatch({
       type: DELETE_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// delete products by admin
+export const updateProducts = (_id, productData) => async (dispatch) => {
+  try {
+    dispatch({ type: EDIT_PRODUCT_REQUEST });
+    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const { data } = await axios.put(
+      `/api/v1/admin/products/${_id}`,
+      productData,
+      config
+    );
+    toast.success("Product updated successfully.", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: EDIT_PRODUCT_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    toast.error(error.response.data, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    dispatch({
+      type: EDIT_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

@@ -24,6 +24,9 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
+  GET_USERS_BY_ADMIN_REQUEST,
+  GET_USERS_BY_ADMIN_SUCCESS,
+  GET_USERS_BY_ADMIN_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
@@ -33,6 +36,7 @@ export const userReducer = (state = { user: [] }, action) => {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
     case LOAD_USER_REQUEST:
+    case GET_USERS_BY_ADMIN_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
@@ -40,6 +44,7 @@ export const userReducer = (state = { user: [] }, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
+    case GET_USERS_BY_ADMIN_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -62,6 +67,7 @@ export const userReducer = (state = { user: [] }, action) => {
         error: action.payload,
       };
     case LOAD_USER_FAIL:
+    case  GET_USERS_BY_ADMIN_FAIL:
       return {
         loading: false,
         isAuthenticated: false,

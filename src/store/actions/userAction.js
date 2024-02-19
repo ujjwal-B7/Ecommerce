@@ -22,11 +22,15 @@ import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
+  GET_USERS_BY_ADMIN_REQUEST,
+  GET_USERS_BY_ADMIN_SUCCESS,
+  GET_USERS_BY_ADMIN_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 // login handler
 export const loginUser = (email, password) => async (dispatch) => {
   try {
@@ -241,6 +245,19 @@ export const resetPassword = (token, password) => async (dispatch) => {
   }
 };
 
+// load user by admin
+export const loadUsersByAdmin = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_USERS_BY_ADMIN_REQUEST });
+    const { data } = await axios.get(`/admin/getAllUsers`);
+    dispatch({ type: GET_USERS_BY_ADMIN_SUCCESS, payload: data.user });
+  } catch (error) {
+    dispatch({
+      type: GET_USERS_BY_ADMIN_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 // clearing errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({

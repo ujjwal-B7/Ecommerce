@@ -63,7 +63,7 @@ const AddProduct = () => {
       <form
         onSubmit={productSubmit}
         encType="multipart/form-data"
-        className="lg:w-[50%] mx-auto mt-5 px-4 py-2 bg-white shadow"
+        className="lg:w-[50%] mx-auto mt-5 px-4 py-2"
       >
         <h1 className="text-center font-semibold text-xl py-2">Add Products</h1>
         <div className="mb-5">
@@ -163,7 +163,7 @@ const AddProduct = () => {
           type="submit"
           className="text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center "
         >
-          {loading && <span className="loader-btn"></span>}
+          {loading && <span className="loader-btn  absolute left-[55%]"></span>}
           Create
         </button>
       </form>

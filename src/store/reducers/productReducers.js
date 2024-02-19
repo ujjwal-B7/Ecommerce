@@ -20,6 +20,10 @@ import {
   DELETE_PRODUCT_FAIL,
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_RESET,
+  EDIT_PRODUCT_REQUEST,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_FAIL,
+  EDIT_PRODUCT_RESET,
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
@@ -185,6 +189,42 @@ export const deleteProductReducer = (state = { product: {} }, action) => {
       return {
         ...state,
         isDeleted: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+// product delete reducer
+export const updateProductReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case EDIT_PRODUCT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case EDIT_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload,
+      };
+    case EDIT_PRODUCT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case EDIT_PRODUCT_RESET:
+      return {
+        ...state,
+        isUpdated: false,
       };
     case CLEAR_ERRORS:
       return {

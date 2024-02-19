@@ -64,6 +64,7 @@ function App() {
           <SideBar />
         </>
       ) : ( */}
+      {/* {user && user.role === "user" && } */}
       <Navbar />
       {/* )} */}
       <Routes>
@@ -130,6 +131,7 @@ function App() {
       </Routes>
       {/* <AdminLayout /> */}
       {isAuthenticated && user.role === "admin" && <AdminLayout />}
+      {/* {user && user.role === "user" && } */}
       <Footer />
     </div>
   );

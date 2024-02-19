@@ -39,18 +39,18 @@ const Products = () => {
       <div className="productTable col-start-3 col-end-13 w-full h-screen overflow-y-auto rounded-lg  pb-10 bg-admin pt-24 px-4">
         <table className="w-full">
           <tr className="text-left bg-[#4f5467] text-white uppercase">
-            <th>No.</th>
-            <th>Item id</th>
+            <th className="w-40">No.</th>
+            {/* <th>Item id</th> */}
             <th>Product Name</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th></th>
+            <th>Action</th>
           </tr>
           {products &&
             products.map((product) => (
               <tr className="text-gray-600">
                 <td>{i++}</td>
-                <td>{product._id}</td>
+                {/* <td>{product._id}</td> */}
                 <td>{product.name}</td>
                 <td>{product.price}</td>
                 <td>{product.Stock}</td>
