@@ -47,13 +47,13 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   // fetching stripe api key
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeApiKey");
-    setStripeApiKey(data.stripeApiKey);
-  }
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeApiKey");
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
   useEffect(() => {
     store.dispatch(loadUser());
-    getStripeApiKey();
+    // getStripeApiKey();
   }, []);
 
   return (
