@@ -202,7 +202,7 @@ export const deleteProductReducer = (state = { product: {} }, action) => {
 };
 
 // product delete reducer
-export const updateProductReducer = (state = { product: {} }, action) => {
+export const updateProductReducer = (state = {}, action) => {
   switch (action.type) {
     case EDIT_PRODUCT_REQUEST:
       return {

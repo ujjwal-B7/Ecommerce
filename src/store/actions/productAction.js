@@ -220,7 +220,7 @@ export const updateProducts = (_id, productData) => async (dispatch) => {
     });
     dispatch({
       type: EDIT_PRODUCT_SUCCESS,
-      payload: data.product,
+      payload: data.success,
     });
   } catch (error) {
     toast.error(error.response.data, {

@@ -15,13 +15,13 @@ const EditProducts = () => {
     (state) => state.updateProduct
   );
   const { product } = useSelector((state) => state.productDetails);
-  const [name, setName] = useState(product.name);
-  const [Stock, setStock] = useState(product.Stock);
-  const [description, setDescription] = useState(product.description);
-  const [price, setPrice] = useState(product.price);
-  const [category, setCategory] = useState(product.category);
-  const [images, setImages] = useState();
-  const [imagesPreview, setImagesPreview] = useState(product.images);
+  const [name, setName] = useState("");
+  const [Stock, setStock] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
   const categories = ["Footwear", "Bottom", "Tops", "Attire"];
 
   // name create function
@@ -65,6 +65,17 @@ const EditProducts = () => {
       navigate("/admin/dashboard");
     }
   }, [dispatch, error, isUpdated]);
+
+  useEffect(() => {
+    if (product) {
+      setName(product.name);
+      setStock(product.Stock);
+      setDescription(product.description);
+      setPrice(product.price);
+      setCategory(product.category);
+      setImagesPreview(product.images);
+    }
+  }, [product]);
   return (
     <div className="col-start-3 col-end-13 mt-20 w-full h-screen bg-admin rounded-lg mx-auto">
       <form
@@ -157,24 +168,26 @@ const EditProducts = () => {
             />
           </div>
           <div className=" h-12 w-12 flex gap-2 mb-2">
-            {imagesPreview && imagesPreview.map((image, index) => (
-              <img
-                className="rounded-full h-12 w-12 object-cover"
-                src={image.url}
-                key={index}
-                alt=""
-              />
-            ))}
+            {imagesPreview &&
+              imagesPreview.map((image, index) => (
+                <img
+                  className="rounded-full h-12 w-12 object-cover"
+                  src={image.url}
+                  key={index}
+                  alt=""
+                />
+              ))}
           </div>
           <div className=" h-12 w-12 flex gap-2 mb-2">
-            {images && images.map((image, index) => (
-              <img
-                className="rounded-full h-12 w-12 object-cover"
-                src={image}
-                key={index}
-                alt=""
-              />
-            ))}
+            {images &&
+              images.map((image, index) => (
+                <img
+                  className="rounded-full h-12 w-12 object-cover"
+                  src={image}
+                  key={index}
+                  alt=""
+                />
+              ))}
           </div>
         </div>
         <button
