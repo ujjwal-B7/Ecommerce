@@ -30,7 +30,7 @@ import SideBar from "./adminComponent/SideBar";
 import AdminNav from "./adminComponent/AdminNav";
 import Notifications from "./pagesAdmin/Notifications";
 import Users from "./pagesAdmin/Users";
-import Inbox from "./pagesAdmin/Inbox";
+import Inbox from "./pagesAdmin/Orders";
 import AddProduct from "./pagesAdmin/AddProduct";
 import EditProducts from "./pagesAdmin/EditProducts";
 function App() {
@@ -57,7 +57,7 @@ function App() {
   }, []);
 
   return (
-  <div className="App">
+    <div className="App">
       {/* {user && user.role === "admin" ? (
         <>
           <AdminNav />

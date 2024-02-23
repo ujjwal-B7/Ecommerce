@@ -19,8 +19,9 @@ import {
   newOrderReducer,
   myOrdersReducer,
   orderDetailsReducer,
+  allOrdersReducer,
+  updateOrdersReducer,
 } from "../reducers/orderReducers";
-import "react-toastify/dist/ReactToastify.css";
 
 // reducer for all
 const reducer = combineReducers({
@@ -37,6 +38,8 @@ const reducer = combineReducers({
   createProduct: createProductReducer,
   deleteProduct: deleteProductReducer,
   updateProduct: updateProductReducer,
+  allOrders: allOrdersReducer,
+  updateAndDeleteOrder: updateOrdersReducer,
 });
 
 let initialState = {

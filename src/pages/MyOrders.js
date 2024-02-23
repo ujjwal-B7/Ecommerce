@@ -60,7 +60,7 @@ const MyOrders = () => {
       <section className="max-w-screen-xl mx-auto text-gray-900 pb-4">
         <div className="flex justify-end pt-10" onClick={pdfDownload}>
           <button className="bg-gray-900 hover:bg-opacity-90 rounded-xl h-8 px-4 text-white">
-            Download pdf
+            Download Bill
             <span className="pt-2">
               <ion-icon name="arrow-down-outline"></ion-icon>
             </span>

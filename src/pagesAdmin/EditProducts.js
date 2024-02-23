@@ -55,7 +55,7 @@ const EditProducts = () => {
     });
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(getSingleProductDetails(id));
     if (error) {
       dispatch(clearErrors());
@@ -65,7 +65,7 @@ const EditProducts = () => {
       navigate("/admin/dashboard");
     }
   }, [dispatch, error, isUpdated]);
-
+ 
   useEffect(() => {
     if (product) {
       setName(product.name);

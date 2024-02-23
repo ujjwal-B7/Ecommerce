@@ -6,7 +6,7 @@ import Dashboard from "../pagesAdmin/Dashboard";
 import Products from "../pagesAdmin/Products";
 import Notifications from "../pagesAdmin/Notifications";
 import Users from "../pagesAdmin/Users";
-import Inbox from "../pagesAdmin/Inbox";
+import Orders from "../pagesAdmin/Orders";
 import AddProduct from "../pagesAdmin/AddProduct";
 import EditProducts from "../pagesAdmin/EditProducts";
 
@@ -24,7 +24,9 @@ const AdminLayout = ({ children }) => {
   ];
 
   // Check if the current location is in the adminPaths array
-  const isOnAdminPage = adminPaths.some(path => location.pathname.startsWith(path));
+  const isOnAdminPage = adminPaths.some((path) =>
+    location.pathname.startsWith(path)
+  );
 
   // const isOnAdminPage = adminPaths.includes(location.pathname);
 
@@ -42,7 +44,7 @@ const AdminLayout = ({ children }) => {
         <Route path="/admin/addProducts" element={<AddProduct />} />
         <Route path="/admin/editProducts/:id" element={<EditProducts />} />
         <Route path="/admin/users" element={<Users />} />
-        <Route path="/admin/inbox" element={<Inbox />} />
+        <Route path="/admin/orders" element={<Orders />} />
       </Routes>
     </div>
   );
