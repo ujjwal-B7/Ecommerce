@@ -38,7 +38,7 @@ const Products = () => {
     <>
       <div className="productTable col-start-3 col-end-13 w-full h-screen overflow-y-auto rounded-lg  pb-10 bg-admin pt-24 px-4">
         <table className="w-full">
-          <tr className="text-left bg-[#4f5467] text-white uppercase">
+          <tr className="text-left bg-[#4f5467] text-white uppercase sticky -top-[0.9rem] ">
             <th className="w-40">No.</th>
             {/* <th>Item id</th> */}
             <th>Product Name</th>
@@ -48,7 +48,7 @@ const Products = () => {
           </tr>
           {products &&
             products.map((product) => (
-              <tr className="text-gray-600">
+              <tr className="text-gray-600 border-b-gray-600/60 border-[0.5px]">
                 <td>{i++}</td>
                 {/* <td>{product._id}</td> */}
                 <td>{product.name}</td>

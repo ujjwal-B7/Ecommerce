@@ -73,7 +73,7 @@ export const getMyOrders = () => async (dispatch) => {
     const { data } = await axios.get("/api/v1/orders/myOrders");
     dispatch({ type: MY_ORDER_SUCCESS, payload: data.myOrders });
   } catch (error) {
-    dispatch({ type: MY_ORDER_FAIL, payload: error.response.data.message });
+    dispatch({ type: MY_ORDER_FAIL, payload: error.response.data.error });
   }
 };
 
@@ -83,26 +83,17 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: ALL_ORDERS_REQUEST });
     const { data } = await axios.get("/api/v1/admin/order/total");
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
-    console.log("data", data.orders);
   } catch (error) {
-    dispatch({ type: ALL_ORDERS_FAIL, payload: error.response.data.message });
+    dispatch({ type: ALL_ORDERS_FAIL, payload: error.response.data.error });
   }
 };
 
 // update order
-export const updateOrder = (id, order) => async (dispatch) => {
+export const updateOrder = (order) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ORDERS_REQUEST });
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.put(
-      `/api/v1/admin/order/${id}`,
-      order,
-      config
-    );
+
+    const { data } = await axios.put(`/api/v1/admin/order/update`, order);
     toast.success(`Ordered updated successfully.`, {
       position: "top-center",
       autoClose: 1500,
@@ -115,7 +106,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
     });
     dispatch({ type: UPDATE_ORDERS_SUCCESS, payload: data.success });
   } catch (error) {
-    toast.error(error.response.data.message, {
+    toast.error(error.response.data.error, {
       position: "top-center",
       autoClose: 1500,
       hideProgressBar: false,
@@ -127,7 +118,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
     });
     dispatch({
       type: UPDATE_ORDERS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.error,
     });
   }
 };
@@ -150,7 +141,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     });
     dispatch({ type: DELETE_ORDERS_SUCCESS, payload: data.success });
   } catch (error) {
-    toast.error(error.response.data.message, {
+    toast.error(error.response.data.error, {
       position: "top-center",
       autoClose: 1500,
       hideProgressBar: false,
@@ -162,7 +153,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     });
     dispatch({
       type: DELETE_ORDERS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.error,
     });
   }
 };
@@ -176,7 +167,7 @@ export const getSingleOrderDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
-      payload: error.response.data.message,
+      payload: error.response.data.error,
     });
   }
 };

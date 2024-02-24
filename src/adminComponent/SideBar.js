@@ -6,7 +6,7 @@ const SideBar = () => {
   const { pathname } = useLocation();
   const location = useLocation();
   return (
-    <section>
+    <section className="relative">
       <button
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"
