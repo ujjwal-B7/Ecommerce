@@ -7,7 +7,7 @@ const MessageBox = ({ success, error }) => {
     if (success) {
       toast.success(success, {
         position: "top-center",
-        autoClose: 1000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -15,10 +15,11 @@ const MessageBox = ({ success, error }) => {
         progress: undefined,
         theme: "light",
       });
-    } else if (error) {
+    }
+    if (error) {
       toast.error(error, {
         position: "top-center",
-        autoClose: 1000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -29,7 +30,7 @@ const MessageBox = ({ success, error }) => {
     }
   }, [success, error]);
 
-  return null; // MessageBox does not render anything in the DOM
+  return null;
 };
 
 export default MessageBox;

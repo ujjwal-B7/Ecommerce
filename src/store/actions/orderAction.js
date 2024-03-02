@@ -14,11 +14,9 @@ import {
   UPDATE_ORDERS_REQUEST,
   UPDATE_ORDERS_SUCCESS,
   UPDATE_ORDERS_FAIL,
-  UPDATE_ORDERS_RESET,
   DELETE_ORDERS_REQUEST,
   DELETE_ORDERS_SUCCESS,
   DELETE_ORDERS_FAIL,
-  DELETE_ORDERS_RESET,
   CLEAR_ERRORS,
 } from "../constants/orderConstants";
 import axios from "axios";
@@ -94,7 +92,7 @@ export const updateOrder = (order) => async (dispatch) => {
     dispatch({ type: UPDATE_ORDERS_REQUEST });
 
     const { data } = await axios.put(`/api/v1/admin/order/update`, order);
-    toast.success(`Ordered updated successfully.`, {
+    toast.success(`Order status updated successfully.`, {
       position: "top-center",
       autoClose: 1500,
       hideProgressBar: false,

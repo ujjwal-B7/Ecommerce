@@ -11,6 +11,7 @@ import { DELETE_PRODUCT_RESET } from "../store/constants/productConstants";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UPDATE_ORDERS_RESET } from "../store/constants/orderConstants";
+import MessageBox from "../components/MessageBox";
 const Orders = () => {
   const [status, setStatus] = useState("");
   const [product, setProduct] = useState(null);
@@ -18,12 +19,14 @@ const Orders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { orders, error } = useSelector((state) => state.allOrders);
-  const { isDeleted, isUpdated } = useSelector(
-    (state) => state.updateAndDeleteOrder
-  );
+  const {
+    isDeleted,
+    isUpdated,
+    error: updateError,
+  } = useSelector((state) => state.updateAndDeleteOrder);
   useEffect(() => {
     if (error) {
-      toast.error(error.data, {
+      toast.error(error, {
         position: "top-center",
         autoClose: 1500,
         hideProgressBar: false,
@@ -45,13 +48,15 @@ const Orders = () => {
       orderStatus: status,
     };
     dispatch(updateOrder(details));
+    setProduct(null);
   };
 
   useEffect(() => {
     if (isUpdated) {
+      setProduct(null);
       dispatch({ type: UPDATE_ORDERS_RESET });
     }
-  });
+  }, [isUpdated, dispatch]);
 
   // handle status
   const handleStatus = (item, order) => {
@@ -70,15 +75,15 @@ const Orders = () => {
     <>
       {product && (
         <div
-          className={`status-box w-full h-screen bg-black/30 flex justify-center items-center 
+          className={`status-box w-full h-screen bg-black/30 flex justify-center items-center
                   `}
         >
           <div className="w-96 h-60 bg-white">
-            <h1>Update Status {product.name}</h1>
+            <h1>Update Status {product.name + order._id}</h1>
             <form
               onSubmit={(e) => {
                 e.preventDefault(); // Prevent default form submission behavior
-                submitStatus(product._id); // Call submitStatus with product ID
+                submitStatus(order._id); // Call submitStatus with product ID
               }}
             >
               <select
@@ -88,10 +93,10 @@ const Orders = () => {
               >
                 <option value="">Choose status</option>
                 {order.orderStatus === "Processing" && (
-                  <option value="shipped">Shipped</option>
+                  <option value="Shipped">Shipped</option>
                 )}
                 {order.orderStatus === "Shipped" && (
-                  <option value="delivered">Delivered</option>
+                  <option value="Delivered">Delivered</option>
                 )}
               </select>
               <button type="submit">Update status</button>
@@ -110,7 +115,7 @@ const Orders = () => {
             <th>Ordered Date</th>
             <th>status</th>
             <th>Total Amount</th>
-            <th>Action</th>
+            {/* <th>Action</th> */}
           </tr>
           {orders &&
             orders.map((order) =>
@@ -134,11 +139,11 @@ const Orders = () => {
                     </button>
                   </td>
                   <td>{order.itemsPrice + order.shippingPrice}</td>
-                  <td className="space-y-3">
+                  {/* <td className="space-y-3">
                     <button className="mx-1 px-4 py-1 bg-[#D11A2A] rounded-xl text-white">
                       Delete
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))
             )}
