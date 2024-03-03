@@ -53,6 +53,7 @@ const Orders = () => {
 
   useEffect(() => {
     if (isUpdated) {
+      dispatch(getAllOrders());
       setProduct(null);
       dispatch({ type: UPDATE_ORDERS_RESET });
     }
@@ -114,7 +115,7 @@ const Orders = () => {
             <th>Price</th>
             <th>Ordered Date</th>
             <th>status</th>
-            <th>Total Amount</th>
+            <th>Total Amount (RS)</th>
             {/* <th>Action</th> */}
           </tr>
           {orders &&

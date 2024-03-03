@@ -28,7 +28,7 @@ const AddProduct = () => {
     myForm.set("price", price);
     myForm.set("category", category);
     images.forEach((image) => {
-      myForm.append("images", image);
+      myForm.append("images", image);33
     });
     dispatch(createProducts(myForm));
   };
