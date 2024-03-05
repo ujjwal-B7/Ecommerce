@@ -249,8 +249,8 @@ export const resetPassword = (token, password) => async (dispatch) => {
 export const loadUsersByAdmin = () => async (dispatch) => {
   try {
     dispatch({ type: GET_USERS_BY_ADMIN_REQUEST });
-    const { data } = await axios.get(`/admin/getAllUsers`);
-    dispatch({ type: GET_USERS_BY_ADMIN_SUCCESS, payload: data.user });
+    const { data } = await axios.get(`/api/v1/admin/getAllUsers`);
+    dispatch({ type: GET_USERS_BY_ADMIN_SUCCESS, payload: data.users });
   } catch (error) {
     dispatch({
       type: GET_USERS_BY_ADMIN_FAIL,

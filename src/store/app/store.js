@@ -13,6 +13,7 @@ import {
   updateProfileReducer,
   userReducer,
   forgotPasswordReducer,
+  getAllUserReducer,
 } from "../reducers/userReducers";
 import { cartReducer } from "../reducers/cartReducers";
 import {
@@ -40,6 +41,7 @@ const reducer = combineReducers({
   updateProduct: updateProductReducer,
   allOrders: allOrdersReducer,
   updateAndDeleteOrder: updateOrdersReducer,
+  allUsers: getAllUserReducer,
 });
 
 let initialState = {

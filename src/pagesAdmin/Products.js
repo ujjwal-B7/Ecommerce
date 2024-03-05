@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { clearErrors, getAdminProducts } from "../store/actions/productAction";
+import { getAdminProducts } from "../store/actions/productAction";
 import { deleteProducts } from "../store/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products, error } = useSelector((state) => state.products);
-  const { isDeleted } = useSelector((state) => state.deleteProduct);
+  // const { isDeleted } = useSelector((state) => state.deleteProduct);
   useEffect(() => {
     if (error) {
       toast.error(error.data, {
@@ -25,7 +25,7 @@ const Products = () => {
       });
     }
     dispatch(getAdminProducts());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   // delete products
   const deleteProductsHandler = (id) => {
@@ -57,7 +57,7 @@ const Products = () => {
                 <td className="space-y-3">
                   <Link
                     to={`/admin/editProducts/${product._id}`}
-                    className="mx-1 px-6 py-2 bg-green-400 rounded-xl text-white"
+                    className="mx-1 px-6 py-2 bg-green-600 rounded-xl text-white"
                   >
                     Edit
                   </Link>

@@ -36,7 +36,6 @@ export const userReducer = (state = { user: [] }, action) => {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
     case LOAD_USER_REQUEST:
-    case GET_USERS_BY_ADMIN_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
@@ -44,7 +43,6 @@ export const userReducer = (state = { user: [] }, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
-    case GET_USERS_BY_ADMIN_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -67,7 +65,6 @@ export const userReducer = (state = { user: [] }, action) => {
         error: action.payload,
       };
     case LOAD_USER_FAIL:
-    case  GET_USERS_BY_ADMIN_FAIL:
       return {
         loading: false,
         isAuthenticated: false,
@@ -154,6 +151,38 @@ export const forgotPasswordReducer = (state = {}, action) => {
 
     case FORGOT_PASSWORD_FAIL:
     case RESET_PASSWORD_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+// get users by reducer
+export const getAllUserReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case GET_USERS_BY_ADMIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case GET_USERS_BY_ADMIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        users: action.payload,
+      };
+
+    case GET_USERS_BY_ADMIN_FAIL:
       return {
         ...state,
         loading: false,

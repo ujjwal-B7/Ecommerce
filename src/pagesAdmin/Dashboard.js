@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Doughnut, Line } from "react-chartjs-2";
-import { clearErrors, getAdminProducts } from "../store/actions/productAction";
-
+import { getAdminProducts } from "../store/actions/productAction";
+import { getAllOrders } from "../store/actions/orderAction";
 import {
   Chart as ChartJS,
   LineElement,
@@ -28,7 +28,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
   const { orders } = useSelector((state) => state.myOrder);
-  const { users } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   let outOfStock = 0;
   products &&
     products.forEach((product) => {
@@ -60,6 +60,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAdminProducts());
+    dispatch(getAllOrders());
   }, [dispatch]);
   return (
     <>
@@ -81,11 +82,11 @@ const Dashboard = () => {
             </Link>
             <Link className="dashboardDetails bg-[#01c0c8]" to="/admin/orders">
               <p>Orders</p>
-              <p>10</p>
+              <p>{orders.length}</p>
             </Link>
             <Link className="dashboardDetails bg-[#4f5467]" to="/admin/users">
               <p>Users</p>
-              <p>{users}</p>
+              <p>{user && user.length}</p>
             </Link>
           </div>
         </div>

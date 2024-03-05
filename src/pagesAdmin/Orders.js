@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from "react";
 import {
-  clearErrors,
   getAllOrders,
   updateOrder,
 } from "../store/actions/orderAction";
-import { deleteProducts } from "../store/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { DELETE_PRODUCT_RESET } from "../store/constants/productConstants";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UPDATE_ORDERS_RESET } from "../store/constants/orderConstants";
-import MessageBox from "../components/MessageBox";
 const Orders = () => {
   const [status, setStatus] = useState("");
   const [product, setProduct] = useState(null);
   const [order, setOrder] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { orders, error } = useSelector((state) => state.allOrders);
   const {
-    isDeleted,
     isUpdated,
-    error: updateError,
   } = useSelector((state) => state.updateAndDeleteOrder);
   useEffect(() => {
     if (error) {
