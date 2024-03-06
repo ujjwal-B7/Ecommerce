@@ -11,11 +11,12 @@ const Users = () => {
   return (
     <div className="col-start-3 col-end-13 mt-24 w-[95%] rounded-lg mx-auto">
       <table className="w-full">
-        <tr className=" text-left bg-[#4f5467] text-white uppercase sticky -top-[0.9rem] ">
+        <tr className="px-2 h-16 text-left bg-[#4f5467] text-white uppercase sticky -top-[0.9rem] ">
           <th>No.</th>
           <th>Image</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Role</th>
         </tr>
         {users &&
           users.map((user) => (
@@ -34,6 +35,7 @@ const Users = () => {
               </td>
               <td>{user.name}</td>
               <td>{user.email}</td>
+              <td>{user.role}</td>
             </tr>
           ))}
       </table>

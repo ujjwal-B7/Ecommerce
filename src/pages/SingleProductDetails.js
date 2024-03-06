@@ -7,6 +7,7 @@ import {
   getSingleProductDetails,
 } from "../store/actions/productAction";
 // import ReactStars from "react-rating-stars-component";
+import { getMyOrders } from "../store/actions/orderAction";
 import ReviewCard from "../components/ReviewCard";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -17,16 +18,18 @@ import { Rating } from "@material-ui/lab";
 import { PRODUCT_REVIEW_RESET } from "../store/constants/productConstants";
 const SingleProductDetails = ({ match }) => {
   const { id } = useParams();
+  const { loading, product, error } = useSelector(
+    (state) => state.productDetails
+  );
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [showReviewBox, setShowReviewBox] = useState(true);
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(0);
-  const { loading, product, error } = useSelector(
-    (state) => state.productDetails
-  );
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const [rating, setRating] = useState(product.ratings);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const { orders } = useSelector((state) => state.myOrder);
+
+  console.log("*************", orders);
   const { error: reviewError } = useSelector((state) => state.productReview);
   useEffect(() => {
     if (error) {
@@ -57,6 +60,7 @@ const SingleProductDetails = ({ match }) => {
     }
     dispatch({ type: PRODUCT_REVIEW_RESET });
     dispatch(getSingleProductDetails(id));
+    dispatch(getMyOrders());
   }, [dispatch, id, error, reviewError]);
 
   const options = {
@@ -261,15 +265,29 @@ const SingleProductDetails = ({ match }) => {
             <p className="font-light tracking-tight text-lg pt-2 pb-10">
               Description: {product.description}
             </p>
-            <p>{product._id}</p>
-            {isAuthenticated && (
-              <button
-                className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
-                onClick={() => setShowReviewBox(!showReviewBox)}
-              >
-                Submit Review
-              </button>
-            )}
+            {orders &&
+              orders.map(
+                (order) =>
+                  order &&
+                  order.orderItems.map((item) =>
+                    item.product === product._id ? (
+                      <button
+                        className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+                        onClick={() => setShowReviewBox(!showReviewBox)}
+                      >
+                        Submit Review
+                      </button>
+                    ) : null
+                  )
+              )}
+            {/* {isAuthenticated && (
+              // <button
+              //   className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+              //   onClick={() => setShowReviewBox(!showReviewBox)}
+              // >
+              //   Submit Review
+              // </button>
+            )} */}
           </div>
         </div>
       </div>

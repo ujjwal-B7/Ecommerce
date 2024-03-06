@@ -30,7 +30,7 @@ const ProductsList = ({
     prescision: 0.5,
   };
   const dispatch = useDispatch();
-  const {  products} = useSelector(
+  const { products } = useSelector(
     (state) => state.products
     // state.productsCount
   );
@@ -55,18 +55,8 @@ const ProductsList = ({
             .slice(0, limit)
             .map((product) => (
               <>
-                {/* <div
-                className={` ${click ? "hidden" : "block"} 
-          `}
-              >
-                <QuicView
-                  click={click}
-                  setClick={setClick}
-                  closeQuickView={closeQuickView}
-                />
-              </div> */}
-                <div
-                  // to={`/product/${product.id}`}
+                <Link
+                  to={`/product/${product._id}`}
                   className="h-80 lg:w-[90%] sm:w-80 w-40"
                   data-aos="zoom-in"
                   data-aos-duration="500"
@@ -77,7 +67,7 @@ const ProductsList = ({
                       className="sm:h-80 sm:w-96 object-cover"
                       alt={product.name}
                     />
-                    <div className="hover-content1">
+                    {/* <div className="hover-content1">
                       <p className="text1 hidden absolute top-6 right-14 text-sm bg-gray-900 text-white px-1 rounded">
                         Add to cart
                       </p>
@@ -102,9 +92,9 @@ const ProductsList = ({
                           openQuickView();
                         }}
                       />
-                    </div>
+                    </div> */}
                   </div>
-                  <Link to={`/product/${product._id}`}>
+                  <div>
                     <p className="font-semibold text-gray-900 pt-4">
                       {product.name}
                       <span className="block text-gray-600">
@@ -114,7 +104,7 @@ const ProductsList = ({
                         {product.description}
                       </span>
                     </p>
-                  </Link>
+                  </div>
                   <div className="lg:flex items-center gap-5">
                     <Rating
                       style={{ color: "tomato" }}
@@ -125,7 +115,7 @@ const ProductsList = ({
                       [ {product.numOfReviews} Reviews ]
                     </span>
                   </div>
-                </div>
+                </Link>
               </>
             ))}
         {!products && (

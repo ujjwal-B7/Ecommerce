@@ -26,11 +26,11 @@ const UserOptions = ({ user }) => {
     },
   ];
   if (user.role === "admin") {
-    // optionsArray.shift({
-    //   function: Orders,
-    //   logo: <ion-icon name="gift-outline"></ion-icon>,
-    //   option: "Orders",
-    // });
+    optionsArray.shift({
+      function: Orders,
+      logo: <ion-icon name="gift-outline"></ion-icon>,
+      option: "Orders",
+    });
     optionsArray.unshift({
       function: Dashboard,
       logo: <ion-icon name="grid-outline"></ion-icon>,

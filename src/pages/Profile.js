@@ -13,7 +13,12 @@ const UserInfo = () => {
       ></div>
       <section className=" max-w-screen-xl mx-auto h-[80vh] flex justify-evenly items-center">
         <div className=" text-center">
-          <h1 className="text-4xl text-gray-900 font-semibold">{user.name}</h1>
+          <h1 className="text-4xl text-gray-900 font-semibold">
+            {user.name}
+            {user.role === "admin" && (
+              <span className="uppercase">[{user.role}]</span>
+            )}
+          </h1>
           <div className="h-60 w-60 rounded-full my-5">
             <img
               className="w-60 h-60 object-cover rounded-full"
