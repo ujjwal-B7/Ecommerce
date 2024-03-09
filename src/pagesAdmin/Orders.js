@@ -92,7 +92,7 @@ const Orders = () => {
                   )}
                 </select>
               </div>
-              <div className="flex  justify-center gap-3 mt-5">
+              <div className="flex justify-center gap-3 mt-5">
                 <button
                   className="hover:bg-[#cc0000] hover:text-white transition-all border-2 border-[#cc0000] text-gray-900 px-10 py-1 rounded-lg"
                   onClick={() => setProduct(null)}
