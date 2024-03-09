@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Doughnut, Line } from "react-chartjs-2";
 import { getAdminProducts } from "../store/actions/productAction";
 import { getAllOrders } from "../store/actions/orderAction";
+import { loadUsersByAdmin } from "../store/actions/userAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Chart as ChartJS,
   LineElement,
@@ -27,14 +30,16 @@ ChartJS.register(
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  const { orders } = useSelector((state) => state.myOrder);
-  const { user } = useSelector((state) => state.user);
+  const { loading, error, orders, totalAmount } = useSelector(
+    (state) => state.allOrders
+  );
+  const { users } = useSelector((state) => state.allUsers);
   let outOfStock = 0;
   products &&
     products.forEach((product) => {
       if (product.Stock === 0) outOfStock += 1;
     });
-
+  console.log(orders);
   const lineState = {
     labels: ["Initial Amount", "Amount Earned"],
     datasets: [
@@ -43,7 +48,7 @@ const Dashboard = () => {
         backgroundColor: ["tomato"],
         hoverBackgroundColor: ["rgb(197,72,49)"],
         borderColor: "#f26c6d",
-        data: [0, 4000],
+        data: [0, totalAmount],
       },
     ],
   };
@@ -59,8 +64,22 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+    if (error) {
+      toast.error("Item out of stock", {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
     dispatch(getAdminProducts());
     dispatch(getAllOrders());
+    dispatch(loadUsersByAdmin());
   }, [dispatch]);
   return (
     <>
@@ -69,8 +88,8 @@ const Dashboard = () => {
         <div className="bg-white p-2 rounded-xl text-gray-600">
           <div>
             <h1 className="font-semibold">Dashboard</h1>
-            <span className="font-semibold">Total Amount:</span>
-            <span>10000</span>
+            <span className="font-semibold">Total Amount( RS ) : </span>
+            <span>{totalAmount}</span>
           </div>
           <div className="flex gap-4 pt-2">
             <Link
@@ -82,11 +101,11 @@ const Dashboard = () => {
             </Link>
             <Link className="dashboardDetails bg-[#01c0c8]" to="/admin/orders">
               <p>Orders</p>
-              <p>{orders.length}</p>
+              <p>{orders && orders.length}</p>
             </Link>
             <Link className="dashboardDetails bg-[#4f5467]" to="/admin/users">
               <p>Users</p>
-              <p>{user && user.length}</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
         </div>

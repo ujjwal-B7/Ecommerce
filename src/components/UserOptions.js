@@ -58,14 +58,18 @@ const UserOptions = ({ user }) => {
   return (
     <>
       <div
-        className="flex items-center caret-down"
+        className="flex items-center gap-2 caret-down cursor-pointer"
         onClick={() => setOptions(!options)}
       >
-        <img
+        {/* <img
           src={user.profile.url ? user.profile.url : "./images/defaultpic.jpg"}
           className="h-9 w-9 rounded-full object-cover"
           alt=""
-        />
+        /> */}
+        <div className="flex flex-col -space-y-1 ">
+          <h1 className="text-sm">Welcome,</h1>
+          <p className="text-lg ">{user.name.substr(0, 7)}</p>
+        </div>
         <span className="self-end">
           <ion-icon name="caret-down-outline"></ion-icon>
         </span>

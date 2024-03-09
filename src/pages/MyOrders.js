@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  clearErrors,
-  getMyOrders,
-} from "../store/actions/orderAction";
+import { clearErrors, getMyOrders } from "../store/actions/orderAction";
 import html2pdf from "html2pdf.js";
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -20,7 +17,7 @@ const MyOrders = () => {
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
-        draggable: true,
+      draggable: true,
         progress: undefined,
         theme: "light",
       });
@@ -29,6 +26,7 @@ const MyOrders = () => {
     dispatch(getMyOrders());
   }, [error, dispatch]);
 
+  // console.log("***************", orders.length);
   // download pdf
   const pdfDownload = () => {
     const itemsPdf = document.getElementById("orderedItemsPdf");

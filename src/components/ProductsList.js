@@ -27,12 +27,12 @@ const ProductsList = ({
     // isHalf: true,
     size: "small",
     redaOnly: true,
-    prescision: 0.5,
+    precision: 0.5,
   };
   const dispatch = useDispatch();
   const { products } = useSelector(
     (state) => state.products
-    // state.productsCount
+    // state` .productsCount
   );
   useEffect(() => {
     dispatch(getProduct(searchKeyword, currentPage, price, category, ratings));

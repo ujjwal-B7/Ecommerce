@@ -21,6 +21,7 @@ const SingleProductDetails = ({ match }) => {
   const { loading, product, error } = useSelector(
     (state) => state.productDetails
   );
+  const [showSubmit, setShowSubmit] = useState(false);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [showReviewBox, setShowReviewBox] = useState(true);
@@ -30,7 +31,9 @@ const SingleProductDetails = ({ match }) => {
   const { orders } = useSelector((state) => state.myOrder);
 
   console.log("*************", orders);
-  const { error: reviewError } = useSelector((state) => state.productReview);
+  const { error: reviewError, success } = useSelector(
+    (state) => state.productReview
+  );
   useEffect(() => {
     if (error) {
       toast.error(error, {
@@ -58,10 +61,16 @@ const SingleProductDetails = ({ match }) => {
       });
       dispatch(clearErrors());
     }
-    dispatch({ type: PRODUCT_REVIEW_RESET });
     dispatch(getSingleProductDetails(id));
     dispatch(getMyOrders());
   }, [dispatch, id, error, reviewError]);
+
+  useEffect(() => {
+    if (success) {
+      dispatch(getSingleProductDetails(id));
+      dispatch({ type: PRODUCT_REVIEW_RESET });
+    }
+  });
 
   const options = {
     // edit: false,
@@ -73,7 +82,7 @@ const SingleProductDetails = ({ match }) => {
     size: "small",
     value: product.ratings,
     redaOnly: true,
-    prescision: 0.5,
+    precision: 0.5,
   };
 
   // increase quantity
@@ -139,12 +148,12 @@ const SingleProductDetails = ({ match }) => {
         ${showReviewBox ? "hidden" : "block"}
       `}
       >
-        <div className="w-96 h-72 bg-white rounded-xl p-2">
+        <div className=" h-72 bg-white rounded-xl p-2">
           <h1 className="text-center font-semibold pb-4">Submit Review</h1>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="rounded-lg p-2 border-gray-400"
+            className="w-full rounded-lg p-2 border-gray-400"
             placeholder="Submit your review"
             name=""
             id=""
@@ -272,7 +281,7 @@ const SingleProductDetails = ({ match }) => {
                   order.orderItems.map((item) =>
                     item.product === product._id ? (
                       <button
-                        className="magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white"
+                        className={`magenta hover:bg-opacity-90 px-2 absolute md:bottom-5 bottom-1 mb-2 rounded-lg h-10 text-white`}
                         onClick={() => setShowReviewBox(!showReviewBox)}
                       >
                         Submit Review

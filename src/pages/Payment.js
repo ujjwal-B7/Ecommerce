@@ -14,7 +14,7 @@ import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { clearErrors } from "../store/actions/orderAction";
 import { createOrder } from "../store/actions/orderAction";

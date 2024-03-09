@@ -11,8 +11,8 @@ const RegisterForm = ({
   setShowForm,
 }) => {
   const [showPassword, setShowPassword] = useState(true);
-  const [profile, setProfile] = useState("./images/defaultpic.jpg");
-  const [profilePreview, setProfilePreview] = useState("/Profile.png");
+  // const [profile, setProfile] = useState("./images/defaultpic.jpg");
+  // const [profilePreview, setProfilePreview] = useState("/Profile.png");
   // error
   const [errors, setErrors] = useState({
     password: "",
@@ -35,30 +35,30 @@ const RegisterForm = ({
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
-    myForm.set("profile", profile);
+    // myForm.set("profile", profile);
     dispatch(registerUser(myForm));
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "profile") {
-      const reader = new FileReader();
-      reader.onload = () => {
-        //readystates=> 0:initial state,1:processing,2:done
-        if (reader.readyState === 2) {
-          const profileUrl = reader.result;
-          setProfilePreview(profileUrl);
-          setProfile(profileUrl);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
+    // if (e.target.name === "profile") {
+    //   const reader = new FileReader();
+    //   reader.onload = () => {
+    //     //readystates=> 0:initial state,1:processing,2:done
+    //     if (reader.readyState === 2) {
+    //       const profileUrl = reader.result;
+    //       setProfilePreview(profileUrl);
+    //       setProfile(profileUrl);
+    //     }
+    //   };
+    //   reader.readAsDataURL(e.target.files[0]);
+    // } else {
       setUser({ ...user, [e.target.name]: e.target.value });
       setErrors({
         ...errors,
         [e.target.name]:
           e.target.value.length < 8 ? "Must be at least 8 characters" : "",
       });
-    }
+    // }
   };
 
   useEffect(() => {
@@ -158,7 +158,7 @@ const RegisterForm = ({
               show password
             </label>
           </div>
-          <label htmlFor="profile" className="text-gray-900">
+          {/* <label htmlFor="profile" className="text-gray-900">
             Upload a photo
           </label>
           <div id="registerImage" className="flex items-center gap-7">
@@ -178,7 +178,7 @@ const RegisterForm = ({
                 alt=""
               />
             </div>
-          </div>
+          </div> */}
           {/* <button
             disabled={password.length < 8 ? true : false}
             type="submit"

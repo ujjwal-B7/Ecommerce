@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirm from "../components/DeleteConfirm";
 import { addToCart } from "../store/actions/cartAction";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import { removeCartItem } from "../store/actions/cartAction";
+
 import "react-toastify/dist/ReactToastify.css";
 const Cart = ({ showCart, setShowCart }) => {
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
@@ -15,7 +17,7 @@ const Cart = ({ showCart, setShowCart }) => {
   const toggleDeleteVisibility = () => {
     setIsDeleteVisible(!isDeleteVisible);
   };
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
   // increase quantity
   const increaseQuantity = (id, quantity, stock) => {
@@ -50,6 +52,12 @@ const Cart = ({ showCart, setShowCart }) => {
     }
     setShowCart(!showCart);
   };
+
+  const deleteCartItemHandler = (id) => {
+    dispatch(removeCartItem(id));
+    // toggleDeleteVisibility();
+    // setClick(!click);
+  };
   return (
     <section className="text-gray-900 cart relative z-50 h-full">
       <p className="text-3xl font-semibold py-5 text-center">Cart</p>
@@ -77,7 +85,8 @@ const Cart = ({ showCart, setShowCart }) => {
                       key={item.product}
                       className="text-red-700  h-6 w-6 rounded-full text-center"
                       //   onClick={toggleDeleteVisibility}
-                      onClick={() => setClick(!click)}
+                      // onClick={() => setClick(!click)}
+                      onClick={() => deleteCartItemHandler(item.product)}
                     >
                       <ion-icon name="trash-outline"></ion-icon>
                     </div>
@@ -133,35 +142,36 @@ const Cart = ({ showCart, setShowCart }) => {
                       </button>
                     </div>
                   </div>
-                  <div className={` ${click ? "hidden" : "block"} `}>
+                  {/* <div className={` ${click ? "hidden" : "block"} `}>
                     <DeleteConfirm
                       click={click}
                       setClick={setClick}
                       itemID={item.product}
                       item={item}
                     />
-                  </div>
+                  </div> */}
                 </>
               ))}
           </div>
-          <div className="sticky bottom-0 w-full px-2 bg-white">
-            <hr className="border-gray-900 w-[95%]" />
-            <p className="py-4 text-end">
-              Total:
-              {fetchedCartItems &&
-                fetchedCartItems.reduce(
-                  (acc, item) => (acc += item.price * item.quantity),
-                  0
-                )}
-            </p>
-
-            <button
-              className="bg-gray-900 text-white w-full text-lg h-10 hover:opacity-90 rounded-md mb-2"
-              onClick={checkOutHandler}
-            >
-              Check Out
-            </button>
-          </div>
+          {user && user.role === "user" && (
+            <div className="sticky bottom-0 w-full px-2 bg-white">
+              <hr className="border-gray-900 w-[95%]" />
+              <p className="py-4 text-end">
+                Total:
+                {fetchedCartItems &&
+                  fetchedCartItems.reduce(
+                    (acc, item) => (acc += item.price * item.quantity),
+                    0
+                  )}
+              </p>
+              <button
+                className="bg-gray-900 text-white w-full text-lg h-10 hover:opacity-90 rounded-md mb-2"
+                onClick={checkOutHandler}
+              >
+                Check Out
+              </button>
+            </div>
+          )}
         </>
       )}
 

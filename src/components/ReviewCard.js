@@ -1,6 +1,5 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import sharbani from "../images/sharbani.jpg";
 import { useSelector } from "react-redux";
 import { Rating } from "@material-ui/lab";
 

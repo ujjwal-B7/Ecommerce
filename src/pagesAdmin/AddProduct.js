@@ -28,7 +28,7 @@ const AddProduct = () => {
     myForm.set("price", price);
     myForm.set("category", category);
     images.forEach((image) => {
-      myForm.append("images", image);33
+      myForm.append("images", image);
     });
     dispatch(createProducts(myForm));
   };
@@ -134,7 +134,7 @@ const AddProduct = () => {
             required
           />
         </div>
-        <label htmlFor="images" className="text-gray-900">
+        <label htmlFor="images" className="text-gray-900 font-semibold">
           Upload a photo
         </label>
         <div id="registerImage" className="flex items-center gap-7">

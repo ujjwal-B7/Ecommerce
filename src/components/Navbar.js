@@ -4,11 +4,14 @@ import { useRef, useState, useEffect } from "react";
 import Cart from "../pages/Cart";
 import Notifications from "../pages/Notifications";
 import LoginForm from "./LoginForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserOptions from "./UserOptions";
-
+import NotifyNumber from "./NotifyNumber";
+import { clearErrors, getMyOrders } from "../store/actions/orderAction";
 const Navbar = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const { loading, error, orders } = useSelector((state) => state.myOrder);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -28,6 +31,11 @@ const Navbar = () => {
   //   document.addEventListener("mousedown", handle);
   //   return () => document.removeEventListener("mousedown", handle);
   // });
+
+  useEffect(() => {
+    dispatch(getMyOrders());
+  }, [error, dispatch]);
+
   const { user, isAuthenticated } = useSelector((state) => state.user);
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
 
@@ -97,7 +105,24 @@ const Navbar = () => {
                 <ion-icon name="notifications"></ion-icon>
               </button>
               <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
-                0
+                {orders &&
+                  orders.map(
+                    (order) =>
+                      order.orderStatus === "Shipped" &&
+                      order.orderItems.map((item) => (
+                        <NotifyNumber number={1} />
+                      ))
+                  )}
+              </p>
+              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
+                {orders &&
+                  orders.map(
+                    (order) =>
+                      order.orderStatus === "Delivered" &&
+                      order.orderItems.map((item) => (
+                        <NotifyNumber number={2} />
+                      ))
+                  )}
               </p>
             </li>
             <li className="relative">

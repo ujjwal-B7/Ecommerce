@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  getAllOrders,
-  updateOrder,
-} from "../store/actions/orderAction";
+import { getAllOrders, updateOrder } from "../store/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,9 +10,7 @@ const Orders = () => {
   const [order, setOrder] = useState(null);
   const dispatch = useDispatch();
   const { orders, error } = useSelector((state) => state.allOrders);
-  const {
-    isUpdated,
-  } = useSelector((state) => state.updateAndDeleteOrder);
+  const { isUpdated } = useSelector((state) => state.updateAndDeleteOrder);
   useEffect(() => {
     if (error) {
       toast.error(error, {
@@ -71,30 +66,47 @@ const Orders = () => {
           className={`status-box w-full h-screen bg-black/30 flex justify-center items-center
                   `}
         >
-          <div className="w-96 h-60 bg-white">
-            <h1>Update Status {product.name + order._id}</h1>
+          <div className="w-96 px-2 py-8 bg-white rounded-lg">
+            <h1 className="font-semibold text-center text-lg">
+              Update Status of {product.name}
+            </h1>
             <form
               onSubmit={(e) => {
                 e.preventDefault(); // Prevent default form submission behavior
                 submitStatus(order._id); // Call submitStatus with product ID
               }}
             >
-              <select
-                id={product._id}
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <option value="">Choose status</option>
-                {order.orderStatus === "Processing" && (
-                  <option value="Shipped">Shipped</option>
-                )}
-                {order.orderStatus === "Shipped" && (
-                  <option value="Delivered">Delivered</option>
-                )}
-              </select>
-              <button type="submit">Update status</button>
+              <div className="flex justify-center">
+                <select
+                  className="w-full my-4 mx-5 px-2 py-2 rounded"
+                  id={product._id}
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="">Choose status</option>
+                  {order.orderStatus === "Processing" && (
+                    <option value="Shipped">Shipped</option>
+                  )}
+                  {order.orderStatus === "Shipped" && (
+                    <option value="Delivered">Delivered</option>
+                  )}
+                </select>
+              </div>
+              <div className="flex  justify-center gap-3 mt-5">
+                <button
+                  className="hover:bg-[#cc0000] hover:text-white transition-all border-2 border-[#cc0000] text-gray-900 px-10 py-1 rounded-lg"
+                  onClick={() => setProduct(null)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-gray-900 text-white px-7 py-1 rounded-lg hover:bg-opacity-90"
+                  type="submit"
+                >
+                  Update status
+                </button>
+              </div>
             </form>
-            <button onClick={() => setProduct(null)}>Cancel</button>
           </div>
         </div>
       )}

@@ -13,7 +13,6 @@ const Users = () => {
       <table className="w-full">
         <tr className="px-2 h-16 text-left bg-[#4f5467] text-white uppercase sticky -top-[0.9rem] ">
           <th>No.</th>
-          <th>Image</th>
           <th>Name</th>
           <th>Email</th>
           <th>Role</th>
@@ -22,17 +21,6 @@ const Users = () => {
           users.map((user) => (
             <tr className="text-gray-600 border-b-gray-600/60 border-[0.5px]">
               <td>{i++}</td>
-              <td className="w-40 h-40 rounded-full">
-                <img
-                  className="w-40 h-40 rounded-full object-cover"
-                  src={
-                    user.profile.url
-                      ? user.profile.url
-                      : "/images/defaultpic.jpg"
-                  }
-                  alt=""
-                />
-              </td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
