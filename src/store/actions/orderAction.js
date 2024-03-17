@@ -64,14 +64,22 @@ export const createOrder = (order) => async (dispatch) => {
   }
 };
 
+let isUnauthorizedHandled = false;
 // get my orders
 export const getMyOrders = () => async (dispatch) => {
   try {
     dispatch({ type: MY_ORDER_REQUEST });
     const { data } = await axios.get("/api/v1/orders/myOrders");
     dispatch({ type: MY_ORDER_SUCCESS, payload: data.myOrders });
+    isUnauthorizedHandled = false;
   } catch (error) {
-    dispatch({ type: MY_ORDER_FAIL, payload: error.response.data.error });
+    if (error.response && error.response.status === 401) {
+      if (!isUnauthorizedHandled) {
+        isUnauthorizedHandled = true;
+      }
+    } else {
+      dispatch({ type: MY_ORDER_FAIL, payload: error.response.data.error });
+    }
   }
 };
 

@@ -70,7 +70,7 @@ const SingleProductDetails = ({ match }) => {
       dispatch(getSingleProductDetails(id));
       dispatch({ type: PRODUCT_REVIEW_RESET });
     }
-  });
+  }, []);
 
   const options = {
     // edit: false,
