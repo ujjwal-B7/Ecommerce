@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import Cart from "../pages/Cart";
 import Notifications from "../pages/Notifications";
+import Wishlist from "../pages/Wishlist";
 import LoginForm from "./LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import UserOptions from "./UserOptions";
@@ -16,6 +17,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [notifications, setNotifications] = useState(false);
+  const [wishlist, setWishlist] = useState(false);
   const [showForm, setShowForm] = useState(true);
   const location = useLocation();
   const menuRef = useRef();
@@ -38,18 +40,17 @@ const Navbar = () => {
 
   const { user, isAuthenticated } = useSelector((state) => state.user);
   const fetchedCartItems = JSON.parse(localStorage.getItem("addedCartItems"));
+  const fetchedWishlistItems = JSON.parse(
+    localStorage.getItem("addedWishlistItems")
+  );
 
   useEffect(() => {
     let handle = (e) => {
-      if (
-        menuRef &&
-        menuRef.current &&
-        !menuRef.current.contains(e.target)
-        // && !["INPUT", "BUTTON"].includes(e.target.tagName)
-      ) {
+      if (menuRef && menuRef.current && !menuRef.current.contains(e.target)) {
         setOpen(false);
         setShowCart(false);
         setNotifications(false);
+        // setWishlist(false);
         // setShowForm(true);
       }
     };
@@ -104,7 +105,7 @@ const Navbar = () => {
               <button onClick={() => setNotifications(!notifications)}>
                 <ion-icon name="notifications"></ion-icon>
               </button>
-              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
+              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-3 left-5 font-semibold">
                 {orders &&
                   orders.map(
                     (order) =>
@@ -114,7 +115,7 @@ const Navbar = () => {
                       ))
                   )}
               </p>
-              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
+              <p className="text-xs h-6 w-6 text-white rounded-full absolute bottom-4 left-5 font-semibold">
                 {orders &&
                   orders.map(
                     (order) =>
@@ -123,6 +124,14 @@ const Navbar = () => {
                         <NotifyNumber number={2} />
                       ))
                   )}
+              </p>
+            </li>
+            <li className="wishlist relative">
+              <button onClick={() => setWishlist(!wishlist)}>
+                <ion-icon name="heart"></ion-icon>
+              </button>
+              <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
+                {fetchedWishlistItems && fetchedWishlistItems.length}
               </p>
             </li>
             <li className="relative">
@@ -136,7 +145,7 @@ const Navbar = () => {
               >
                 <ion-icon name="cart"></ion-icon>
               </button>
-              <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-6 left-8 font-semibold">
+              <p className="text-md h-6 w-6 text-white rounded-full absolute bottom-5 left-6 font-semibold">
                 {fetchedCartItems && fetchedCartItems.length}
               </p>
             </li>
@@ -201,6 +210,7 @@ const Navbar = () => {
             <Link to="/contact">CONTACT US</Link>
           </li>
         </ul>
+
         <ul
           ref={menuRef}
           className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
@@ -212,6 +222,15 @@ const Navbar = () => {
             notifications={notifications}
             setNotifications={setNotifications}
           />
+        </ul>
+        <ul
+          // ref={menuRef}
+          className={`absolute text-gray-900 overflow-y-auto bg-white shadow-2xl
+          lg:w-[30%] md:w-[55%] w-full h-screen top-0 text-xl transition-all ease-in duration-300 
+          ${wishlist ? "right-0" : "right-[-45rem]"}
+          `}
+        >
+          <Wishlist wishlist={wishlist} setWishlist={setWishlist} />
         </ul>
         <ul
           ref={menuRef}

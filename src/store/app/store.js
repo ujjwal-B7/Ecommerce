@@ -52,6 +52,9 @@ let initialState = {
     shippingInfo: localStorage.getItem("shippingInfo")
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
+   wishlistItems: localStorage.getItem("addedWishlistItems")
+      ? JSON.parse(localStorage.getItem("addedWishlistItems"))
+      : [],
   },
 };
 // let initialState = {

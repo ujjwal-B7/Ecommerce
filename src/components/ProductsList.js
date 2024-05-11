@@ -7,6 +7,9 @@ import { getProduct } from "../store/actions/productAction";
 import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@material-ui/lab";
 import QuicView from "./QuicView";
+import { addToWishlist } from "../store/actions/cartAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ProductsList = ({
   click,
   setClick,
@@ -29,6 +32,7 @@ const ProductsList = ({
     redaOnly: true,
     precision: 0.5,
   };
+  const [wishlistclick, setWishlistClick] = useState(false);
   const dispatch = useDispatch();
   const { products } = useSelector(
     (state) => state.products
@@ -38,6 +42,20 @@ const ProductsList = ({
     dispatch(getProduct(searchKeyword, currentPage, price, category, ratings));
   }, [dispatch, searchKeyword, currentPage, price, category, ratings]);
 
+  //add to cart handler
+  const addToWishListHandler = (id) => {
+    dispatch(addToWishlist(id));
+    toast.success("Item Added to wishlist", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       {products && (
@@ -55,18 +73,19 @@ const ProductsList = ({
             .slice(0, limit)
             .map((product) => (
               <>
-                <Link
-                  to={`/product/${product._id}`}
+                <div
                   className="h-80 lg:w-[90%] sm:w-80 w-40"
                   data-aos="zoom-in"
                   data-aos-duration="500"
                 >
                   <div className="products overflow-hidden">
-                    <img
-                      src={product.images[0].url}
-                      className="sm:h-80 sm:w-96 object-cover"
-                      alt={product.name}
-                    />
+                    <Link to={`/product/${product._id}`}>
+                      <img
+                        src={product.images[0].url}
+                        className="sm:h-80 sm:w-96 object-cover rounded-md"
+                        alt={product.name}
+                      />
+                    </Link>
                     {/* <div className="hover-content1">
                       <p className="text1 hidden absolute top-6 right-14 text-sm bg-gray-900 text-white px-1 rounded">
                         Add to cart
@@ -96,7 +115,27 @@ const ProductsList = ({
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 pt-4">
-                      {product.name}
+                      <div className="flex justify-between items-center">
+                        <span>{product.name}</span>
+                        <span
+                          className="mt-1.5 wishlist cursor-pointer"
+                          // onClick={() => setWishlistClick(!wishlistclick)}
+                        >
+                          {/* {wishlistclick ? ( */}
+                          <span
+                            className=""
+                            onClick={() => addToWishListHandler(product._id)}
+                          >
+                            <ion-icon name="heart-outline"></ion-icon>
+                          </span>
+                          {/* )
+                           : (
+                            // <span>
+                            //   <ion-icon name="heart-outline"></ion-icon>
+                            </span>
+                          )} */}
+                        </span>
+                      </div>
                       <span className="block text-gray-600">
                         {product.price}
                       </span>
@@ -115,7 +154,7 @@ const ProductsList = ({
                       [ {product.numOfReviews} Reviews ]
                     </span>
                   </div>
-                </Link>
+                </div>
               </>
             ))}
         {!products && (

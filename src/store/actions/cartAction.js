@@ -2,6 +2,8 @@ import {
   ADD_TO_CART,
   SHIPPING_INFO,
   REMOVE_CART_ITEM,
+  ADD_TO_WISHLIST,
+  REMOVE_WISHLIST_ITEM,
 } from "../constants/cartConstants";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -47,6 +49,47 @@ export const removeCartItem = (id) => async (dispatch, getState) => {
   localStorage.setItem(
     "addedCartItems",
     JSON.stringify(getState().cart.cartItems)
+  );
+};
+// add to wishlist
+export const addToWishlist = (_id) => async (dispatch, getState) => {
+  const { data } = await axios.get(`/api/v1/products/${_id}`);
+  dispatch({
+    type: ADD_TO_WISHLIST,
+    payload: {
+      product: data.product._id,
+      name: data.product.name,
+      description: data.product.description,
+      price: data.product.price,
+      image: data.product.images[0].url,
+      stock: data.product.Stock,
+    },
+  });
+  localStorage.setItem(
+    "addedWishlistItems",
+    JSON.stringify(getState().cart.wishlistItems)
+  );
+};
+
+// remove from wishlist
+export const removeWishlistItem = (id) => async (dispatch, getState) => {
+  dispatch({
+    type: REMOVE_WISHLIST_ITEM,
+    payload: id,
+  });
+  toast.success("Item removed from wishlist.", {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+  localStorage.setItem(
+    "addedWishlistItems",
+    JSON.stringify(getState().cart.wishlistItems)
   );
 };
 

@@ -16,6 +16,7 @@ const AddProduct = () => {
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  
   const categories = ["Footwear", "Bottom", "Tops", "Attire"];
 
   // name create function

@@ -394,9 +394,14 @@ flex-wrap: wrap;
 .orderCard{
   box-shadow:  0px 2px 9px rgba(0, 0, 0, 0.4);
 }
-
 .cartIcon,.notification ion-icon{
-  font-size: 30px;
+  font-size: 25px;
+}
+.wishlist ion-icon{
+  font-size: 20px;
+}
+.wishcolor ion-icon {
+  color: tomato;
 }
 .dropdown ion-icon{
   font-size: 20x;
