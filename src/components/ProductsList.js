@@ -7,9 +7,10 @@ import { getProduct } from "../store/actions/productAction";
 import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@material-ui/lab";
 import QuicView from "./QuicView";
-import { addToWishlist } from "../store/actions/cartAction";
+import { addToWishlist, removeWishlistItem } from "../store/actions/cartAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { color } from "chart.js/helpers";
 const ProductsList = ({
   click,
   setClick,
@@ -56,6 +57,23 @@ const ProductsList = ({
       theme: "light",
     });
   };
+
+  const deleteWishlistItemHandler = (id) => {
+    dispatch(removeWishlistItem(id));
+  };
+  function switchToFilledHeart(heartId, filledHeartId) {
+    const heartElement = document.getElementById(`${heartId}`);
+    const filledHeartElement = document.getElementById(`${filledHeartId}`);
+    heartElement.style.display = "none";
+    filledHeartElement.style.display = "block";
+  }
+  function switchToHeart(heartId, filledHeartId) {
+    const heartElement = document.getElementById(`${heartId}`);
+    const filledHeartElement = document.getElementById(`${filledHeartId}`);
+    heartElement.style.display = "block";
+    filledHeartElement.style.display = "none";
+  }
+
   return (
     <section className="relative max-w-7xl mx-auto sm:pb-52 pb-48 text-gray-600 lg:px-0 md:px-10 ">
       {products && (
@@ -123,17 +141,34 @@ const ProductsList = ({
                         >
                           {/* {wishlistclick ? ( */}
                           <span
-                            className=""
-                            onClick={() => addToWishListHandler(product._id)}
+                            style={{ display: "block" }}
+                            id={`heart_${product._id}`}
+                            onClick={() => {
+                              addToWishListHandler(product._id);
+                              switchToFilledHeart(
+                                `heart_${product._id}`,
+                                `filled_heart_${product._id}`
+                              );
+                            }}
                           >
                             <ion-icon name="heart-outline"></ion-icon>
                           </span>
-                          {/* )
-                           : (
-                            // <span>
-                            //   <ion-icon name="heart-outline"></ion-icon>
-                            </span>
-                          )} */}
+                          <span
+                            onClick={() => {
+                              deleteWishlistItemHandler(product._id);
+                              switchToHeart(
+                                `heart_${product._id}`,
+                                `filled_heart_${product._id}`
+                              );
+                            }}
+                            style={{ display: "none" }}
+                            id={`filled_heart_${product._id}`}
+                          >
+                            <ion-icon
+                              style={{ color: "tomato" }}
+                              name="heart"
+                            ></ion-icon>
+                          </span>
                         </span>
                       </div>
                       <span className="block text-gray-600">

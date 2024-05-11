@@ -66,13 +66,14 @@ const UserOptions = ({ user }) => {
           className="h-9 w-9 rounded-full object-cover"
           alt=""
         /> */}
-        <div className="flex flex-col -space-y-1 ">
-          <h1 className="text-sm">Welcome,</h1>
-          <p className="text-lg ">{user.name.substr(0, 7)}</p>
+        <div className="flex items-center mb-2">
+          <p className="text-xl rounded-full px-4 py-2 bg-gray-400 uppercase">
+            {user.name.substr(0, 1)}
+          </p>
+          <span className="mt-2">
+            <ion-icon name="caret-down-outline"></ion-icon>
+          </span>
         </div>
-        <span className="self-end">
-          <ion-icon name="caret-down-outline"></ion-icon>
-        </span>
       </div>
       <div
         className={`bg-white w-36 rounded-lg shadow-lg absolute top-16
