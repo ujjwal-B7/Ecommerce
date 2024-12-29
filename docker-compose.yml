@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frontendContainer
+    ports:
+      - 3000:3000
+    networks:
+      - ecommerce-network
+    develop:
+      watch:
+        - path: package*.json
+          action: rebuild
+        - path: .
+          target: /frontend
+          action: sync
+          ignore: 
+            - node_modules/
+networks:
+  ecommerce-network:
+    external: true

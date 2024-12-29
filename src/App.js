@@ -33,6 +33,8 @@ import Users from "./pagesAdmin/Users";
 import Inbox from "./pagesAdmin/Orders";
 import AddProduct from "./pagesAdmin/AddProduct";
 import EditProducts from "./pagesAdmin/EditProducts";
+import ScrollToTop from "react-scroll-to-top";
+
 function App() {
   const dispatch = useDispatch();
   const openQuickView = () => {
@@ -44,6 +46,7 @@ function App() {
   };
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
+
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   // fetching stripe api key
@@ -58,15 +61,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* {user && user.role === "admin" ? (
-        <>
-          <AdminNav />
-          <SideBar />
-        </>
-      ) : ( */}
-      {/* {user && user.role === "user" && } */}
       <Navbar />
-      {/* )} */}
+
       <Routes>
         <Route
           exact
@@ -133,6 +129,17 @@ function App() {
       {isAuthenticated && user.role === "admin" && <AdminLayout />}
       {/* {user && user.role === "user" && } */}
       <Footer />
+      <ScrollToTop
+        smooth
+        color="white"
+        style={{
+          backgroundColor: "#111827",
+          padding: "5px",
+          position: "fixed",
+          left: "3rem",
+          bottom: "1rem",
+        }}
+      />
     </div>
   );
 }

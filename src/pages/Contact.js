@@ -1,6 +1,5 @@
 import React from "react";
 import Loader from "../components/Loader";
-import ScrollToTop from "react-scroll-to-top";
 import { useSelector } from "react-redux";
 const Contact = () => {
   const { loading } = useSelector((state) => state.products);
@@ -106,14 +105,6 @@ const Contact = () => {
           </a>
         </iframe>
       </div>
-      <ScrollToTop
-        smooth
-        color="white"
-        style={{
-          backgroundColor: "#111827",
-          padding: "5px",
-        }}
-      />
     </>
   );
 };

@@ -33,6 +33,8 @@ const ConfirmOrder = () => {
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
     navigate("/orderPayment");
   };
+
+  console.log("confirm order", fetchedCartItems);
   return (
     <>
       {/* <Loader loading={loading} /> */}
@@ -71,6 +73,7 @@ const ConfirmOrder = () => {
                     </p>
                   </Link>
                   <p>QTY: {item.quantity}</p>
+                  <p>Category: {item.category}</p>
                   <div>
                     {/* <b>subtotal:</b> */}
                     <span className="pl-2">

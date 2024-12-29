@@ -1,16 +1,13 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../store/actions/productAction";
 import "react-toastify/dist/ReactToastify.css";
 import { Rating } from "@material-ui/lab";
-import QuicView from "./QuicView";
 import { addToWishlist, removeWishlistItem } from "../store/actions/cartAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { color } from "chart.js/helpers";
 const ProductsList = ({
   click,
   setClick,
@@ -33,12 +30,14 @@ const ProductsList = ({
     redaOnly: true,
     precision: 0.5,
   };
-  const [wishlistclick, setWishlistClick] = useState(false);
+
   const dispatch = useDispatch();
+
   const { products } = useSelector(
     (state) => state.products
     // state` .productsCount
   );
+
   useEffect(() => {
     dispatch(getProduct(searchKeyword, currentPage, price, category, ratings));
   }, [dispatch, searchKeyword, currentPage, price, category, ratings]);
@@ -61,6 +60,7 @@ const ProductsList = ({
   const deleteWishlistItemHandler = (id) => {
     dispatch(removeWishlistItem(id));
   };
+
   function switchToFilledHeart(heartId, filledHeartId) {
     const heartElement = document.getElementById(`${heartId}`);
     const filledHeartElement = document.getElementById(`${filledHeartId}`);
@@ -136,7 +136,7 @@ const ProductsList = ({
                       <div className="flex justify-between items-center">
                         <span>{product.name}</span>
                         <span
-                          className="mt-1.5 wishlist cursor-pointer"
+                          className="mt-1.5 wishlist cursor-pointer bg-slate-200 px-1.5 pt-1 rounded-full"
                           // onClick={() => setWishlistClick(!wishlistclick)}
                         >
                           {/* {wishlistclick ? ( */}

@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import React from "react";
+import {  useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import DeleteConfirm from "../components/DeleteConfirm";
 import { removeWishlistItem } from "../store/actions/cartAction";
-import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 const Wishlist = ({ wishlist, setWishlist }) => {
   const fetchedWishlistItems = JSON.parse(
@@ -13,11 +9,7 @@ const Wishlist = ({ wishlist, setWishlist }) => {
   );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isDeleteVisible, setIsDeleteVisible] = useState(false);
-  const [click, setClick] = useState(true);
 
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { cartItems } = useSelector((state) => state.cart);
 
   const deleteWishlistItemHandler = (id) => {
     dispatch(removeWishlistItem(id));

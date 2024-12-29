@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import Loader from "../components/Loader";
-import ScrollToTop from "react-scroll-to-top";
 import ProductsList from "../components/ProductsList";
 import QuicView from "../components/QuicView";
 import { useSelector } from "react-redux";
@@ -190,14 +189,6 @@ const Store = ({ openQuickView, closeQuickView }) => {
           ""
         )}
       </section>
-      <ScrollToTop
-        smooth
-        color="white"
-        style={{
-          backgroundColor: "#111827",
-          padding: "5px",
-        }}
-      />
     </>
   );
 };

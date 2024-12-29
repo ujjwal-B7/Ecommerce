@@ -6,7 +6,7 @@ import {
   REMOVE_WISHLIST_ITEM,
 } from "../constants/cartConstants";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // add to cart
@@ -21,6 +21,7 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
       price: data.product.price,
       image: data.product.images[0].url,
       stock: data.product.Stock,
+      category: data.product.category,
       quantity,
     },
   });

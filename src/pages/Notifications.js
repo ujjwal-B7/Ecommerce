@@ -34,11 +34,12 @@ const Notifications = ({ notifications, setNotifications }) => {
     const hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();
     const seconds = currentDate.getSeconds();
-
     const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 
     return formattedDate;
   };
+
+  const orderNotification = [];
 
   return (
     <section className="text-gray-900 cart relative z-50 px-2">
@@ -49,13 +50,24 @@ const Notifications = ({ notifications, setNotifications }) => {
       >
         <ion-icon name="close"></ion-icon>
       </div>
+      {/* {orders &&
+        orders.map(
+          (order) =>
+            order.orderStatus === "Processing" && (
+              <>
+                <p className="text-center pt-32  text-gray-500">
+                  No notifications yet.
+                </p>
+              </>
+            )
+        )} */}
       {orders &&
         orders.map(
           (order) =>
             order.orderStatus === "Shipped" &&
             order.orderItems.map((item) => (
               <>
-                <div className="bg-text w-full h-20 flex items-center px-4 gap-4">
+                <div className="bg-text w-full h-20 flex items-center px-4 gap-4 mb-4">
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -110,17 +122,6 @@ const Notifications = ({ notifications, setNotifications }) => {
                 </div>
               </>
             ))
-        )}
-      {orders &&
-        orders.map(
-          (order) =>
-            order.orderStatus === "Processing" && (
-              <>
-                <p className="text-center pt-32  text-gray-500">
-                  No notifications yet.
-                </p>
-              </>
-            )
         )}
     </section>
   );

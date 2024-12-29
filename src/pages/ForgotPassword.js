@@ -27,6 +27,7 @@ const ForgotPassword = () => {
       navigate("/");
     }
   }, [dispatch, message, navigate]);
+  
   return (
     <>
       {/* <Loader loading={loading} /> */}

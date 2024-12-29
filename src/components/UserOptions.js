@@ -67,7 +67,7 @@ const UserOptions = ({ user }) => {
           alt=""
         /> */}
         <div className="flex items-center mb-2">
-          <p className="text-xl rounded-full px-4 py-2 bg-gray-400 uppercase">
+          <p className="text-xl rounded-full px-4 py-1.5 bg-gray-400 uppercase">
             {user.name.substr(0, 1)}
           </p>
           <span className="mt-2">

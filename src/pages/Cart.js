@@ -33,24 +33,29 @@ const Cart = ({ showCart, setShowCart }) => {
   };
 
   // confirm order
+  // confirm order
   const checkOutHandler = () => {
-    {
-      !isAuthenticated &&
-        toast.error("Please login first to place order.", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+    if (!isAuthenticated) {
+      toast.error("Please login first to place order.", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
     }
-    {
-      isAuthenticated && navigate("/shippingInfo");
+
+    if (isAuthenticated) {
+      navigate("/shippingInfo");
+      // Add a slight delay to hide the cart after navigation
+      setTimeout(() => {
+        setShowCart(!showCart);
+      }, 100); // Adjust delay if needed
     }
-    setShowCart(!showCart);
   };
 
   const deleteCartItemHandler = (id) => {
@@ -60,7 +65,16 @@ const Cart = ({ showCart, setShowCart }) => {
   };
   return (
     <section className="text-gray-900 cart relative z-50 h-full">
-      <p className="text-3xl font-semibold py-5 text-center">Cart</p>
+      <div className="flex justify-between items-center">
+        <div></div>
+        <p className="text-3xl font-semibold py-5 text-center">Cart</p>
+        <span
+          onClick={() => setShowCart(!showCart)}
+          className="bg-gray-400 text-white rounded-full px-2 mr-4 cursor-pointer"
+        >
+          x
+        </span>
+      </div>
       <div
         className="absolute lg:hidden top-5 right-4  text-center text-3xl"
         onClick={() => setShowCart(!showCart)}

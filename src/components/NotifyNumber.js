@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const NotifyNumber = ({number}) => {
-  return (
-    <div>{number}</div>
-  )
-}
+const NotifyNumber = ({ number }) => {
+  return <div >{number}</div>;
+};
 
-export default NotifyNumber
+export default NotifyNumber;
